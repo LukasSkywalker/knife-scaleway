@@ -25,12 +25,12 @@ class Chef
         validate!
 
         droplet_list = [
-            h.color('ID', :bold),
-            h.color('Name', :bold),
-            h.color('Size', :bold),
+            h.color('ID',     :bold),
+            h.color('Name',   :bold),
+            h.color('Size',   :bold),
             h.color('Region', :bold),
-            h.color('IPv4', :bold),
-            h.color('Image', :bold),
+            h.color('IPv4',   :bold),
+            h.color('Image',  :bold),
             h.color('Status', :bold)
         ]
 
