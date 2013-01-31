@@ -37,10 +37,12 @@ class Chef
         ]
 
         if config[:global_images]
-          images = client.images.list(:filter => 'global').images
+          filter = 'global'
         else
-          images = client.images.list(:filter => 'my_images').images
+          filter = 'my_images'
         end
+
+        images = client.images.list(:filter => filter).images
 
         images.sort! do |a, b|
           [ a.distribution, a.name ] <=> [ b.distribution, b.name ]
