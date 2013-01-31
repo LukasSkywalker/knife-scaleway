@@ -11,7 +11,6 @@
 # limitations under the License.
 #
 require File.expand_path('../digital_ocean_base', __FILE__)
-require 'highline'
 
 class Chef
   class Knife
