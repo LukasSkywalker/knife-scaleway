@@ -2,9 +2,16 @@
 
 This is a plugin for [Chef's](http://www.opscode.com/chef/) [knife](http://wiki.opscode.com/display/chef/Knife) tool. It allows you to bootstrap virtual machines with [DigitalOcean.com](https://www.digitalocean.com/) including the initial bootstrapping of chef on that system.
 You can also skip the chef bootstrapping if you prefer using [knife-solo](https://github.com/matschaffer/knife-solo) or some other solutions.
+
+This knife plugin used the [digital_ocean](https://github.com/rmoriz/digital_ocean) rubygem.
+
 ## Installation
-    $ # install chef
-    $ gem install knife-digital_ocean
+
+(chef installed, of course)
+
+```shell
+➜ gem install knife-digital_ocean
+```
 
 ## Overview
 
@@ -48,52 +55,149 @@ knife[:digital_ocean_api_key]   = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
 
 __Example__
 
-```bash
-knife digital_ocean droplet create --server-name awesome-vm1.chef.io \
-                                   --image 25306 \
-                                   --location 2 \
-                                   --size 66 \
-                                   --ssh-keys 1234,4567 \
-                                   --bootstrap \
-                                   --run-list "role[base],role[webserver]"
+```shell
+➜ knife digital_ocean droplet create --server-name awesome-vm1.chef.io \
+                                      --image 25306 \
+                                      --location 2 \
+                                      --size 66 \
+                                      --ssh-keys 1234,4567 \
+                                      --bootstrap \
+                                      --run-list "role[base],role[webserver]"
 ```
 
 __Syntax__
-```bash
-knife digital_ocean droplet create --server-name <FQDN> \
-                                   --image <IMAGE ID> \
-                                   --location <REGION ID> \
-                                   --size <SIZE ID> \
-                                   --ssh-keys <SSH KEY-ID(s), comma-separated> \
-                                   --bootstrap \
-                                   --run-list "<RUNLIST>"
+
+```shell
+➜ knife digital_ocean droplet create --server-name <FQDN> \
+                                      --image <IMAGE ID> \
+                                      --location <REGION ID> \
+                                      --size <SIZE ID> \
+                                      --ssh-keys <SSH KEY-ID(s), comma-separated> \
+                                      --bootstrap \
+                                      --run-list "<RUNLIST>"
 ```
 
 __Short Syntax__
-```bash
-knife digital_ocean droplet create --N <FQDN> \
-                                   --I <IMAGE ID> \
-                                   --L <REGION ID> \
-                                   --S <SIZE ID> \
-                                   --K <SSH KEY-ID(s), comma-separated> \
-                                   --B \
-                                   --r "<RUNLIST>"
-```
 
+```shell
+➜ knife digital_ocean droplet create --N <FQDN> \
+                                      --I <IMAGE ID> \
+                                      --L <REGION ID> \
+                                      --S <SIZE ID> \
+                                      --K <SSH KEY-ID(s), comma-separated> \
+                                      --B \
+                                      --r "<RUNLIST>"
+```
 
 #### With knife-solo, your custom external bootstrapping script or without chef at all
 
 This will just create a droplet and returns its IP-address no other actions are done. You can now run your custom solution e.g. ```knife solo bootstrap <IP> ``` 
+
 __Example__
 
 ```bash
-knife digital_ocean droplet create --server-name awesome-vm1.chef.io \
-                                   --image 25306 \
-                                   --location 2 \
-                                   --size 66 \
-                                   --ssh-keys 1234,4567
+➜ knife digital_ocean droplet create --server-name awesome-vm1.chef.io \
+                                      --image 25306 \
+                                      --location 2 \
+                                      --size 66 \
+                                      --ssh-keys 1234,4567
 ```
 
+### List running droplets (servers)
+
+```shell
+➜  ~  knife digital_ocean droplet list
+ID     Name                  Size   Region       IPv4            Image                            Status
+12345  app20.ams.nl.chef.io  1GB    Amsterdam 1  185.14.123.123  25306 (Ubuntu 12.10 x32 Server)  active
+23456  awesome-vm1.chef.io   512MB  Amsterdam 1  185.14.124.125  25306 (Ubuntu 12.10 x32 Server)  active
+```
+
+### List regions (servers)
+
+```shell
+➜ knife digital_ocean region list
+ID  Name       
+1   New York 1 
+2   Amsterdam 1
+```
+
+### List sizes (server types)
+```shell
+➜ knife digital_ocean size list  
+ID  Name 
+63  1GB  
+62  2GB  
+64  4GB  
+65  8GB  
+61  16GB 
+60  32GB 
+70  48GB 
+69  64GB 
+68  96GB 
+66  512MB
+```
+
+### List images
+
+#### Custom images (snapshots, backups) (default)
+```shell
+➜ knife digital_ocean image list
+ID     Distribution  Name                                Global
+11111  Ubuntu        app100.ams.nlxxxxx.net 2013-02-01   -     
+11112  Ubuntu        app100.ams.nlxxxxx.net 2013-02-03   -     
+11113  Ubuntu        init                                -     
+```
+
+#### Global images (OS)
+```shell
+➜ knife digital_ocean image list --global
+ID     Distribution  Name                                 Global
+23593  Arch Linux    Arch Linux 2012-09 x64               +     
+1602   CentOS        CentOS 5.8 x32                       +     
+1601   CentOS        CentOS 5.8 x64                       +     
+1605   CentOS        CentOS 6.0 x32                       +     
+1611   CentOS        CentOS 6.2 x64                       +     
+12578  CentOS        CentOS 6.3 x32                       +     
+12574  CentOS        CentOS 6.3 x64                       +     
+12575  Debian        Debian 6.0 x32                       +     
+12573  Debian        Debian 6.0 x64                       +     
+1606   Fedora        Fedora 15 x64                        +     
+1618   Fedora        Fedora 16 x64 Desktop                +     
+1615   Fedora        Fedora 16 x64 Server                 +     
+32399  Fedora        Fedora 17 x32 Desktop                +     
+32387  Fedora        Fedora 17 x32 Server                 +     
+32419  Fedora        Fedora 17 x64 Desktop                +     
+32428  Fedora        Fedora 17 x64 Server                 +     
+63749  Gentoo        Gentoo 2013-1 x64                    +     
+1607   Gentoo        Gentoo x64                           +     
+46964  Ubuntu        LAMP on Ubuntu 12.04                 +     
+4870   Ubuntu        Rails 3.2.2 - Nginx MySQL Passenger  +     
+14098  Ubuntu        Ubuntu 10.04 x32 Server              +     
+14097  Ubuntu        Ubuntu 10.04 x64 Server              +     
+43462  Ubuntu        Ubuntu 11.04x32 Desktop              +     
+43458  Ubuntu        Ubuntu 11.04x64 Server               +     
+1609   Ubuntu        Ubuntu 11.10 x32 Server              +     
+42735  Ubuntu        Ubuntu 12.04 x32 Server              +     
+14218  Ubuntu        Ubuntu 12.04 x64 Desktop             +     
+2676   Ubuntu        Ubuntu 12.04 x64 Server              +     
+25485  Ubuntu        Ubuntu 12.10 x32 Desktop             +     
+25306  Ubuntu        Ubuntu 12.10 x32 Server              +     
+25493  Ubuntu        Ubuntu 12.10 x64 Desktop             +     
+25489  Ubuntu        Ubuntu 12.10 x64 Server              +     
+13632  openSUSE      Open Suse 12.1 x32                   +     
+13863  openSUSE      Open Suse 12.2 X64                   +  
+```
+
+### SSH keys (previously uploaded via DigitalOcean's webfrontend)
+
+```shell
+➜ knife digital_ocean sshkey list    
+ID    Name  
+1234  Alice
+1235  Bob
+1236  Chuck
+1237  Craig
+```
 
 ## Contributing
 
