@@ -206,6 +206,11 @@ ID    Name
 1237  Craig
 ```
 
+## Commercial Support
+
+Commercial support is available. Please contact [https://roland.io/](https://roland.io/) or [http://moriz.com/](http://moriz.com/)
+
+
 ## Contributing
 
 1. Fork it
@@ -213,3 +218,13 @@ ID    Name
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
+## License
+
+Apache 2.0 (like Chef itself), see LICENSE.txt file.
+
+
+## Copyright
+
+Copyright © 2013 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)
