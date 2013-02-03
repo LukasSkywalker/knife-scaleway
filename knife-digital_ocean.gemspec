@@ -8,12 +8,12 @@ Gem::Specification.new do |gem|
   gem.version       = Knife::DigitalOcean::VERSION
   gem.authors       = ['Roland Moriz']
   gem.email         = ['roland@moriz.de']
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ''
+  gem.description   = %q{A plugin for chef's knife to manage instances of DigitalOcean servers}
+  gem.summary       = %q{A plugin for chef's knife to manage instances of DigitalOcean servers}
+  gem.homepage      = 'http://github.com/rmoriz/knife-digital_ocean'
   gem.license       = 'Apache 2.0'
 
-  gem.add_dependency 'chef'
+  gem.add_dependency 'chef', '~> 10.18'
   gem.add_dependency 'digital_ocean'
 
   gem.add_development_dependency 'rspec', '~> 2.0'
