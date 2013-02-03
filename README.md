@@ -1,17 +1,19 @@
-# Knife::DigitalOcean
+# Knife::DigitalOcean — A knife plugin to deal with the DigitalOcean Cloud services.
 
 This is a plugin for [Chef's](http://www.opscode.com/chef/) [knife](http://wiki.opscode.com/display/chef/Knife) tool. It allows you to bootstrap virtual machines with [DigitalOcean.com](https://www.digitalocean.com/) including the initial bootstrapping of chef on that system.
-You can also skip the chef bootstrapping if you prefer using [knife-solo](https://github.com/matschaffer/knife-solo) or some other solutions.
+You can also skip the chef bootstrapping if you prefer using [knife-solo](https://github.com/matschaffer/knife-solo) or another solution.
 
 This knife plugin uses the [digital_ocean](https://github.com/rmoriz/digital_ocean) rubygem.
 
+
 ## Installation
 
-(chef installed, of course)
+(chef needs to be installed upfront, of course)
 
 ```shell
 ➜ gem install knife-digital_ocean
 ```
+
 
 ## Overview
 
@@ -37,6 +39,7 @@ This plugin provides the following sub-commands:
 
 * knife digital_ocean sshkey list                
   **Lists name + id of the uploaded known ssh keys**
+
 
 ## Configuration
 
@@ -91,7 +94,7 @@ __Short Syntax__
 
 #### With knife-solo, your custom external bootstrapping script or without chef at all
 
-This will just create a droplet and returns its IP-address no other actions are done. You can now run your custom solution e.g. ```knife solo bootstrap <IP> ``` 
+This will just create a droplet and return its IP-address. Nothing else. You can now run your custom solution to provision the droplet e.g. ```knife solo bootstrap <IP> ``` if you use knife-solo. 
 
 __Example__
 
@@ -129,6 +132,7 @@ ID  Name
 ```
 
 ### List sizes (server types)
+
 ```shell
 ➜ knife digital_ocean size list  
 ID  Name 
@@ -147,6 +151,7 @@ ID  Name
 ### List images
 
 #### Custom images (snapshots, backups) (default)
+
 ```shell
 ➜ knife digital_ocean image list
 ID     Distribution  Name                                Global
@@ -155,7 +160,9 @@ ID     Distribution  Name                                Global
 11113  Ubuntu        init                                -     
 ```
 
+
 #### Global images (OS)
+
 ```shell
 ➜ knife digital_ocean image list --global
 ID     Distribution  Name                                 Global
@@ -195,6 +202,7 @@ ID     Distribution  Name                                 Global
 13863  openSUSE      Open Suse 12.2 X64                   +  
 ```
 
+
 ### SSH keys (previously uploaded via DigitalOcean's webfrontend)
 
 ```shell
@@ -205,6 +213,7 @@ ID    Name
 1236  Chuck
 1237  Craig
 ```
+
 
 ## Commercial Support
 
