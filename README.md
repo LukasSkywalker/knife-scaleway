@@ -3,7 +3,7 @@
 This is a plugin for [Chef's](http://www.opscode.com/chef/) [knife](http://wiki.opscode.com/display/chef/Knife) tool. It allows you to bootstrap virtual machines with [DigitalOcean.com](https://www.digitalocean.com/) including the initial bootstrapping of chef on that system.
 You can also skip the chef bootstrapping if you prefer using [knife-solo](https://github.com/matschaffer/knife-solo) or some other solutions.
 
-This knife plugin used the [digital_ocean](https://github.com/rmoriz/digital_ocean) rubygem.
+This knife plugin uses the [digital_ocean](https://github.com/rmoriz/digital_ocean) rubygem.
 
 ## Installation
 
