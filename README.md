@@ -1,4 +1,5 @@
-# Knife::DigitalOcean — A knife plugin to deal with the DigitalOcean Cloud services.
+# Knife::DigitalOcean
+## A knife plugin to deal with the [DigitalOcean.com](https://www.digitalocean.com) Cloud services.
 
 This is a plugin for [Chef's](http://www.opscode.com/chef/) [knife](http://wiki.opscode.com/display/chef/Knife) tool. It allows you to bootstrap virtual machines with [DigitalOcean.com](https://www.digitalocean.com/) including the initial bootstrapping of chef on that system.
 You can also skip the chef bootstrapping if you prefer using [knife-solo](https://github.com/matschaffer/knife-solo) or another solution.
