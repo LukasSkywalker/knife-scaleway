@@ -50,23 +50,35 @@ class Chef
         :description => 'Comma spearated list of your SSH key ids',
         :proc        => lambda { |o| o.split(/[\s,]+/) }
 
+      option :identity_file,
+        :short       => '-i IDENTITY_FILE',
+        :long        => '--identity-file IDENTITY_FILE',
+        :description => 'The SSH identity file used for authentication',
+        :proc        => Proc.new { |identity| Chef::Config[:knife][:identity_file] = identity }
+
+      option :bootstrap,
+        :short       => '-B',
+        :long        => '--bootstraps',
+        :boolean     => false,
+        :description => 'Do a chef-client bootstrap on the create droplet (for use with chef-server)'
+
       option :ssh_user,
-        :short => "-x USERNAME",
-        :long => "--ssh-user USERNAME",
-        :description => "The ssh username; default is 'root'",
-        :default => "root"
+        :short       => '-x USERNAME',
+        :long        => '--ssh-user USERNAME',
+        :description => 'The ssh username; default is "root"',
+        :default     => 'root'
 
       option :distro,
-        :short => "-d DISTRO",
-        :long => "--distro DISTRO",
-        :description => "Chef-Bootstrap a distro using a template; default is 'ubuntu10.04-gems'",
+        :short => '-d DISTRO',
+        :long => '--distro DISTRO',
+        :description => 'Chef-Bootstrap a distro using a template; default is "ubuntu10.04-gems"',
         :proc => Proc.new { |d| Chef::Config[:knife][:distro] = d },
-        :default => "ubuntu10.04-gems"
+        :default => 'chef-full'
 
       option :run_list,
-        :short => "-r RUN_LIST",
-        :long => "--run-list RUN_LIST",
-        :description => "Comma separated list of roles/recipes to apply",
+        :short => '-r RUN_LIST',
+        :long => '--run-list RUN_LIST',
+        :description => 'Comma separated list of roles/recipes to apply',
         :proc => lambda { |o| o.split(/[\s,]+/) },
         :default => []
 
@@ -100,13 +112,91 @@ class Chef
           exit 1
         end
 
-        droplet = client.droplets.create(:name        => locate_config_value(:server_name),
-                                         :size_id     => locate_config_value(:size),
-                                         :image_id    => locate_config_value(:image),
-                                         :region_id   => locate_config_value(:location),
-                                         :ssh_key_ids => locate_config_value(:ssh_key_ids).join(','))
+        response = client.droplets.create(:name        => locate_config_value(:server_name),
+                                          :size_id     => locate_config_value(:size),
+                                          :image_id    => locate_config_value(:image),
+                                          :region_id   => locate_config_value(:location),
+                                          :ssh_key_ids => locate_config_value(:ssh_key_ids).join(','))
 
-        puts droplet.inspect
+        if response.status != "OK"
+          ui.error("Droplet could not be started #{response.inspect}")
+          exit 1
+        end
+
+        puts "Droplet creation for #{locate_config_value(:server_name)} started. Droplet-ID is #{response.droplet.id}"
+
+        print "\n#{ui.color("Waiting for IPv4-Address", :magenta)}"
+        print(".") until ip_address = ip_address_available(response.droplet.id) {
+          puts 'done'
+        }
+
+        puts ui.color("IPv4 address is: #{ip_address}", :green)
+
+        print ui.color("Waiting for sshd:", :magenta)
+        print('.') until tcp_test_ssh(ip_address, 22) {
+          sleep 2
+          puts 'done'
+        }
+
+        if locate_config_value(:bootstrap)
+          bootstrap_for_node(ip_address).run
+        else
+          puts ip_address
+          exit 0
+        end
+
+      end
+
+      def ip_address_available(droplet_id)
+        response = client.droplets.show(droplet_id)
+        if response.droplet.ip_address
+          yield
+          response.droplet.ip_address
+        else
+          sleep @initial_sleep_delay ||= 10
+          false
+        end
+      end
+
+      def tcp_test_ssh(hostname, port)
+        tcp_socket = TCPSocket.new(hostname, port)
+        readable = IO.select([tcp_socket], nil, nil, 5)
+        if readable
+          Chef::Log.debug("sshd accepting connections on #{hostname}, banner is #{tcp_socket.gets}")
+          yield
+          true
+        else
+          false
+        end
+      rescue Errno::ETIMEDOUT
+        false
+      rescue Errno::EPERM
+        false
+      rescue Errno::ECONNREFUSED
+        sleep 2
+        false
+      rescue Errno::EHOSTUNREACH
+        sleep 2
+        false
+      ensure
+        tcp_socket && tcp_socket.close
+      end
+
+      def bootstrap_for_node(ip_address)
+        bootstrap = Chef::Knife::Bootstrap.new
+        bootstrap.name_args = [ ip_address ]
+        bootstrap.config[:run_list] = config[:run_list]
+        bootstrap.config[:ssh_user] = config[:ssh_user]
+        bootstrap.config[:identity_file] = config[:identity_file]
+        bootstrap.config[:chef_node_name] = locate_config_value(:server_name)
+        bootstrap.config[:prerelease] = config[:prerelease]
+        bootstrap.config[:bootstrap_version] = locate_config_value(:bootstrap_version)
+        bootstrap.config[:distro] = locate_config_value(:distro)
+        bootstrap.config[:use_sudo] = true unless config[:ssh_user] == 'root'
+        bootstrap.config[:template_file] = locate_config_value(:template_file)
+        bootstrap.config[:environment] = config[:environment]
+        bootstrap.config[:host_key_verify] = config[:host_key_verify]
+        bootstrap
       end
 
     end
