@@ -60,7 +60,7 @@ __Example__
                                       --image 25306 \
                                       --location 2 \
                                       --size 66 \
-                                      --ssh-keys 1234,4567 \
+                                      --ssh-keys 1234,1235 \
                                       --bootstrap \
                                       --run-list "role[base],role[webserver]"
 ```
@@ -106,10 +106,17 @@ __Example__
 ### List running droplets (servers)
 
 ```shell
-➜  ~  knife digital_ocean droplet list
+➜ knife digital_ocean droplet list
 ID     Name                  Size   Region       IPv4            Image                            Status
 12345  app20.ams.nl.chef.io  1GB    Amsterdam 1  185.14.123.123  25306 (Ubuntu 12.10 x32 Server)  active
 23456  awesome-vm1.chef.io   512MB  Amsterdam 1  185.14.124.125  25306 (Ubuntu 12.10 x32 Server)  active
+```
+
+### Destroy a droplet (server) including all of its data!
+
+```shell
+➜ knife digital_ocean droplet destroy -S 23456
+OK
 ```
 
 ### List regions (servers)
