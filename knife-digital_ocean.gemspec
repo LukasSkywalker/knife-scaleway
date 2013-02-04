@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = 'http://github.com/rmoriz/knife-digital_ocean'
   gem.license       = 'Apache 2.0'
 
-  gem.add_dependency 'chef', '~> 10.18'
+  gem.add_dependency 'chef', '>= 10.18'
   gem.add_dependency 'digital_ocean'
   gem.add_dependency 'highline'
   gem.add_dependency 'net-ssh-multi', '~> 1.1'
