@@ -43,7 +43,6 @@ class Chef
         :description => 'DigitalOcean Location (Region)',
         :proc        => Proc.new { |location| Chef::Config[:knife][:location] = location }
 
-      # FIXME splitting + kniferb
       option :ssh_key_ids,
         :short       => '-K KEYID',
         :long        => '--ssh-keys KEY_ID',
@@ -69,18 +68,18 @@ class Chef
         :default     => 'root'
 
       option :distro,
-        :short => '-d DISTRO',
-        :long => '--distro DISTRO',
-        :description => 'Chef-Bootstrap a distro using a template; default is "ubuntu10.04-gems"',
-        :proc => Proc.new { |d| Chef::Config[:knife][:distro] = d },
-        :default => 'chef-full'
+        :short       => '-d DISTRO',
+        :long        => '--distro DISTRO',
+        :description => 'Chef-Bootstrap a distro using a template; default is "chef-full"',
+        :proc        => Proc.new { |d| Chef::Config[:knife][:distro] = d },
+        :default     => 'chef-full'
 
       option :run_list,
-        :short => '-r RUN_LIST',
-        :long => '--run-list RUN_LIST',
+        :short       => '-r RUN_LIST',
+        :long        => '--run-list RUN_LIST',
         :description => 'Comma separated list of roles/recipes to apply',
-        :proc => lambda { |o| o.split(/[\s,]+/) },
-        :default => []
+        :proc        => lambda { |o| o.split(/[\s,]+/) },
+        :default     => []
 
       def run
         $stdout.sync = true
@@ -88,27 +87,27 @@ class Chef
         validate!
 
         unless locate_config_value(:server_name)
-          ui.error("Server Name cannot be empty: -N <servername>")
+          ui.error('Server Name cannot be empty: -N <servername>')
           exit 1
         end
 
         unless locate_config_value(:image)
-          ui.error("Image cannot be empty: -I <image>")
+          ui.error('Image cannot be empty: -I <image>')
           exit 1
         end
 
         unless locate_config_value(:size)
-          ui.error("Size cannot be empty: -S <size>")
+          ui.error('Size cannot be empty: -S <size>')
           exit 1
         end
 
         unless locate_config_value(:location)
-          ui.error("Location cannot be empty: -L <region>")
+          ui.error('Location cannot be empty: -L <region>')
           exit 1
         end
 
         unless locate_config_value(:ssh_key_ids)
-          ui.error("One or more DigitalOcean SSH key ids missing: -K <KEY1>, <KEY2> ...")
+          ui.error('One or more DigitalOcean SSH key ids missing: -K <KEY1>, <KEY2> ...')
           exit 1
         end
 
@@ -118,7 +117,7 @@ class Chef
                                           :region_id   => locate_config_value(:location),
                                           :ssh_key_ids => locate_config_value(:ssh_key_ids).join(','))
 
-        if response.status != "OK"
+        if response.status != 'OK'
           ui.error("Droplet could not be started #{response.inspect}")
           exit 1
         end
@@ -132,7 +131,7 @@ class Chef
 
         puts ui.color("IPv4 address is: #{ip_address}", :green)
 
-        print ui.color("Waiting for sshd:", :magenta)
+        print ui.color('Waiting for sshd:', :magenta)
         print('.') until tcp_test_ssh(ip_address, 22) {
           sleep 2
           puts 'done'
