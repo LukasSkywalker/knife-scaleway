@@ -124,7 +124,7 @@ class Chef
 
         puts "Droplet creation for #{locate_config_value(:server_name)} started. Droplet-ID is #{response.droplet.id}"
 
-        print "\n#{ui.color("Waiting for IPv4-Address", :magenta)}"
+        print ui.color("Waiting for IPv4-Address", :magenta)
         print(".") until ip_address = ip_address_available(response.droplet.id) {
           puts 'done'
         }
