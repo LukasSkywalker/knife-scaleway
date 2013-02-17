@@ -44,7 +44,7 @@ This plugin provides the following sub-commands:
 
 ## Configuration
 
-The best way is to put your API-credentials of DigitalOcean in your knife.rb file of choice:
+The best way is to put your API-credentials of DigitalOcean in your knife.rb file of choice (e.g. in ```~/.chef/knife.rb```):
 
 ```ruby
 knife[:digital_ocean_client_id] = 'XXXXXXXXXXXX'
