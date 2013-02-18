@@ -81,6 +81,27 @@ class Chef
         :proc        => lambda { |o| o.split(/[\s,]+/) },
         :default     => []
 
+      option :template_file,
+        :long        => "--template-file TEMPLATE",
+        :description => "Full path to location of template to use",
+        :proc        => Proc.new { |t| Chef::Config[:knife][:template_file] = t },
+        :default     => false
+
+      option :host_key_verify,
+        :long        => "--[no-]host-key-verify",
+        :description => "Verify host key, enabled by default",
+        :boolean     => true,
+        :default     => true
+
+      option :prerelease,
+        :long        => "--prerelease",
+        :description => "Install the pre-release chef gems"
+
+      option :bootstrap_version,
+        :long        => "--bootstrap-version VERSION",
+        :description => "The version of Chef to install",
+        :proc        => Proc.new { |v| Chef::Config[:knife][:bootstrap_version] = v }
+
       def run
         $stdout.sync = true
 
