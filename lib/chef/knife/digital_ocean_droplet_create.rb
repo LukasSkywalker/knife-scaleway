@@ -57,7 +57,7 @@ class Chef
 
       option :bootstrap,
         :short       => '-B',
-        :long        => '--bootstraps',
+        :long        => '--bootstrap',
         :boolean     => false,
         :description => 'Do a chef-client bootstrap on the create droplet (for use with chef-server)'
 
