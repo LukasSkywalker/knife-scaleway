@@ -84,13 +84,13 @@ __Syntax__
 __Short Syntax__
 
 ```shell
-➜ knife digital_ocean droplet create --N <FQDN> \
-                                      --I <IMAGE ID> \
-                                      --L <REGION ID> \
-                                      --S <SIZE ID> \
-                                      --K <SSH KEY-ID(s), comma-separated> \
-                                      --B \
-                                      --r "<RUNLIST>"
+➜ knife digital_ocean droplet create -N <FQDN> \
+                                      -I <IMAGE ID> \
+                                      -L <REGION ID> \
+                                      -S <SIZE ID> \
+                                      -K <SSH KEY-ID(s), comma-separated> \
+                                      -B \
+                                      -r "<RUNLIST>"
 ```
 
 #### With knife-solo, your custom external bootstrapping script or without chef at all
