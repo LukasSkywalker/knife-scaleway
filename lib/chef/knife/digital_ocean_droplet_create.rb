@@ -18,7 +18,6 @@ class Chef
       include Knife::DigitalOceanBase
 
       banner 'knife digital_ocean droplet create (options)'
-      category 'digital_ocean'
 
       option :server_name,
         :short       => '-N NAME',

@@ -18,7 +18,6 @@ class Chef
       include Knife::DigitalOceanBase
 
       banner 'knife digital_ocean image list (options)'
-      category 'digital_ocean'
 
       option :global_images,
         :short       => '-G',

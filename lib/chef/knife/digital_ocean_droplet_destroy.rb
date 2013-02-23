@@ -18,7 +18,6 @@ class Chef
       include Knife::DigitalOceanBase
 
       banner 'knife digital_ocean droplet destroy (options)'
-      category 'digital_ocean'
 
       option :server,
         :short       => '-S ID',

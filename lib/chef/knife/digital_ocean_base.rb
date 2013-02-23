@@ -18,6 +18,7 @@ class Chef
 
       def self.included(includer)
         includer.class_eval do
+          category 'digital_ocean'
 
           deps do
             require 'digital_ocean'
