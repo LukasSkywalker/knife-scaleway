@@ -229,6 +229,11 @@ Commercial support is available. Please contact [https://roland.io/](https://rol
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+### Contributors
+
+*   [tmatilai](https://github.com/tmatilai) 
+
+For more information and a complete list see [the contributor page on GitHub](https://github.com/rmoriz/knife-digital_ocean/contributors).
 
 ## License
 
