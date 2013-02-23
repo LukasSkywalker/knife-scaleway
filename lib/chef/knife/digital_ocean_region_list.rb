@@ -18,6 +18,7 @@ class Chef
       include Knife::DigitalOceanBase
 
       banner 'knife digital_ocean region list (options)'
+      category 'digital_ocean'
 
       def run
         $stdout.sync = true
