@@ -23,9 +23,7 @@ class Chef
           deps do
             require 'digital_ocean'
             require 'highline'
-            require 'net/ssh/multi'
-            require 'readline'
-            require 'chef/json_compat'
+            require 'socket'
             require 'chef/knife/bootstrap'
             Chef::Knife::Bootstrap.load_deps
           end
