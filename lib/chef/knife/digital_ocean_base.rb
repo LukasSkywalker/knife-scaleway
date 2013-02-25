@@ -19,9 +19,6 @@ class Chef
       def self.load_deps
         require 'digital_ocean'
         require 'highline'
-        require 'socket'
-        require 'chef/knife/bootstrap'
-        Chef::Knife::Bootstrap.load_deps
       end
 
       def self.included(includer)

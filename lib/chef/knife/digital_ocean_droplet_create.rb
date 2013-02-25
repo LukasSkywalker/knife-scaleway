@@ -17,6 +17,13 @@ class Chef
     class DigitalOceanDropletCreate < Knife
       include Knife::DigitalOceanBase
 
+      deps do
+        require 'socket'
+        require 'chef/knife/bootstrap'
+        Chef::Knife::Bootstrap.load_deps
+        Chef::Knife::DigitalOceanBase.load_deps
+      end
+
       banner 'knife digital_ocean droplet create (options)'
 
       option :server_name,
