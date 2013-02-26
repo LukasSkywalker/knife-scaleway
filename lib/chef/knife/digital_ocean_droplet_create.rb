@@ -65,7 +65,6 @@ class Chef
       option :bootstrap,
         :short       => '-B',
         :long        => '--bootstrap',
-        :boolean     => false,
         :description => 'Do a chef-client bootstrap on the create droplet (for use with chef-server)'
 
       option :ssh_user,
@@ -97,7 +96,6 @@ class Chef
       option :host_key_verify,
         :long        => "--[no-]host-key-verify",
         :description => "Verify host key, enabled by default",
-        :boolean     => true,
         :default     => true
 
       option :prerelease,
