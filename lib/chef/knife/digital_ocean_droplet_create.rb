@@ -10,12 +10,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-require File.expand_path('../digital_ocean_base', __FILE__)
+require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
     class DigitalOceanDropletCreate < Knife
       include Knife::DigitalOceanBase
+
+      deps do
+        require 'socket'
+        require 'chef/knife/bootstrap'
+        Chef::Knife::Bootstrap.load_deps
+        Chef::Knife::DigitalOceanBase.load_deps
+      end
 
       banner 'knife digital_ocean droplet create (options)'
 

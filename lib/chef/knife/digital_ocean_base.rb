@@ -16,19 +16,28 @@ class Chef
   class Knife
     module DigitalOceanBase
 
+      def self.load_deps
+        require 'digital_ocean'
+        require 'highline'
+      end
+
       def self.included(includer)
         includer.class_eval do
           category 'digital_ocean'
 
-          deps do
-            require 'digital_ocean'
-            require 'highline'
-            require 'net/ssh/multi'
-            require 'readline'
-            require 'chef/json_compat'
-            require 'chef/knife/bootstrap'
-            Chef::Knife::Bootstrap.load_deps
-          end
+          # Lazy load our dependencies. Later calls to `Knife#deps` override
+          # previous ones, so if the including class calls it, it needs to also
+          # call our #load_deps, i.e:
+          #
+          #   Include Chef::Knife::DigitalOceanBase
+          #
+          #   deps do
+          #     require 'foo'
+          #     require 'bar'
+          #     Chef::Knife::DigitalOceanBase.load_deps
+          #   end
+          #
+          deps { Chef::Knife::DigitalOceanBase.load_deps }
 
           option :digital_ocean_client_id,
             :short       => '-K CLIENT_ID',
