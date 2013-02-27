@@ -6,7 +6,7 @@
 <a href="https://codeclimate.com/github/rmoriz/knife-digital_ocean"><img src="https://codeclimate.com/github/rmoriz/knife-digital_ocean.png"/></a>
 
 This is a plugin for [Chef's](http://www.opscode.com/chef/) [knife](http://wiki.opscode.com/display/chef/Knife) tool. It allows you to bootstrap virtual machines with [DigitalOcean.com](https://www.digitalocean.com/) including the initial bootstrapping of chef on that system.
-You can also skip the chef bootstrapping if you prefer using [knife-solo](http://matschaffer.github.com/knife-solo/) or another solution.
+You can also use [knife-solo](http://matschaffer.github.com/knife-solo/) for chef bootstrapping or skip it altogether for another solution.
 
 This knife plugin uses the [digital_ocean](https://github.com/rmoriz/digital_ocean) rubygem.
 
@@ -23,7 +23,7 @@ This knife plugin uses the [digital_ocean](https://github.com/rmoriz/digital_oce
 This plugin provides the following sub-commands:
 
 * knife digital_ocean droplet create (options)   
-  **Creates a virtual machine with or without bootstrapping chef-client**
+  **Creates a virtual machine with or without bootstrapping chef**
 
 * knife digital_ocean droplet destroy (options)  
   **Destroys the virtual machine and its data**
@@ -95,9 +95,26 @@ __Short Syntax__
                                       -r "<RUNLIST>"
 ```
 
-#### With knife-solo, your custom external bootstrapping script or without chef at all
+#### With knife-solo bootstrapping
 
-This will just create a droplet and return its IP-address. Nothing else. You can now run your custom solution to provision the droplet e.g. ```knife solo bootstrap <IP> ``` if you use knife-solo. 
+You need to have [knife-solo](http://matschaffer.github.com/knife-solo/) gem installed.
+
+This will create a droplet and run `knife solo bootstrap <IP>` equivalent for it.
+
+__Example__
+
+```bash
+➜ knife digital_ocean droplet create --server-name awesome-vm1.chef.io \
+                                      --image 25306 \
+                                      --location 2 \
+                                      --size 66 \
+                                      --ssh-keys 1234,4567 \
+				      --solo
+```
+
+#### With your custom external bootstrapping script or without chef at all
+
+This will just create a droplet and return its IP-address. Nothing else. You can now run your custom solution to provision the droplet.
 
 __Example__
 
