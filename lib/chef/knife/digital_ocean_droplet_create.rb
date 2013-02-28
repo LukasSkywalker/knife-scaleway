@@ -22,6 +22,9 @@ class Chef
         require 'chef/knife/bootstrap'
         Chef::Knife::Bootstrap.load_deps
         Chef::Knife::DigitalOceanBase.load_deps
+        # Knife loads subcommands automatically, so we can just check if the
+        # class exists.
+        Chef::Knife::SoloBootstrap.load_deps if defined? Chef::Knife::SoloBootstrap
       end
 
       banner 'knife digital_ocean droplet create (options)'
@@ -65,8 +68,12 @@ class Chef
       option :bootstrap,
         :short       => '-B',
         :long        => '--bootstrap',
-        :boolean     => false,
-        :description => 'Do a chef-client bootstrap on the create droplet (for use with chef-server)'
+        :description => 'Do a chef-client bootstrap on the created droplet (for use with chef-server)'
+
+      option :solo,
+        :long        => '--[no-]solo',
+        :description => 'Do a chef-solo bootstrap on the droplet using knife-solo',
+        :proc        => Proc.new { |s| Chef::Config[:knife][:solo] = s }
 
       option :ssh_user,
         :short       => '-x USERNAME',
@@ -97,7 +104,6 @@ class Chef
       option :host_key_verify,
         :long        => "--[no-]host-key-verify",
         :description => "Verify host key, enabled by default",
-        :boolean     => true,
         :default     => true
 
       option :prerelease,
@@ -139,6 +145,15 @@ class Chef
           exit 1
         end
 
+        if solo_bootstrap? && !defined?(Chef::Knife::SoloBootstrap)
+          ui.error [
+            'Knife plugin knife-solo was not found.',
+            'Please add the knife-solo gem to your Gemfile or',
+            'install it manually with `gem install knife-solo`.'
+          ].join(" ")
+          exit 1
+        end
+
         response = client.droplets.create(:name        => locate_config_value(:server_name),
                                           :size_id     => locate_config_value(:size),
                                           :image_id    => locate_config_value(:image),
@@ -165,7 +180,7 @@ class Chef
           puts 'done'
         }
 
-        if locate_config_value(:bootstrap)
+        if locate_config_value(:bootstrap) || solo_bootstrap?
           bootstrap_for_node(ip_address).run
         else
           puts ip_address
@@ -210,22 +225,24 @@ class Chef
       end
 
       def bootstrap_for_node(ip_address)
-        bootstrap = Chef::Knife::Bootstrap.new
+        bootstrap = bootstrap_class.new
         bootstrap.name_args = [ ip_address ]
-        bootstrap.config[:run_list] = config[:run_list]
-        bootstrap.config[:ssh_user] = config[:ssh_user]
-        bootstrap.config[:identity_file] = config[:identity_file]
+        bootstrap.config = config.dup
         bootstrap.config[:chef_node_name] = locate_config_value(:server_name)
-        bootstrap.config[:prerelease] = config[:prerelease]
         bootstrap.config[:bootstrap_version] = locate_config_value(:bootstrap_version)
         bootstrap.config[:distro] = locate_config_value(:distro)
         bootstrap.config[:use_sudo] = true unless config[:ssh_user] == 'root'
         bootstrap.config[:template_file] = locate_config_value(:template_file)
-        bootstrap.config[:environment] = config[:environment]
-        bootstrap.config[:host_key_verify] = config[:host_key_verify]
         bootstrap
       end
 
+      def bootstrap_class
+        solo_bootstrap? ? Chef::Knife::SoloBootstrap : Chef::Knife::Bootstrap
+      end
+
+      def solo_bootstrap?
+        config[:solo] || (config[:solo].nil? && Chef::Config[:knife][:solo])
+      end
     end
   end
 end
