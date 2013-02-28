@@ -148,7 +148,7 @@ ID     Name                  Size   Region       IPv4            Image          
 OK
 ```
 
-### List regions (servers)
+### List regions
 
 ```shell
 ➜ knife digital_ocean region list
@@ -157,7 +157,7 @@ ID  Name
 2   Amsterdam 1
 ```
 
-### List sizes (server types)
+### List sizes (instance types)
 
 ```shell
 ➜ knife digital_ocean size list  
