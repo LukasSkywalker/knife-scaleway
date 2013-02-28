@@ -256,7 +256,7 @@ Commercial support is available. Please contact [https://roland.io/](https://rol
 
 ### Contributors
 
-*   [tmatilai](https://github.com/tmatilai) 
+*   [Teemu Matilainen](https://github.com/tmatilai)
 
 For more information and a complete list see [the contributor page on GitHub](https://github.com/rmoriz/knife-digital_ocean/contributors).
 
