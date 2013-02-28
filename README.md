@@ -57,7 +57,13 @@ knife[:digital_ocean_api_key]   = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
 
 ### Create a Droplet
 
-#### With bootstrapping in an chef-server environment:
+There are three different ways of creating a server/droplet instance:
+
+If you just want to launch an instance 
+form the command line without any bootstrapping, go for option **C**. 
+If you use ```knife-solo``` try **B** and if you are a ```chef-server```-fan
+use method **A**:
+#### A. With bootstrapping in an chef-server environment:
 
 __Example__
 
@@ -95,7 +101,7 @@ __Short Syntax__
                                       -r "<RUNLIST>"
 ```
 
-#### With knife-solo bootstrapping
+#### B. With knife-solo bootstrapping
 
 You need to have [knife-solo](http://matschaffer.github.com/knife-solo/) gem installed.
 
@@ -112,7 +118,7 @@ __Example__
                                       --solo
 ```
 
-#### With your custom external bootstrapping script or without chef at all
+#### C. With your custom external bootstrapping script or without chef at all
 
 This will just create a droplet and return its IP-address. Nothing else. You can now run your custom solution to provision the droplet.
 
