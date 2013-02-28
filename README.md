@@ -109,7 +109,7 @@ __Example__
                                       --location 2 \
                                       --size 66 \
                                       --ssh-keys 1234,4567 \
-				      --solo
+                                      --solo
 ```
 
 #### With your custom external bootstrapping script or without chef at all
