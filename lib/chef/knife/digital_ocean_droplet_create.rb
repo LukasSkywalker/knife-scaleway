@@ -241,7 +241,7 @@ class Chef
       end
 
       def solo_bootstrap?
-        config[:solo] || (config[:solo].nil? && Chef::Config[:knife][:solo])
+        locate_config_value(:solo)
       end
     end
   end
