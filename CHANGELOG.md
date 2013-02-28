@@ -2,6 +2,8 @@
 
 * [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.0.5...master)
 
+* support for integrated ```knife-solo``` bootstrapping using the ```--solo``` option (by tmatilai)
+
 
 ## 0.0.5 / 2013-02-23
 
