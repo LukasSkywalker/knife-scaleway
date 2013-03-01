@@ -1,4 +1,6 @@
-## 0.1.0 / unreleased
+## 0.1.1 / unreleased
+
+## 0.1.0 / 2013-03-01
 
 * [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.0.5...master)
 * support for integrated ```knife-solo``` bootstrapping using the ```--solo``` option (by tmatilai)
