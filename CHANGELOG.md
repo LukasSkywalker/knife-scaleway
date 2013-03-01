@@ -1,8 +1,9 @@
 ## 0.1.1 / unreleased
+* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.1.0...master)
 
 ## 0.1.0 / 2013-03-01
 
-* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.0.5...master)
+* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.0.5...v0.1.0)
 * support for integrated ```knife-solo``` bootstrapping using the ```--solo``` option (by tmatilai)
 * added basic rspec tests for various bootstrapping options
 * remove JRuby from CI as chef itself does currently not work with JRuby
