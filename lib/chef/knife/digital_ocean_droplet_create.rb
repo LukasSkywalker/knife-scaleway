@@ -227,7 +227,7 @@ class Chef
       def bootstrap_for_node(ip_address)
         bootstrap = bootstrap_class.new
         bootstrap.name_args = [ ip_address ]
-        bootstrap.config = config.dup
+        bootstrap.config.merge! config
         bootstrap.config[:chef_node_name] = locate_config_value(:server_name)
         bootstrap.config[:bootstrap_version] = locate_config_value(:bootstrap_version)
         bootstrap.config[:distro] = locate_config_value(:distro)
