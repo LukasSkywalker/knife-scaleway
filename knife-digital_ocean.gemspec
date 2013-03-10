@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   gem.license       = 'Apache 2.0'
 
   gem.add_dependency 'chef', '>= 10.18'
-  gem.add_dependency 'digital_ocean'
+  gem.add_dependency 'digital_ocean', '~> 1.0'
   gem.add_dependency 'highline'
 
   gem.add_development_dependency 'rspec', '~> 2.13'
