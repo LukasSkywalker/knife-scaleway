@@ -1,5 +1,14 @@
-## 0.1.1 / unreleased
-* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.1.0...master)
+## 0.1.2 / unreleased
+* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.1.1...master)
+*
+
+
+## 0.1.1 / 2013-03-26
+
+* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.1.0...v0.1.1)
+* Merge to Knife bootstrap config instead of overwriting it (by tmatilai)
+* bump dependency to ```digital_ocean``` gem to circument issue https://github.com/rmoriz/knife-digital_ocean/issues/10
+
 
 ## 0.1.0 / 2013-03-01
 
