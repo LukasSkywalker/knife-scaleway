@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ['roland@moriz.de']
   gem.description   = %q{A plugin for chef's knife to manage instances of DigitalOcean servers}
   gem.summary       = %q{A plugin for chef's knife to manage instances of DigitalOcean servers}
-  gem.homepage      = 'http://github.com/rmoriz/knife-digital_ocean'
+  gem.homepage      = 'https://github.com/rmoriz/knife-digital_ocean'
   gem.license       = 'Apache 2.0'
 
   gem.add_dependency 'chef', '>= 10.18'
