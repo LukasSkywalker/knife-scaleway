@@ -265,6 +265,15 @@ For more information and a complete list see [the contributor page on GitHub](ht
 Apache 2.0 (like Chef itself), see LICENSE.txt file.
 
 
+## Mobile Application
+
+Ever wanted to control your DigitalOcean Droplets with your iPhone, iPad or iPod Touch?
+
+[Get my CloudOcean App!](http://cloudoceanapp.com/)
+
+[![CloudOcean - DigitalOcean iOS app](http://i.imgur.com/JLQua2w.png)](http://cloudoceanapp.com/)
+
+
 ## Copyright
 
 Copyright © 2013 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)
