@@ -115,6 +115,13 @@ class Chef
         :description => "The version of Chef to install",
         :proc        => Proc.new { |v| Chef::Config[:knife][:bootstrap_version] = v }
 
+      option :environment,
+        :short       => "-E ENVIRONMENT",
+        :long        => "--environment ENVIRONMENT",
+        :description => "The name of the chef environment to use",
+        :proc        => Proc.new { |e| Chef::Config[:knife][:environment] = e },
+        :default     => '_default'
+
       def run
         $stdout.sync = true
 
@@ -233,6 +240,7 @@ class Chef
         bootstrap.config[:distro] = locate_config_value(:distro)
         bootstrap.config[:use_sudo] = true unless config[:ssh_user] == 'root'
         bootstrap.config[:template_file] = locate_config_value(:template_file)
+        bootstrap.config[:environment] = locate_config_value(:environment)
         bootstrap
       end
 
