@@ -1,6 +1,7 @@
 # Knife::DigitalOcean
 ## A knife plugin to deal with the [DigitalOcean.com](https://www.digitalocean.com) Cloud services.
 
+[![Gem Version](https://badge.fury.io/rb/knife-digital_ocean.png)](http://badge.fury.io/rb/knife-digital_ocean)
 [![Build Status](https://travis-ci.org/rmoriz/knife-digital_ocean.png)](https://travis-ci.org/rmoriz/knife-digital_ocean)
 <a href="https://gemnasium.com/rmoriz/knife-digital_ocean"><img src="https://gemnasium.com/rmoriz/knife-digital_ocean.png"/></a>
 <a href="https://codeclimate.com/github/rmoriz/knife-digital_ocean"><img src="https://codeclimate.com/github/rmoriz/knife-digital_ocean.png"/></a>
