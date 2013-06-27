@@ -50,7 +50,15 @@ class Chef
           droplet_list << sizes[droplet.size_id]
           droplet_list << regions[droplet.region_id]
           droplet_list << droplet.ip_address.to_s
-          droplet_list << droplet.image_id.to_s + ' (' + client.images.show(droplet.image_id).image.name +  ')'
+
+          image_details = client.images.show(droplet.image_id)
+          if image_details.status != 'OK'
+            image_os_info = 'N/A'
+          else
+            image_os_info = image_details.image.name 
+          end
+            
+          droplet_list << droplet.image_id.to_s + ' (' + image_os_info +  ')'
           droplet_list << droplet.status.to_s
         end
 
