@@ -1,19 +1,27 @@
-## 0.1.2 / unreleased
-* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.1.1...master)
-*
+## unreleased
+
+* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.2.0...master)
+
+
+## 0.2.0 / 2013-09-07
+
+* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.1.1...v0.2.0)
+* require ```digital_ocean``` gem version 1.2.0 or later_
+* ensure status of image details is OK before outputting image name (thanks @salemine)
+* add option to pass environment (thanks @tedkulp)
 
 
 ## 0.1.1 / 2013-03-26
 
 * [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.1.0...v0.1.1)
-* Merge to Knife bootstrap config instead of overwriting it (by tmatilai)
+* merge to knife bootstrap config instead of overwriting it (thanks @tmatilai)
 * bump dependency to ```digital_ocean``` gem to circument issue https://github.com/rmoriz/knife-digital_ocean/issues/10
 
 
 ## 0.1.0 / 2013-03-01
 
 * [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.0.5...v0.1.0)
-* support for integrated ```knife-solo``` bootstrapping using the ```--solo``` option (by tmatilai)
+* support for integrated ```knife-solo``` bootstrapping using the ```--solo``` option (thanks @tmatilai)
 * added basic rspec tests for various bootstrapping options
 * remove JRuby from CI as chef itself does currently not work with JRuby
   except when c-extensions are enabled (off by default)
