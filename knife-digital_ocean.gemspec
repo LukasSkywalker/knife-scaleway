@@ -18,9 +18,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'highline'
 
   gem.add_development_dependency 'rspec', '~> 2.13'
-  gem.add_development_dependency 'guard'
-  gem.add_development_dependency 'guard-rspec'
-  gem.add_development_dependency 'rb-fsevent'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'knife-solo'
 
