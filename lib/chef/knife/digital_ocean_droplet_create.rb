@@ -180,7 +180,9 @@ class Chef
 
         puts "Droplet creation for #{locate_config_value(:server_name)} started. Droplet-ID is #{response.droplet.id}"
 
-        puts ui.color("JSON Attributes: #{config[:json_attributes]}", :magenta) unless !config[:json_attributes] || config[:json_attributes].empty?
+        unless !config.has_key?(:json_attributes) || config[:json_attributes].empty?
+          puts ui.color("JSON Attributes: #{config[:json_attributes]}", :magenta)
+        end
 
         print ui.color("Waiting for IPv4-Address", :magenta)
         print(".") until ip_address = ip_address_available(response.droplet.id) {
