@@ -39,7 +39,13 @@ describe Chef::Knife::DigitalOceanDropletCreate do
     Chef::Knife::DigitalOceanDropletCreate.load_deps
 
     # reset
-    Chef::Config[:knife] = {}
+    if Chef::Config[:knife].respond_to?(:reset)
+      # mixlib-config >= 2
+      Chef::Config[:knife].reset
+    else
+      # mixlib-config < 2
+      Chef::Config[:knife] = {}
+    end
 
     # config
     config.merge(custom_config).each do |k, v|
