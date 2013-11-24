@@ -122,6 +122,12 @@ class Chef
         :proc        => Proc.new { |e| Chef::Config[:knife][:environment] = e },
         :default     => '_default'
 
+      option :json_attributes,
+        :short       => '-j JSON',
+        :long        => '--json-attributes JSON',
+        :description => 'A JSON string to be added to the first run of chef-client',
+        :proc        => lambda { |o| JSON.parse(o) }
+
       def run
         $stdout.sync = true
 
@@ -173,6 +179,10 @@ class Chef
         end
 
         puts "Droplet creation for #{locate_config_value(:server_name)} started. Droplet-ID is #{response.droplet.id}"
+
+        unless !config.has_key?(:json_attributes) || config[:json_attributes].empty?
+          puts ui.color("JSON Attributes: #{config[:json_attributes]}", :magenta)
+        end
 
         print ui.color("Waiting for IPv4-Address", :magenta)
         print(".") until ip_address = ip_address_available(response.droplet.id) {
@@ -241,6 +251,7 @@ class Chef
         bootstrap.config[:use_sudo] = true unless config[:ssh_user] == 'root'
         bootstrap.config[:template_file] = locate_config_value(:template_file)
         bootstrap.config[:environment] = locate_config_value(:environment)
+        bootstrap.config[:first_boot_attributes] = locate_config_value(:json_attributes) || {}
         bootstrap
       end
 

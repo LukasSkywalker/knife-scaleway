@@ -39,7 +39,13 @@ describe Chef::Knife::DigitalOceanDropletCreate do
     Chef::Knife::DigitalOceanDropletCreate.load_deps
 
     # reset
-    Chef::Config[:knife] = {}
+    if Chef::Config[:knife].respond_to?(:reset)
+      # mixlib-config >= 2
+      Chef::Config[:knife].reset
+    else
+      # mixlib-config < 2
+      Chef::Config[:knife] = {}
+    end
 
     # config
     config.merge(custom_config).each do |k, v|
@@ -148,5 +154,20 @@ describe Chef::Knife::DigitalOceanDropletCreate do
       end
     end
   end
+
+  context 'passing json attributes (-j)' do
+    let(:json_attributes) { '{ "apache": { "listen_ports": 80 } }' }
+    let(:custom_config) {
+      {
+       :json_attributes => json_attributes
+      }
+    }
+
+    it 'should configure the first boot attributes on Bootstrap' do
+      bootstrap = subject.bootstrap_for_node('123.123.123.123')
+      bootstrap.config[:first_boot_attributes].should eql(json_attributes)
+    end
+  end
+
 end
 
