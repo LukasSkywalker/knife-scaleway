@@ -158,6 +158,8 @@ OK
 ID  Name
 1   New York 1
 2   Amsterdam 1
+3   San Francisco 1
+4   New York 2
 ```
 
 ### List sizes (instance types)
@@ -194,41 +196,43 @@ ID     Distribution  Name                                Global
 
 ```shell
 ➜ knife digital_ocean image list --global
-ID     Distribution  Name                                 Global
-23593  Arch Linux    Arch Linux 2012-09 x64               +
-1602   CentOS        CentOS 5.8 x32                       +
-1601   CentOS        CentOS 5.8 x64                       +
-1605   CentOS        CentOS 6.0 x32                       +
-1611   CentOS        CentOS 6.2 x64                       +
-12578  CentOS        CentOS 6.3 x32                       +
-12574  CentOS        CentOS 6.3 x64                       +
-12575  Debian        Debian 6.0 x32                       +
-12573  Debian        Debian 6.0 x64                       +
-1606   Fedora        Fedora 15 x64                        +
-1618   Fedora        Fedora 16 x64 Desktop                +
-1615   Fedora        Fedora 16 x64 Server                 +
-32399  Fedora        Fedora 17 x32 Desktop                +
-32387  Fedora        Fedora 17 x32 Server                 +
-32419  Fedora        Fedora 17 x64 Desktop                +
-32428  Fedora        Fedora 17 x64 Server                 +
-63749  Gentoo        Gentoo 2013-1 x64                    +
-1607   Gentoo        Gentoo x64                           +
-46964  Ubuntu        LAMP on Ubuntu 12.04                 +
-4870   Ubuntu        Rails 3.2.2 - Nginx MySQL Passenger  +
-14098  Ubuntu        Ubuntu 10.04 x32 Server              +
-14097  Ubuntu        Ubuntu 10.04 x64 Server              +
-43462  Ubuntu        Ubuntu 11.04x32 Desktop              +
-43458  Ubuntu        Ubuntu 11.04x64 Server               +
-1609   Ubuntu        Ubuntu 11.10 x32 Server              +
-42735  Ubuntu        Ubuntu 12.04 x32 Server              +
-14218  Ubuntu        Ubuntu 12.04 x64 Desktop             +
-2676   Ubuntu        Ubuntu 12.04 x64 Server              +
-25485  Ubuntu        Ubuntu 12.10 x32 Desktop             +
-25306  Ubuntu        Ubuntu 12.10 x32 Server              +
-25493  Ubuntu        Ubuntu 12.10 x64 Desktop             +
-25489  Ubuntu        Ubuntu 12.10 x64 Server              +
-13632  openSUSE      Open Suse 12.1 x32                   +
-13863  openSUSE      Open Suse 12.2 X64                   +
+ID       Distribution  Name                                             Global
+361740   Arch Linux    Arch Linux 2013.05 x32                           +
+350424   Arch Linux    Arch Linux 2013.05 x64                           +
+1602     CentOS        CentOS 5.8 x32                                   +
+1601     CentOS        CentOS 5.8 x64                                   +
+376568   CentOS        CentOS 6.4 x32                                   +
+562354   CentOS        CentOS 6.4 x64                                   +
+12575    Debian        Debian 6.0 x32                                   +
+12573    Debian        Debian 6.0 x64                                   +
+303619   Debian        Debian 7.0 x32                                   +
+308287   Debian        Debian 7.0 x64                                   +
+32387    Fedora        Fedora 17 x32                                    +
+32399    Fedora        Fedora 17 x32 Desktop                            +
+32428    Fedora        Fedora 17 x64                                    +
+32419    Fedora        Fedora 17 x64 Desktop                            +
+697056   Fedora        Fedora 19 x32                                    +
+696598   Fedora        Fedora 19 x64                                    +
+1004145  Ubuntu        Docker on Ubuntu 13.04 x64                       +
+959207   Ubuntu        Ghost 0.3.3 on Ubuntu 12.04                      +
+1215015  Ubuntu        GitLab 6.2.4 CE                                  +
+459444   Ubuntu        LAMP on Ubuntu 12.04                             +
+483575   Ubuntu        Redmine on Ubuntu 12.04                          +
+464235   Ubuntu        Ruby on Rails on Ubuntu 12.10 (Nginx + Unicorn)  +
+14098    Ubuntu        Ubuntu 10.04 x32                                 +
+14097    Ubuntu        Ubuntu 10.04 x64                                 +
+284211   Ubuntu        Ubuntu 12.04 x32                                 +
+284203   Ubuntu        Ubuntu 12.04 x64                                 +
+1015250  Ubuntu        Ubuntu 12.04.3 x32                               +
+1015253  Ubuntu        Ubuntu 12.04.3 x64                               +
+433240   Ubuntu        Ubuntu 12.10 x32                                 +
+473123   Ubuntu        Ubuntu 12.10 x64                                 +
+473136   Ubuntu        Ubuntu 12.10 x64 Desktop                         +
+345791   Ubuntu        Ubuntu 13.04 x32                                 +
+350076   Ubuntu        Ubuntu 13.04 x64                                 +
+962304   Ubuntu        Ubuntu 13.10 x32                                 +
+961965   Ubuntu        Ubuntu 13.10 x64                                 +
+1061995  Ubuntu        Wordpress on Ubuntu 12.10                        +
 ```
 
 
