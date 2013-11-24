@@ -23,25 +23,25 @@ This knife plugin uses the [digital_ocean](https://github.com/rmoriz/digital_oce
 
 This plugin provides the following sub-commands:
 
-* knife digital_ocean droplet create (options)   
+* knife digital_ocean droplet create (options)
   **Creates a virtual machine with or without bootstrapping chef**
 
-* knife digital_ocean droplet destroy (options)  
+* knife digital_ocean droplet destroy (options)
   **Destroys the virtual machine and its data**
 
-* knife digital_ocean droplet list (options)     
+* knife digital_ocean droplet list (options)
   **Lists currently running virtual machines**
 
-* knife digital_ocean image list (options)       
+* knife digital_ocean image list (options)
   **Lists available images (snapshots, backups, OS-images)**
 
-* knife digital_ocean region list (options)      
+* knife digital_ocean region list (options)
   **Lists the server regions/locations/data-center**
 
-* knife digital_ocean size list (options)        
+* knife digital_ocean size list (options)
   **Lists the available server sizes**
 
-* knife digital_ocean sshkey list                
+* knife digital_ocean sshkey list
   **Lists name + id of the uploaded known ssh keys**
 
 
@@ -60,8 +60,8 @@ knife[:digital_ocean_api_key]   = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
 
 There are three different ways of creating a server/droplet instance:
 
-If you just want to launch an instance 
-form the command line without any bootstrapping, go for option **C**. 
+If you just want to launch an instance
+form the command line without any bootstrapping, go for option **C**.
 If you use ```knife-solo``` try **B** and if you are a ```chef-server```-fan
 use method **A**:
 #### A. With bootstrapping in an chef-server environment:
@@ -107,6 +107,7 @@ __Short Syntax__
 You need to have [knife-solo](http://matschaffer.github.com/knife-solo/) gem installed.
 
 This will create a droplet and run `knife solo bootstrap <IP>` equivalent for it.
+Please consult the [knife-solo documentation](http://matschaffer.github.io/knife-solo/#label-Bootstrap+command) for further details.
 
 __Example__
 
@@ -116,6 +117,7 @@ __Example__
                                       --location 2 \
                                       --size 66 \
                                       --ssh-keys 1234,4567 \
+                                      --run-list "<RUNLIST>" \
                                       --solo
 ```
 
@@ -153,25 +155,25 @@ OK
 
 ```shell
 ➜ knife digital_ocean region list
-ID  Name       
-1   New York 1 
+ID  Name
+1   New York 1
 2   Amsterdam 1
 ```
 
 ### List sizes (instance types)
 
 ```shell
-➜ knife digital_ocean size list  
-ID  Name 
-63  1GB  
-62  2GB  
-64  4GB  
-65  8GB  
-61  16GB 
-60  32GB 
-70  48GB 
-69  64GB 
-68  96GB 
+➜ knife digital_ocean size list
+ID  Name
+63  1GB
+62  2GB
+64  4GB
+65  8GB
+61  16GB
+60  32GB
+70  48GB
+69  64GB
+68  96GB
 66  512MB
 ```
 
@@ -182,9 +184,9 @@ ID  Name
 ```shell
 ➜ knife digital_ocean image list
 ID     Distribution  Name                                Global
-11111  Ubuntu        app100.ams.nlxxxxx.net 2013-02-01   -     
-11112  Ubuntu        app100.ams.nlxxxxx.net 2013-02-03   -     
-11113  Ubuntu        init                                -     
+11111  Ubuntu        app100.ams.nlxxxxx.net 2013-02-01   -
+11112  Ubuntu        app100.ams.nlxxxxx.net 2013-02-03   -
+11113  Ubuntu        init                                -
 ```
 
 
@@ -193,48 +195,48 @@ ID     Distribution  Name                                Global
 ```shell
 ➜ knife digital_ocean image list --global
 ID     Distribution  Name                                 Global
-23593  Arch Linux    Arch Linux 2012-09 x64               +     
-1602   CentOS        CentOS 5.8 x32                       +     
-1601   CentOS        CentOS 5.8 x64                       +     
-1605   CentOS        CentOS 6.0 x32                       +     
-1611   CentOS        CentOS 6.2 x64                       +     
-12578  CentOS        CentOS 6.3 x32                       +     
-12574  CentOS        CentOS 6.3 x64                       +     
-12575  Debian        Debian 6.0 x32                       +     
-12573  Debian        Debian 6.0 x64                       +     
-1606   Fedora        Fedora 15 x64                        +     
-1618   Fedora        Fedora 16 x64 Desktop                +     
-1615   Fedora        Fedora 16 x64 Server                 +     
-32399  Fedora        Fedora 17 x32 Desktop                +     
-32387  Fedora        Fedora 17 x32 Server                 +     
-32419  Fedora        Fedora 17 x64 Desktop                +     
-32428  Fedora        Fedora 17 x64 Server                 +     
-63749  Gentoo        Gentoo 2013-1 x64                    +     
-1607   Gentoo        Gentoo x64                           +     
-46964  Ubuntu        LAMP on Ubuntu 12.04                 +     
-4870   Ubuntu        Rails 3.2.2 - Nginx MySQL Passenger  +     
-14098  Ubuntu        Ubuntu 10.04 x32 Server              +     
-14097  Ubuntu        Ubuntu 10.04 x64 Server              +     
-43462  Ubuntu        Ubuntu 11.04x32 Desktop              +     
-43458  Ubuntu        Ubuntu 11.04x64 Server               +     
-1609   Ubuntu        Ubuntu 11.10 x32 Server              +     
-42735  Ubuntu        Ubuntu 12.04 x32 Server              +     
-14218  Ubuntu        Ubuntu 12.04 x64 Desktop             +     
-2676   Ubuntu        Ubuntu 12.04 x64 Server              +     
-25485  Ubuntu        Ubuntu 12.10 x32 Desktop             +     
-25306  Ubuntu        Ubuntu 12.10 x32 Server              +     
-25493  Ubuntu        Ubuntu 12.10 x64 Desktop             +     
-25489  Ubuntu        Ubuntu 12.10 x64 Server              +     
-13632  openSUSE      Open Suse 12.1 x32                   +     
-13863  openSUSE      Open Suse 12.2 X64                   +  
+23593  Arch Linux    Arch Linux 2012-09 x64               +
+1602   CentOS        CentOS 5.8 x32                       +
+1601   CentOS        CentOS 5.8 x64                       +
+1605   CentOS        CentOS 6.0 x32                       +
+1611   CentOS        CentOS 6.2 x64                       +
+12578  CentOS        CentOS 6.3 x32                       +
+12574  CentOS        CentOS 6.3 x64                       +
+12575  Debian        Debian 6.0 x32                       +
+12573  Debian        Debian 6.0 x64                       +
+1606   Fedora        Fedora 15 x64                        +
+1618   Fedora        Fedora 16 x64 Desktop                +
+1615   Fedora        Fedora 16 x64 Server                 +
+32399  Fedora        Fedora 17 x32 Desktop                +
+32387  Fedora        Fedora 17 x32 Server                 +
+32419  Fedora        Fedora 17 x64 Desktop                +
+32428  Fedora        Fedora 17 x64 Server                 +
+63749  Gentoo        Gentoo 2013-1 x64                    +
+1607   Gentoo        Gentoo x64                           +
+46964  Ubuntu        LAMP on Ubuntu 12.04                 +
+4870   Ubuntu        Rails 3.2.2 - Nginx MySQL Passenger  +
+14098  Ubuntu        Ubuntu 10.04 x32 Server              +
+14097  Ubuntu        Ubuntu 10.04 x64 Server              +
+43462  Ubuntu        Ubuntu 11.04x32 Desktop              +
+43458  Ubuntu        Ubuntu 11.04x64 Server               +
+1609   Ubuntu        Ubuntu 11.10 x32 Server              +
+42735  Ubuntu        Ubuntu 12.04 x32 Server              +
+14218  Ubuntu        Ubuntu 12.04 x64 Desktop             +
+2676   Ubuntu        Ubuntu 12.04 x64 Server              +
+25485  Ubuntu        Ubuntu 12.10 x32 Desktop             +
+25306  Ubuntu        Ubuntu 12.10 x32 Server              +
+25493  Ubuntu        Ubuntu 12.10 x64 Desktop             +
+25489  Ubuntu        Ubuntu 12.10 x64 Server              +
+13632  openSUSE      Open Suse 12.1 x32                   +
+13863  openSUSE      Open Suse 12.2 X64                   +
 ```
 
 
 ### SSH keys (previously uploaded via DigitalOcean's webfrontend)
 
 ```shell
-➜ knife digital_ocean sshkey list    
-ID    Name  
+➜ knife digital_ocean sshkey list
+ID    Name
 1234  Alice
 1235  Bob
 1236  Chuck
