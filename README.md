@@ -291,3 +291,7 @@ Copyright © 2013 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.
 
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rmoriz/knife-digital_ocean/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
