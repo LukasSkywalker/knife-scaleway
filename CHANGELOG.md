@@ -1,7 +1,12 @@
 ## unreleased
 
-* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.3.0...master)
+* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.4.0...master)
 
+## 0.4.0 / 2013-12-30
+
+* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.3.0...v0.4.0)
+* bump digital_ocean gem dependency
+_
 ## 0.3.0 / 2013-11-25
 
 * [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.2.0...v0.3.0)
