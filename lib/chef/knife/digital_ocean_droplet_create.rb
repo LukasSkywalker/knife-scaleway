@@ -128,6 +128,16 @@ class Chef
         :description => 'A JSON string to be added to the first run of chef-client',
         :proc        => lambda { |o| JSON.parse(o) }
 
+      option :private_networking,
+        :long        => "--private_networking",
+        :description => "Enables private networking if the selected region supports it",
+        :default     => false
+
+      option :secret_file,
+        :long => "--secret-file SECRET_FILE",
+        :description => "A file containing the secret key to use to encrypt data bag item values",
+        :proc => Proc.new { |sf| Chef::Config[:knife][:secret_file] = sf }
+
       def run
         $stdout.sync = true
 
@@ -167,11 +177,12 @@ class Chef
           exit 1
         end
 
-        response = client.droplets.create(:name        => locate_config_value(:server_name),
-                                          :size_id     => locate_config_value(:size),
-                                          :image_id    => locate_config_value(:image),
-                                          :region_id   => locate_config_value(:location),
-                                          :ssh_key_ids => locate_config_value(:ssh_key_ids).join(','))
+        response = client.droplets.create(:name               => locate_config_value(:server_name),
+                                          :size_id            => locate_config_value(:size),
+                                          :image_id           => locate_config_value(:image),
+                                          :region_id          => locate_config_value(:location),
+                                          :ssh_key_ids        => locate_config_value(:ssh_key_ids).join(','),
+                                          :private_networking => locate_config_value(:private_networking))
 
         if response.status != 'OK'
           ui.error("Droplet could not be started #{response.inspect}")
@@ -252,6 +263,7 @@ class Chef
         bootstrap.config[:template_file] = locate_config_value(:template_file)
         bootstrap.config[:environment] = locate_config_value(:environment)
         bootstrap.config[:first_boot_attributes] = locate_config_value(:json_attributes) || {}
+        bootstrap.config[:secret_file] = locate_config_value(:secret_file) || {}
         bootstrap
       end
 

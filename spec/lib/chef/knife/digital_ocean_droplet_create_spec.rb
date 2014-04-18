@@ -169,5 +169,19 @@ describe Chef::Knife::DigitalOceanDropletCreate do
     end
   end
 
+  context 'passing secret_file (--secret-file)' do
+    let(:secret_file) { '/tmp/sekretfile' }
+    let(:custom_config) {
+      {
+       :secret_file => secret_file
+      }
+    }
+
+    it 'secret_file should be available to Bootstrap' do
+      bootstrap = subject.bootstrap_for_node('123.123.123.123')
+      bootstrap.config[:secret_file].should eql(secret_file)
+    end
+  end
+
 end
 

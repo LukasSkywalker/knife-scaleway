@@ -75,7 +75,9 @@ __Example__
                                       --size 66 \
                                       --ssh-keys 1234,1235 \
                                       --bootstrap \
-                                      --run-list "role[base],role[webserver]"
+                                      --run-list "role[base],role[webserver] \
+                                      --secret-file "~/.ssh/secret_file \
+                                      --private_networking"
 ```
 
 __Syntax__
@@ -87,7 +89,9 @@ __Syntax__
                                       --size <SIZE ID> \
                                       --ssh-keys <SSH KEY-ID(s), comma-separated> \
                                       --bootstrap \
-                                      --run-list "<RUNLIST>"
+                                      --run-list "<RUNLIST>" \
+                                      --secret-file "<FILENAME>" (optional) \
+                                      --private_networking (optional)
 ```
 
 __Short Syntax__
@@ -157,9 +161,10 @@ OK
 ➜ knife digital_ocean region list
 ID  Name
 1   New York 1
-2   Amsterdam 1
 3   San Francisco 1
 4   New York 2
+5   Amsterdam 2
+6   Singapore 1
 ```
 
 ### List sizes (instance types)
@@ -175,7 +180,6 @@ ID  Name
 60  32GB
 70  48GB
 69  64GB
-68  96GB
 66  512MB
 ```
 
@@ -264,6 +268,7 @@ Commercial support is available. Please contact [https://roland.io/](https://rol
 ### Contributors
 
 *   [Teemu Matilainen](https://github.com/tmatilai)
+*   [Salvatore Poliandro](https://github.com/popsikle)
 
 For more information and a complete list see [the contributor page on GitHub](https://github.com/rmoriz/knife-digital_ocean/contributors).
 
