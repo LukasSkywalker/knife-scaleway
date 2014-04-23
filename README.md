@@ -76,8 +76,8 @@ __Example__
                                       --ssh-keys 1234,1235 \
                                       --bootstrap \
                                       --run-list "role[base],role[webserver]" \
-                                      --secret-file "~/.ssh/secret_file \
-                                      --private_networking"
+                                      --secret-file "~/.ssh/secret_file" \
+                                      --private_networking
 ```
 
 __Syntax__
