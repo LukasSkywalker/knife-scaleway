@@ -1,17 +1,27 @@
 ## unreleased
 
-* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.4.0...master)
+* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.5.0...master)
+
+
+## 0.5.0 / 2014-04-26
+
+* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.4.0...v0.5.0)
+* support for private networking and secret-file (thanks @popsikle)
+* bump digital_ocean gem dependency (for faraday)
+
 
 ## 0.4.0 / 2013-12-30
 
 * [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.3.0...v0.4.0)
 * bump digital_ocean gem dependency
-_
+
+
 ## 0.3.0 / 2013-11-25
 
 * [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.2.0...v0.3.0)
 * support for first_boot_attributes/json-attributes (thanks @zuazo)
 * updated doc examples
+
 
 ## 0.2.0 / 2013-09-07
 
