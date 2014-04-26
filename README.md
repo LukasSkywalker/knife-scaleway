@@ -66,12 +66,20 @@ If you use ```knife-solo``` try **B** and if you are a ```chef-server```-fan
 use method **A**:
 #### A. With bootstrapping in an chef-server environment:
 
-__Example__
+__Examples__
 
 ```shell
 ➜ knife digital_ocean droplet create --server-name awesome-vm1.chef.io \
                                       --image 25306 \
                                       --location 2 \
+                                      --size 66 \
+                                      --ssh-keys 1234,1235 \
+```
+
+```shell
+➜ knife digital_ocean droplet create --server-name awesome-vm2.chef.io \
+                                      --image 25306 \
+                                      --location 4 \
                                       --size 66 \
                                       --ssh-keys 1234,1235 \
                                       --bootstrap \
@@ -90,8 +98,8 @@ __Syntax__
                                       --ssh-keys <SSH KEY-ID(s), comma-separated> \
                                       --bootstrap \
                                       --run-list "<RUNLIST>" \
-                                      --secret-file "<FILENAME>" (optional) \
-                                      --private_networking (optional)
+                                      --secret-file "<FILENAME>" \
+                                      --private_networking
 ```
 
 __Short Syntax__
@@ -161,6 +169,7 @@ OK
 ➜ knife digital_ocean region list
 ID  Name
 1   New York 1
+2   Amsterdam 1
 3   San Francisco 1
 4   New York 2
 5   Amsterdam 2
@@ -207,36 +216,36 @@ ID       Distribution  Name                                             Global
 1601     CentOS        CentOS 5.8 x64                                   +
 376568   CentOS        CentOS 6.4 x32                                   +
 562354   CentOS        CentOS 6.4 x64                                   +
+3240847  CentOS        CentOS 6.5 x32                                   +
+3240850  CentOS        CentOS 6.5 x64                                   +
 12575    Debian        Debian 6.0 x32                                   +
 12573    Debian        Debian 6.0 x64                                   +
-303619   Debian        Debian 7.0 x32                                   +
-308287   Debian        Debian 7.0 x64                                   +
-32387    Fedora        Fedora 17 x32                                    +
-32399    Fedora        Fedora 17 x32 Desktop                            +
-32428    Fedora        Fedora 17 x64                                    +
-32419    Fedora        Fedora 17 x64 Desktop                            +
-697056   Fedora        Fedora 19 x32                                    +
-696598   Fedora        Fedora 19 x64                                    +
-1004145  Ubuntu        Docker on Ubuntu 13.04 x64                       +
-959207   Ubuntu        Ghost 0.3.3 on Ubuntu 12.04                      +
-1215015  Ubuntu        GitLab 6.2.4 CE                                  +
-459444   Ubuntu        LAMP on Ubuntu 12.04                             +
-483575   Ubuntu        Redmine on Ubuntu 12.04                          +
-464235   Ubuntu        Ruby on Rails on Ubuntu 12.10 (Nginx + Unicorn)  +
+3102384  Debian        Debian 7.0 x32                                   +
+3102387  Debian        Debian 7.0 x64                                   +
+3102721  Fedora        Fedora 19 x32                                    +
+3102879  Fedora        Fedora 19 x64                                    +
+3243143  Fedora        Fedora 20 x32                                    +
+3243145  Fedora        Fedora 20 x64                                    +
+3104894  Ubuntu        Docker 0.10 on Ubuntu 13.10 x64                  +
+3288841  Ubuntu        Dokku v0.2.3 on Ubuntu 14.04                     +
+3121555  Ubuntu        Ghost 0.4.2 on Ubuntu 12.04                      +
+3118238  Ubuntu        GitLab 6.6.5 CE                                  +
+3120115  Ubuntu        LAMP on Ubuntu 12.04                             +
+3118235  Ubuntu        MEAN on Ubuntu 12.04.4                           +
+3137903  Ubuntu        Redmine on Ubuntu 12.04                          +
+3137635  Ubuntu        Ruby on Rails on Ubuntu 12.10 (Nginx + Unicorn)  +
 14098    Ubuntu        Ubuntu 10.04 x32                                 +
 14097    Ubuntu        Ubuntu 10.04 x64                                 +
-284211   Ubuntu        Ubuntu 12.04 x32                                 +
-284203   Ubuntu        Ubuntu 12.04 x64                                 +
-1015250  Ubuntu        Ubuntu 12.04.3 x32                               +
-1015253  Ubuntu        Ubuntu 12.04.3 x64                               +
-433240   Ubuntu        Ubuntu 12.10 x32                                 +
-473123   Ubuntu        Ubuntu 12.10 x64                                 +
-473136   Ubuntu        Ubuntu 12.10 x64 Desktop                         +
-345791   Ubuntu        Ubuntu 13.04 x32                                 +
-350076   Ubuntu        Ubuntu 13.04 x64                                 +
-962304   Ubuntu        Ubuntu 13.10 x32                                 +
-961965   Ubuntu        Ubuntu 13.10 x64                                 +
-1061995  Ubuntu        Wordpress on Ubuntu 12.10                        +
+3100616  Ubuntu        Ubuntu 12.04.4 x32                               +
+3101045  Ubuntu        Ubuntu 12.04.4 x64                               +
+3101888  Ubuntu        Ubuntu 12.10 x32                                 +
+3101891  Ubuntu        Ubuntu 12.10 x64                                 +
+3104282  Ubuntu        Ubuntu 12.10 x64 Desktop                         +
+3101580  Ubuntu        Ubuntu 13.10 x32                                 +
+3101918  Ubuntu        Ubuntu 13.10 x64                                 +
+3240033  Ubuntu        Ubuntu 14.04 x32                                 +
+3240036  Ubuntu        Ubuntu 14.04 x64                                 +
+3135725  Ubuntu        Wordpress on Ubuntu 13.10                        +
 ```
 
 
@@ -288,15 +297,8 @@ Ever wanted to control your DigitalOcean Droplets with your iPhone, iPad or iPod
 
 ## Copyright
 
-Copyright © 2013 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)
+Copyright © 2014 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)
 
 [![LinkedIn](http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png)](http://www.linkedin.com/in/rmoriz)
 [![Twitter](http://i.imgur.com/1kYFHlu.png)](https://twitter.com/rmoriz)
-
-
-
-
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rmoriz/knife-digital_ocean/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
