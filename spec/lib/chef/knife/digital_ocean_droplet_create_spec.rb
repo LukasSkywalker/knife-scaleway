@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 def mock_api_response(data = {})
-  Hashie::Rash.new(data)
+  Hashie::Mash.new(data)
 end
 
 describe Chef::Knife::DigitalOceanDropletCreate do

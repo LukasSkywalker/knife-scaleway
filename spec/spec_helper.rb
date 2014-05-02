@@ -2,7 +2,7 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'rspec/autorun'
 
 require 'digital_ocean'
-require 'rash'
+require 'hashie'
 
 require 'chef/knife'
 require 'chef/knife/digital_ocean_droplet_create'
