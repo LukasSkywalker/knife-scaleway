@@ -1,6 +1,12 @@
 ## unreleased
 
-* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.5.0...master)
+* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.6.0...master)
+
+
+## 0.6.0 / 2014-05-02
+
+* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.5.0...v0.6.0)
+* bump digital_ocean gem dependency (for hashie/rash removal to fix ChefDK issues)
 
 
 ## 0.5.0 / 2014-04-26
