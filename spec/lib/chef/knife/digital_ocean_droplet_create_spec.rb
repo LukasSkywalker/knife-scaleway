@@ -8,7 +8,7 @@ describe Chef::Knife::DigitalOceanDropletCreate do
 
   subject {
     s = Chef::Knife::DigitalOceanDropletCreate.new
-    s.stub(:client).and_return mock(DigitalOcean::API)
+    s.stub(:client).and_return double(DigitalOcean::API)
     s
   }
 
@@ -64,8 +64,8 @@ describe Chef::Knife::DigitalOceanDropletCreate do
       let(:subject) {
         s = super()
         s.client.stub_chain(:droplets, :create).and_return mock_api_response(api_response)
-        s.stub!(:ip_address_available).and_return '123.123.123.123'
-        s.stub!(:tcp_test_ssh).and_return true
+        s.stub(:ip_address_available).and_return '123.123.123.123'
+        s.stub(:tcp_test_ssh).and_return true
         s
       }
 
@@ -97,8 +97,8 @@ describe Chef::Knife::DigitalOceanDropletCreate do
       let(:subject) {
         s = super()
         s.client.stub_chain(:droplets, :create).and_return mock_api_response(api_response)
-        s.stub!(:ip_address_available).and_return '123.123.123.123'
-        s.stub!(:tcp_test_ssh).and_return true
+        s.stub(:ip_address_available).and_return '123.123.123.123'
+        s.stub(:tcp_test_ssh).and_return true
         s
       }
 
@@ -136,8 +136,8 @@ describe Chef::Knife::DigitalOceanDropletCreate do
       let(:subject) {
         s = super()
         s.client.stub_chain(:droplets, :create).and_return mock_api_response(api_response)
-        s.stub!(:ip_address_available).and_return '123.123.123.123'
-        s.stub!(:tcp_test_ssh).and_return true
+        s.stub(:ip_address_available).and_return '123.123.123.123'
+        s.stub(:tcp_test_ssh).and_return true
         s
       }
 
