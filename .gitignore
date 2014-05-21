@@ -5,6 +5,7 @@
 .yardoc
 .chef
 Gemfile.lock
+knife-digital_ocean.gemspec.lock
 InstalledFiles
 _yardoc
 coverage
