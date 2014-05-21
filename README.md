@@ -74,6 +74,7 @@ __Examples__
                                       --location 2 \
                                       --size 66 \
                                       --ssh-keys 1234,1235 \
+                                      --ssh-port 22
 ```
 
 ```shell
@@ -85,6 +86,8 @@ __Examples__
                                       --bootstrap \
                                       --run-list "role[base],role[webserver]" \
                                       --secret-file "~/.ssh/secret_file" \
+                                      --ssh-port 22 \
+                                      --identity-file "~/.ssh/id_rsa" \
                                       --private_networking
 ```
 
@@ -96,6 +99,7 @@ __Syntax__
                                       --location <REGION ID> \
                                       --size <SIZE ID> \
                                       --ssh-keys <SSH KEY-ID(s), comma-separated> \
+                                      --ssh-port <SSH PORT> \
                                       --bootstrap \
                                       --run-list "<RUNLIST>" \
                                       --secret-file "<FILENAME>" \
@@ -110,6 +114,7 @@ __Short Syntax__
                                       -L <REGION ID> \
                                       -S <SIZE ID> \
                                       -K <SSH KEY-ID(s), comma-separated> \
+                                      -p <SSH PORT> \
                                       -B \
                                       -r "<RUNLIST>"
 ```

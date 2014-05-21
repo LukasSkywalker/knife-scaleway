@@ -183,5 +183,19 @@ describe Chef::Knife::DigitalOceanDropletCreate do
     end
   end
 
+  context 'passing ssh_port (--ssh-port)' do
+    let(:ssh_port) { 22 }
+    let(:custom_config) {
+      {
+       :ssh_port => ssh_port
+      }
+    }
+
+    it 'ssh_port should be available to Bootstrap' do
+      bootstrap = subject.bootstrap_for_node('123.123.123.123')
+      bootstrap.config[:ssh_port].should eql(ssh_port)
+    end
+  end
+
 end
 
