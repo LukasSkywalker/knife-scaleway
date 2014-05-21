@@ -1,6 +1,12 @@
 ## unreleased
 
-* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.6.0...master)
+* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.7.0...master)
+
+
+## 0.7.0 / 2014-05-21
+
+* [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.6.0...v0.7.0)
+* added --ssh-port option (thanks @popsikle)
 
 
 ## 0.6.0 / 2014-05-02
