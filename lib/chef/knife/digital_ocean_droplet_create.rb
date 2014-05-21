@@ -138,6 +138,13 @@ class Chef
         :description => "A file containing the secret key to use to encrypt data bag item values",
         :proc => Proc.new { |sf| Chef::Config[:knife][:secret_file] = sf }
 
+      option :ssh_port,
+        :short => "-p PORT",
+        :long => "--ssh-port PORT",
+        :description => "The ssh port",
+        :default => "22",
+        :proc => Proc.new { |port| Chef::Config[:knife][:ssh_port] = port }
+
       def run
         $stdout.sync = true
 
@@ -203,7 +210,7 @@ class Chef
         puts ui.color("IPv4 address is: #{ip_address}", :green)
 
         print ui.color('Waiting for sshd:', :magenta)
-        print('.') until tcp_test_ssh(ip_address, 22) {
+        print('.') until tcp_test_ssh(ip_address) {
           sleep 2
           puts 'done'
         }
@@ -228,7 +235,8 @@ class Chef
         end
       end
 
-      def tcp_test_ssh(hostname, port)
+      def tcp_test_ssh(hostname)
+        port = Chef::Config[:knife][:ssh_port] || config[:ssh_port]
         tcp_socket = TCPSocket.new(hostname, port)
         readable = IO.select([tcp_socket], nil, nil, 5)
         if readable
@@ -258,6 +266,7 @@ class Chef
         bootstrap.config.merge! config
         bootstrap.config[:chef_node_name] = locate_config_value(:server_name)
         bootstrap.config[:bootstrap_version] = locate_config_value(:bootstrap_version)
+        bootstrap.config[:ssh_port] = Chef::Config[:knife][:ssh_port] || config[:ssh_port]
         bootstrap.config[:distro] = locate_config_value(:distro)
         bootstrap.config[:use_sudo] = true unless config[:ssh_user] == 'root'
         bootstrap.config[:template_file] = locate_config_value(:template_file)
