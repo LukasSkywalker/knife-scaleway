@@ -85,7 +85,7 @@ __Examples__
                                       --ssh-keys 1234,1235 \
                                       --bootstrap \
                                       --run-list "role[base],role[webserver]" \
-                                      --secret-file "~/.ssh/secret_file" \
+                                      --secret-file "/home/user/.ssh/secret_file" \
                                       --ssh-port 22 \
                                       --identity-file "~/.ssh/id_rsa" \
                                       --private_networking
