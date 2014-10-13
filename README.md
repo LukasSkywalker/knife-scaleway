@@ -1,3 +1,13 @@
+# As of October 2014 this knife plugin is unmaintained, please migrate to alternatives. Thanks.
+
+
+
+
+
+
+
+
+
 # Knife::DigitalOcean
 ## A knife plugin to deal with the [DigitalOcean.com](https://www.digitalocean.com) Cloud services.
 
