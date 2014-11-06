@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'digital_ocean', '~> 1.5.0'
   gem.add_dependency 'highline'
 
-  gem.add_development_dependency 'rspec', '~> 2.13'
+  gem.add_development_dependency 'rspec', '~> 3.1'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'knife-solo'
 

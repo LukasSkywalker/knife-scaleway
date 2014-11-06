@@ -8,7 +8,7 @@ describe Chef::Knife::DigitalOceanDropletCreate do
 
   subject {
     s = Chef::Knife::DigitalOceanDropletCreate.new
-    s.stub(:client).and_return double(DigitalOcean::API)
+    allow(s).to receive(:client).and_return double(DigitalOcean::API)
     s
   }
 
@@ -63,19 +63,19 @@ describe Chef::Knife::DigitalOceanDropletCreate do
     describe 'should use the default bootstrap class' do
       let(:subject) {
         s = super()
-        s.client.stub_chain(:droplets, :create).and_return mock_api_response(api_response)
-        s.stub(:ip_address_available).and_return '123.123.123.123'
-        s.stub(:tcp_test_ssh).and_return true
+        allow(s.client).to receive_message_chain(:droplets, :create).and_return mock_api_response(api_response)
+        allow(s).to receive(:ip_address_available).and_return '123.123.123.123'
+        allow(s).to receive(:tcp_test_ssh).and_return true
         s
       }
 
       it 'should use the right bootstrap class' do
-        subject.bootstrap_class.should eql(Chef::Knife::Bootstrap)
+        expect(subject.bootstrap_class).to eql(Chef::Knife::Bootstrap)
       end
 
       it 'should call #run on the bootstrap class' do
-        Chef::Knife::Bootstrap.any_instance.stub(:run)
-        lambda { subject.run }.should_not raise_error(SystemExit)
+        allow_any_instance_of(Chef::Knife::Bootstrap).to receive(:run)
+        expect { subject.run }.not_to raise_error
       end
     end
   end
@@ -96,20 +96,20 @@ describe Chef::Knife::DigitalOceanDropletCreate do
 
       let(:subject) {
         s = super()
-        s.client.stub_chain(:droplets, :create).and_return mock_api_response(api_response)
-        s.stub(:ip_address_available).and_return '123.123.123.123'
-        s.stub(:tcp_test_ssh).and_return true
+        allow(s.client).to receive_message_chain(:droplets, :create).and_return mock_api_response(api_response)
+        allow(s).to receive(:ip_address_available).and_return '123.123.123.123'
+        allow(s).to receive(:tcp_test_ssh).and_return true
         s
       }
 
       it 'should use the right bootstrap class' do
-        subject.bootstrap_class.should eql(Chef::Knife::SoloBootstrap)
+        expect(subject.bootstrap_class).to eql(Chef::Knife::SoloBootstrap)
       end
 
       it 'should call #run on the bootstrap class' do
-        Chef::Knife::SoloBootstrap.any_instance.should_receive(:run)
-        Chef::Knife::Bootstrap.any_instance.should_not_receive(:run)
-        lambda { subject.run }.should_not raise_error(SystemExit)
+        expect_any_instance_of(Chef::Knife::SoloBootstrap).to receive(:run)
+        expect_any_instance_of(Chef::Knife::Bootstrap).not_to receive(:run)
+        expect { subject.run }.not_to raise_error
       end
     end
 
@@ -120,8 +120,8 @@ describe Chef::Knife::DigitalOceanDropletCreate do
       end
 
       it 'should not create a droplet' do
-        subject.client.should_not_receive(:droplets)
-        lambda { subject.run }.should raise_error(SystemExit)
+        expect(subject.client).not_to receive(:droplets)
+        expect { subject.run }.to raise_error(SystemExit)
       end
     end
 
@@ -135,21 +135,21 @@ describe Chef::Knife::DigitalOceanDropletCreate do
     describe 'should not do any bootstrapping' do
       let(:subject) {
         s = super()
-        s.client.stub_chain(:droplets, :create).and_return mock_api_response(api_response)
-        s.stub(:ip_address_available).and_return '123.123.123.123'
-        s.stub(:tcp_test_ssh).and_return true
+        allow(s.client).to receive_message_chain(:droplets, :create).and_return mock_api_response(api_response)
+        allow(s).to receive(:ip_address_available).and_return '123.123.123.123'
+        allow(s).to receive(:tcp_test_ssh).and_return true
         s
       }
 
       it 'should call #bootstrap_for_node' do
-        subject.should_not_receive(:bootstrap_for_node)
+        expect(subject).not_to receive(:bootstrap_for_node)
         expect { subject.run }.to raise_error
       end
 
       it 'should have a 0 exit code' do
         expect { subject.run }.to raise_error { |e|
-          e.status.should eql(0)
-          e.should be_a(SystemExit)
+          expect(e.status).to eql(0)
+          expect(e).to be_a(SystemExit)
         }
       end
     end
@@ -165,7 +165,7 @@ describe Chef::Knife::DigitalOceanDropletCreate do
 
     it 'should configure the first boot attributes on Bootstrap' do
       bootstrap = subject.bootstrap_for_node('123.123.123.123')
-      bootstrap.config[:first_boot_attributes].should eql(json_attributes)
+      expect(bootstrap.config[:first_boot_attributes]).to eql(json_attributes)
     end
   end
 
@@ -179,7 +179,7 @@ describe Chef::Knife::DigitalOceanDropletCreate do
 
     it 'secret_file should be available to Bootstrap' do
       bootstrap = subject.bootstrap_for_node('123.123.123.123')
-      bootstrap.config[:secret_file].should eql(secret_file)
+      expect(bootstrap.config[:secret_file]).to eql(secret_file)
     end
   end
 
@@ -193,7 +193,7 @@ describe Chef::Knife::DigitalOceanDropletCreate do
 
     it 'ssh_port should be available to Bootstrap' do
       bootstrap = subject.bootstrap_for_node('123.123.123.123')
-      bootstrap.config[:ssh_port].should eql(ssh_port)
+      expect(bootstrap.config[:ssh_port]).to eql(ssh_port)
     end
   end
 
