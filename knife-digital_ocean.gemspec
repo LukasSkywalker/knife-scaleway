@@ -6,8 +6,8 @@ require 'knife-digital_ocean/version'
 Gem::Specification.new do |gem|
   gem.name          = 'knife-digital_ocean'
   gem.version       = Knife::DigitalOcean::VERSION
-  gem.authors       = ['Roland Moriz']
-  gem.email         = ['roland@moriz.de']
+  gem.authors       = ['Roland Moriz', 'Greg Fitzgerald']
+  gem.email         = ['roland@moriz.de', 'greg@gregf.org']
   gem.description   = "A plugin for chef's knife to manage instances of DigitalOcean servers"
   gem.summary       = "A plugin for chef's knife to manage instances of DigitalOcean servers"
   gem.homepage      = 'https://github.com/rmoriz/knife-digital_ocean'
