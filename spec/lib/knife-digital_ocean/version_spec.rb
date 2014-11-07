@@ -5,4 +5,3 @@ describe Knife::DigitalOcean do
     expect(described_class::VERSION).not_to be_empty
   end
 end
-

@@ -1,4 +1,4 @@
-require "knife-digital_ocean/version"
+require 'knife-digital_ocean/version'
 
 module Knife
   module DigitalOcean

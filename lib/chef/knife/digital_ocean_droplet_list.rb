@@ -1,9 +1,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,46 +25,28 @@ class Chef
         validate!
 
         droplet_list = [
-            h.color('ID',     :bold),
-            h.color('Name',   :bold),
-            h.color('Size',   :bold),
-            h.color('Region', :bold),
-            h.color('IPv4',   :bold),
-            h.color('Image',  :bold),
-            h.color('Status', :bold)
+          ui.color('ID',     :bold),
+          ui.color('Name',   :bold),
+          ui.color('Size',   :bold),
+          ui.color('Region', :bold),
+          ui.color('Image',  :bold),
+          ui.color('IPv4',   :bold),
+          ui.color('Status', :bold)
         ]
+        droplets = client.droplets.all
 
-        regions = client.regions.list.regions.inject({}) do |h, region|
-          h[region.id] = region.name
-          h
-        end
-
-        sizes = client.sizes.list.sizes.inject({}) do |h, size|
-          h[size.id] = size.name
-          h
-        end
-
-        client.droplets.list.droplets.each do |droplet|
+        droplets.each do |droplet|
           droplet_list << droplet.id.to_s
           droplet_list << droplet.name.to_s
-          droplet_list << sizes[droplet.size_id]
-          droplet_list << regions[droplet.region_id]
-          droplet_list << droplet.ip_address.to_s
-
-          image_details = client.images.show(droplet.image_id)
-          if image_details.status != 'OK'
-            image_os_info = 'N/A'
-          else
-            image_os_info = image_details.image.name 
-          end
-            
-          droplet_list << droplet.image_id.to_s + ' (' + image_os_info +  ')'
+          droplet_list << droplet.size_slug.to_s
+          droplet_list << droplet.region.name.to_s
+          droplet_list << droplet.image.name.to_s
+          droplet_list << droplet.public_ip.to_s
           droplet_list << droplet.status.to_s
         end
 
-        puts h.list(droplet_list, :uneven_columns_across, 7)
+        puts ui.list(droplet_list, :uneven_columns_across, 7)
       end
-
     end
   end
 end

@@ -1,9 +1,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,22 +25,16 @@ class Chef
         validate!
 
         size_list = [
-          h.color('ID',   :bold),
-          h.color('Name', :bold)
+          ui.color('Slug',   :bold)
         ]
 
-        sizes = client.sizes.list.sizes
-
-        sizes.sort! do |a, b|
-          a.name.to_i <=> b.name.to_i
-        end
+        sizes = client.sizes.all
 
         sizes.each do |size|
-          size_list << size.id.to_s
-          size_list << size.name.to_s
+          size_list << size.slug
         end
 
-        puts h.list(size_list, :uneven_columns_across, 2)
+        puts ui.list(size_list, :uneven_columns_across, 1)
       end
     end
   end

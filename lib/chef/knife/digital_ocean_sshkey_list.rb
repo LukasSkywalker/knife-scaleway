@@ -1,9 +1,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,24 +25,21 @@ class Chef
         validate!
 
         sshkey_list = [
-          h.color('ID',   :bold),
-          h.color('Name', :bold),
+          ui.color('ID',   :bold),
+          ui.color('Name', :bold),
+          ui.color('Fingerprint', :bold)
         ]
 
-        sshkeys = client.ssh_keys.list.ssh_keys
-
-        sshkeys.sort! do |a, b|
-          a.name <=> b.name
-        end
+        sshkeys = client.ssh_keys.all
 
         sshkeys.each do |sshkey|
           sshkey_list << sshkey.id.to_s
           sshkey_list << sshkey.name.to_s
+          sshkey_list << sshkey.fingerprint.to_s
         end
 
-        puts h.list(sshkey_list, :uneven_columns_across, 2)
+        puts ui.list(sshkey_list, :uneven_columns_across, 3)
       end
-
     end
   end
 end

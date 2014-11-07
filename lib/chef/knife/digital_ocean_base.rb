@@ -3,9 +3,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,10 +15,9 @@
 class Chef
   class Knife
     module DigitalOceanBase
-
       def self.load_deps
-        require 'digital_ocean'
-        require 'highline'
+        require 'droplet_kit'
+        require 'json'
       end
 
       def self.included(includer)
@@ -39,30 +38,19 @@ class Chef
           #
           deps { Chef::Knife::DigitalOceanBase.load_deps }
 
-          option :digital_ocean_client_id,
-            :short       => '-K CLIENT_ID',
-            :long        => '--digital_ocean_client_id CLIENT_ID',
-            :description => 'Your DigitalOcean client_id',
-            :proc        => Proc.new { |client_id| Chef::Config[:knife][:digital_ocean_client_id] = client_id }
-
-          option :digital_ocean_api_key,
-            :short       => '-A API_KEY',
-            :long        => '--digital_ocean_api_key API_KEY',
-            :description => 'Your DigitalOcean API_KEY',
-            :proc        => Proc.new { |api_key| Chef::Config[:knife][:digital_ocean_api_key] = api_key }
+          option :digital_ocean_access_token,
+                 short: '-A ACCESS_TOKEN',
+                 long: '--digital_ocean_access_token ACCESS_TOKEN',
+                 description: 'Your DigitalOcean ACCESS_TOKEN',
+                 proc: proc { |access_token| Chef::Config[:knife][:digital_ocean_access_token] = access_token }
         end
       end
 
-      def h
-        @highline ||= HighLine.new
-      end
-
       def client
-        DigitalOcean::API.new(:client_id => Chef::Config[:knife][:digital_ocean_client_id],
-                              :api_key   => Chef::Config[:knife][:digital_ocean_api_key])
+        DropletKit::Client.new(access_token: Chef::Config[:knife][:digital_ocean_access_token])
       end
 
-      def validate!(keys=[:digital_ocean_client_id, :digital_ocean_api_key])
+      def validate!(keys = [:digital_ocean_access_token])
         errors = []
 
         keys.each do |k|
@@ -71,7 +59,7 @@ class Chef
           end
         end
 
-        if errors.each{|e| ui.error(e)}.any?
+        if errors.each { |e| ui.error(e) }.any?
           exit 1
         end
       end

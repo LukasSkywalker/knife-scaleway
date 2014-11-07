@@ -6,34 +6,33 @@ end
 
 describe Chef::Knife::DigitalOceanDropletCreate do
 
-  subject {
+  subject do
     s = Chef::Knife::DigitalOceanDropletCreate.new
-    allow(s).to receive(:client).and_return double(DigitalOcean::API)
+    allow(s).to receive(:client).and_return double(DropletKit::Droplet)
     s
-  }
+  end
 
-  let(:config) {
+  let(:config) do
     {
-      :digital_ocean_client_id => 'CLIENT_ID',
-      :digital_ocean_api_key   => 'API_KEY',
-      :server_name => 'sever-name.example.com',
-      :image       => 11111,
-      :location    => 22222,
-      :size        => 33333,
-      :ssh_key_ids => [ 44444, 44445 ]
+      digital_ocean_access_token: 'ACCESS_TOKEN',
+      server_name: 'sever-name.example.com',
+      image: 11_111,
+      location: 22_222,
+      size: 33_333,
+      ssh_key_ids: [44_444, 44_445]
     }
-  }
+  end
 
-  let(:custom_config) {
+  let(:custom_config) do
     {}
-  }
+  end
 
-  let(:api_response) {
+  let(:api_response) do
     {
-      :status => 'OK',
-      :droplet => { :id => '123' }
+      status: 'OK',
+      droplet: { id: '123' }
     }
-  }
+  end
 
   before do
     Chef::Knife::DigitalOceanDropletCreate.load_deps
@@ -54,20 +53,20 @@ describe Chef::Knife::DigitalOceanDropletCreate do
   end
 
   context 'bootstrapping for chef-server' do
-    let(:custom_config) {
+    let(:custom_config) do
       {
-       :bootstrap => true
+        bootstrap: true
       }
-    }
+    end
 
     describe 'should use the default bootstrap class' do
-      let(:subject) {
+      let(:subject) do
         s = super()
         allow(s.client).to receive_message_chain(:droplets, :create).and_return mock_api_response(api_response)
         allow(s).to receive(:ip_address_available).and_return '123.123.123.123'
         allow(s).to receive(:tcp_test_ssh).and_return true
         s
-      }
+      end
 
       it 'should use the right bootstrap class' do
         expect(subject.bootstrap_class).to eql(Chef::Knife::Bootstrap)
@@ -82,11 +81,11 @@ describe Chef::Knife::DigitalOceanDropletCreate do
 
   context 'bootstrapping for knife-solo' do
 
-    let(:custom_config) {
+    let(:custom_config) do
       {
-       :solo => true
+        solo: true
       }
-    }
+    end
 
     describe 'when knife-solo is installed' do
       before do
@@ -94,13 +93,13 @@ describe Chef::Knife::DigitalOceanDropletCreate do
         require 'chef/knife/solo_bootstrap'
       end
 
-      let(:subject) {
+      let(:subject) do
         s = super()
         allow(s.client).to receive_message_chain(:droplets, :create).and_return mock_api_response(api_response)
         allow(s).to receive(:ip_address_available).and_return '123.123.123.123'
         allow(s).to receive(:tcp_test_ssh).and_return true
         s
-      }
+      end
 
       it 'should use the right bootstrap class' do
         expect(subject.bootstrap_class).to eql(Chef::Knife::SoloBootstrap)
@@ -128,18 +127,18 @@ describe Chef::Knife::DigitalOceanDropletCreate do
   end
 
   context 'no bootstrapping' do
-    let(:custom_config) {
+    let(:custom_config) do
       {}
-    }
+    end
 
     describe 'should not do any bootstrapping' do
-      let(:subject) {
+      let(:subject) do
         s = super()
         allow(s.client).to receive_message_chain(:droplets, :create).and_return mock_api_response(api_response)
         allow(s).to receive(:ip_address_available).and_return '123.123.123.123'
         allow(s).to receive(:tcp_test_ssh).and_return true
         s
-      }
+      end
 
       it 'should call #bootstrap_for_node' do
         expect(subject).not_to receive(:bootstrap_for_node)
@@ -157,11 +156,11 @@ describe Chef::Knife::DigitalOceanDropletCreate do
 
   context 'passing json attributes (-j)' do
     let(:json_attributes) { '{ "apache": { "listen_ports": 80 } }' }
-    let(:custom_config) {
+    let(:custom_config) do
       {
-       :json_attributes => json_attributes
+        json_attributes: json_attributes
       }
-    }
+    end
 
     it 'should configure the first boot attributes on Bootstrap' do
       bootstrap = subject.bootstrap_for_node('123.123.123.123')
@@ -171,11 +170,11 @@ describe Chef::Knife::DigitalOceanDropletCreate do
 
   context 'passing secret_file (--secret-file)' do
     let(:secret_file) { '/tmp/sekretfile' }
-    let(:custom_config) {
+    let(:custom_config) do
       {
-       :secret_file => secret_file
+        secret_file: secret_file
       }
-    }
+    end
 
     it 'secret_file should be available to Bootstrap' do
       bootstrap = subject.bootstrap_for_node('123.123.123.123')
@@ -185,11 +184,11 @@ describe Chef::Knife::DigitalOceanDropletCreate do
 
   context 'passing ssh_port (--ssh-port)' do
     let(:ssh_port) { 22 }
-    let(:custom_config) {
+    let(:custom_config) do
       {
-       :ssh_port => ssh_port
+        ssh_port: ssh_port
       }
-    }
+    end
 
     it 'ssh_port should be available to Bootstrap' do
       bootstrap = subject.bootstrap_for_node('123.123.123.123')
@@ -198,4 +197,3 @@ describe Chef::Knife::DigitalOceanDropletCreate do
   end
 
 end
-
