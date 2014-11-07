@@ -288,5 +288,5 @@ Apache 2.0 (like Chef itself), see LICENSE.txt file.
 
 ## Copyright
 
-Copyright © 2014 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)
-Copyright © 2014 [Greg Fitzgerald](https://github.com/gregf)
+Copyright © 2014 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)  
+Copyright © 2014 [Greg Fitzgerald](https://github.com/gregf)  
