@@ -1,20 +1,10 @@
-# As of October 2014 this knife plugin is unmaintained, please migrate to alternatives. Thanks.
-
-
-
-
-
-
-
-
-
 # Knife::DigitalOcean
 ## A knife plugin to deal with the [DigitalOcean.com](https://www.digitalocean.com) Cloud services.
 
 [![Gem Version](https://badge.fury.io/rb/knife-digital_ocean.png)](http://badge.fury.io/rb/knife-digital_ocean)
-[![Build Status](https://travis-ci.org/rmoriz/knife-digital_ocean.png)](https://travis-ci.org/rmoriz/knife-digital_ocean)
-<a href="https://gemnasium.com/rmoriz/knife-digital_ocean"><img src="https://gemnasium.com/rmoriz/knife-digital_ocean.png"/></a>
-<a href="https://codeclimate.com/github/rmoriz/knife-digital_ocean"><img src="https://codeclimate.com/github/rmoriz/knife-digital_ocean.png"/></a>
+[![Build Status](https://travis-ci.org/gregf/knife-digital_ocean.png)](https://travis-ci.org/gregf/knife-digital_ocean)
+<a href="https://gemnasium.com/gregf/knife-digital_ocean"><img src="https://gemnasium.com/gregf/knife-digital_ocean.png"/></a>
+<a href="https://codeclimate.com/github/gregf/knife-digital_ocean"><img src="https://codeclimate.com/github/gregf/knife-digital_ocean.png"/></a>
 
 This is a plugin for [Chef's](http://www.opscode.com/chef/) [knife](http://wiki.opscode.com/display/chef/Knife) tool. It allows you to bootstrap virtual machines with [DigitalOcean.com](https://www.digitalocean.com/) including the initial bootstrapping of chef on that system.
 You can also use [knife-solo](http://matschaffer.github.com/knife-solo/) for chef bootstrapping or skip it altogether for another solution.
@@ -60,8 +50,7 @@ This plugin provides the following sub-commands:
 The best way is to put your API-credentials of DigitalOcean in your knife.rb file of choice (e.g. in ```~/.chef/knife.rb```):
 
 ```ruby
-knife[:digital_ocean_client_id] = 'XXXXXXXXXXXX'
-knife[:digital_ocean_api_key]   = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
+knife[:digital_ocean_access_token]   = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
 ```
 
 ## Usage
@@ -80,18 +69,18 @@ __Examples__
 
 ```shell
 ➜ knife digital_ocean droplet create --server-name awesome-vm1.chef.io \
-                                      --image 25306 \
-                                      --location 2 \
-                                      --size 66 \
+                                      --image debian-7-0-x64 \
+                                      --location nyc3 \
+                                      --size 1gb \
                                       --ssh-keys 1234,1235 \
                                       --ssh-port 22
 ```
 
 ```shell
 ➜ knife digital_ocean droplet create --server-name awesome-vm2.chef.io \
-                                      --image 25306 \
-                                      --location 4 \
-                                      --size 66 \
+                                      --image debian-7.0-x64 \
+                                      --location sfo1 \
+                                      --size 512mb \
                                       --ssh-keys 1234,1235 \
                                       --bootstrap \
                                       --run-list "role[base],role[webserver]" \
@@ -105,9 +94,9 @@ __Syntax__
 
 ```shell
 ➜ knife digital_ocean droplet create --server-name <FQDN> \
-                                      --image <IMAGE ID> \
-                                      --location <REGION ID> \
-                                      --size <SIZE ID> \
+                                      --image <IMAGE SLUG> \
+                                      --location <REGION SLUG> \
+                                      --size <SIZE SLUG> \
                                       --ssh-keys <SSH KEY-ID(s), comma-separated> \
                                       --ssh-port <SSH PORT> \
                                       --bootstrap \
@@ -120,9 +109,9 @@ __Short Syntax__
 
 ```shell
 ➜ knife digital_ocean droplet create -N <FQDN> \
-                                      -I <IMAGE ID> \
-                                      -L <REGION ID> \
-                                      -S <SIZE ID> \
+                                      -I <IMAGE SLUG> \
+                                      -L <REGION SLUG> \
+                                      -S <SIZE SLUG> \
                                       -K <SSH KEY-ID(s), comma-separated> \
                                       -p <SSH PORT> \
                                       -B \
@@ -140,9 +129,9 @@ __Example__
 
 ```bash
 ➜ knife digital_ocean droplet create --server-name awesome-vm1.chef.io \
-                                      --image 25306 \
-                                      --location 2 \
-                                      --size 66 \
+                                      --image debian-7-0-x64 \
+                                      --location lon1 \
+                                      --size 2gb \
                                       --ssh-keys 1234,4567 \
                                       --run-list "<RUNLIST>" \
                                       --solo
@@ -156,9 +145,9 @@ __Example__
 
 ```bash
 ➜ knife digital_ocean droplet create --server-name awesome-vm1.chef.io \
-                                      --image 25306 \
-                                      --location 2 \
-                                      --size 66 \
+                                      --image debian-7-0-x64 \
+                                      --location lon1 \
+                                      --size 2gb \
                                       --ssh-keys 1234,4567
 ```
 
@@ -167,8 +156,8 @@ __Example__
 ```shell
 ➜ knife digital_ocean droplet list
 ID     Name                  Size   Region       IPv4            Image                            Status
-12345  app20.ams.nl.chef.io  1GB    Amsterdam 1  185.14.123.123  25306 (Ubuntu 12.10 x32 Server)  active
-23456  awesome-vm1.chef.io   512MB  Amsterdam 1  185.14.124.125  25306 (Ubuntu 12.10 x32 Server)  active
+12345  app20.ams.nl.chef.io  1gb    Amsterdam 1  185.14.123.123  25306 (Ubuntu 12.10 x32 Server)  active
+23456  awesome-vm1.chef.io   512mb  Amsterdam 1  185.14.124.125  25306 (Ubuntu 12.10 x32 Server)  active
 ```
 
 ### Destroy a droplet (server) including all of its data!
@@ -182,29 +171,32 @@ OK
 
 ```shell
 ➜ knife digital_ocean region list
-ID  Name
-1   New York 1
-2   Amsterdam 1
-3   San Francisco 1
-4   New York 2
-5   Amsterdam 2
-6   Singapore 1
+Name             Slug
+New York 1       nyc1
+Amsterdam 1      ams1
+San Francisco 1  sfo1
+New York 2       nyc2
+Amsterdam 2      ams2
+Singapore 1      sgp1
+London 1         lon1
+New York 3       nyc3
+Amsterdam 3      ams3
 ```
 
 ### List sizes (instance types)
 
 ```shell
 ➜ knife digital_ocean size list
-ID  Name
-63  1GB
-62  2GB
-64  4GB
-65  8GB
-61  16GB
-60  32GB
-70  48GB
-69  64GB
-66  512MB
+Slug
+512mb
+1gb
+2gb
+4gb
+8gb
+16gb
+32gb
+48gb
+64gb
 ```
 
 ### List images
@@ -213,73 +205,67 @@ ID  Name
 
 ```shell
 ➜ knife digital_ocean image list
-ID     Distribution  Name                                Global
-11111  Ubuntu        app100.ams.nlxxxxx.net 2013-02-01   -
-11112  Ubuntu        app100.ams.nlxxxxx.net 2013-02-03   -
-11113  Ubuntu        init                                -
+ID     Distribution  Name
+11111  Ubuntu        app100.ams.nlxxxxx.net 2013-02-01
+11112  Ubuntu        app100.ams.nlxxxxx.net 2013-02-03
+11113  Ubuntu        init
 ```
 
-
-#### Global images (OS)
+#### Public images (OS)
 
 ```shell
-➜ knife digital_ocean image list --global
-ID       Distribution  Name                                             Global
-361740   Arch Linux    Arch Linux 2013.05 x32                           +
-350424   Arch Linux    Arch Linux 2013.05 x64                           +
-1602     CentOS        CentOS 5.8 x32                                   +
-1601     CentOS        CentOS 5.8 x64                                   +
-376568   CentOS        CentOS 6.4 x32                                   +
-562354   CentOS        CentOS 6.4 x64                                   +
-3240847  CentOS        CentOS 6.5 x32                                   +
-3240850  CentOS        CentOS 6.5 x64                                   +
-12575    Debian        Debian 6.0 x32                                   +
-12573    Debian        Debian 6.0 x64                                   +
-3102384  Debian        Debian 7.0 x32                                   +
-3102387  Debian        Debian 7.0 x64                                   +
-3102721  Fedora        Fedora 19 x32                                    +
-3102879  Fedora        Fedora 19 x64                                    +
-3243143  Fedora        Fedora 20 x32                                    +
-3243145  Fedora        Fedora 20 x64                                    +
-3104894  Ubuntu        Docker 0.10 on Ubuntu 13.10 x64                  +
-3288841  Ubuntu        Dokku v0.2.3 on Ubuntu 14.04                     +
-3121555  Ubuntu        Ghost 0.4.2 on Ubuntu 12.04                      +
-3118238  Ubuntu        GitLab 6.6.5 CE                                  +
-3120115  Ubuntu        LAMP on Ubuntu 12.04                             +
-3118235  Ubuntu        MEAN on Ubuntu 12.04.4                           +
-3137903  Ubuntu        Redmine on Ubuntu 12.04                          +
-3137635  Ubuntu        Ruby on Rails on Ubuntu 12.10 (Nginx + Unicorn)  +
-14098    Ubuntu        Ubuntu 10.04 x32                                 +
-14097    Ubuntu        Ubuntu 10.04 x64                                 +
-3100616  Ubuntu        Ubuntu 12.04.4 x32                               +
-3101045  Ubuntu        Ubuntu 12.04.4 x64                               +
-3101888  Ubuntu        Ubuntu 12.10 x32                                 +
-3101891  Ubuntu        Ubuntu 12.10 x64                                 +
-3104282  Ubuntu        Ubuntu 12.10 x64 Desktop                         +
-3101580  Ubuntu        Ubuntu 13.10 x32                                 +
-3101918  Ubuntu        Ubuntu 13.10 x64                                 +
-3240033  Ubuntu        Ubuntu 14.04 x32                                 +
-3240036  Ubuntu        Ubuntu 14.04 x64                                 +
-3135725  Ubuntu        Wordpress on Ubuntu 13.10                        +
+➜ knife digital_ocean image list --public
+ID       Distribution  Name                                      Slug
+6376601  Ubuntu        Ruby on Rails on 14.04 (Nginx + Unicorn)  ruby-on-rail
+6423475  Ubuntu        WordPress on 14.04                        wordpress
+6732690  Ubuntu        LEMP on 14.04                             lemp
+6732691  Ubuntu        LAMP on 14.04                             lamp
+6734341  Ubuntu        node-v0.10.32 on 14.04                    node
+6734697  Ubuntu        Django on 14.04                           django
+6738037  Ubuntu        Dokku v0.2.3 on 14.04 (w/ Docker 1.2.0)   dokku
+6798184  Ubuntu        MEAN on 14.04                             mean
+6854006  Ubuntu        Drupal 7.32 on 14.04                      drupal
+6884371  Ubuntu        Magento 1.9.0.1 on 14.04                  magento
+7284647  Ubuntu        Ghost 0.5.3 on 14.04                      ghost
+7354580  Ubuntu        Docker 1.3.1 on 14.04                     docker
+7518201  Ubuntu        GitLab 7.4.3 CE on 14.04                  gitlab
+7572830  Ubuntu        Redmine on 14.04                          redmine
+6370882  Fedora        20 x64                                    fedora-20-x6
+6370885  Fedora        20 x32                                    fedora-20-x3
+6370968  Fedora        19 x64                                    fedora-19-x6
+6370969  Fedora        19 x32                                    fedora-19-x3
+6372105  CentOS        6.5 x32                                   centos-6-5-x
+6372108  CentOS        6.5 x64                                   centos-6-5-x
+6372321  CentOS        5.10 x64                                  centos-5-8-x
+6372425  CentOS        5.10 x32                                  centos-5-8-x
+6372526  Debian        7.0 x64                                   debian-7-0-x
+6372528  Debian        7.0 x32                                   debian-7-0-x
+6372581  Debian        6.0 x64                                   debian-6-0-x
+6372662  Debian        6.0 x32                                   debian-6-0-x
+6374124  Ubuntu        10.04 x64                                 ubuntu-10-04
+6374125  Ubuntu        10.04 x32                                 ubuntu-10-04
+6374128  Ubuntu        12.04.5 x64                               ubuntu-12-04
+6374130  Ubuntu        12.04.5 x32                               ubuntu-12-04
+6882384  CoreOS        444.5.0 (beta)                            coreos-beta
+6886342  CoreOS        444.5.0 (stable)                          coreos-stabl
+6918735  Ubuntu        14.04 x32                                 ubuntu-14-04
+6918990  Ubuntu        14.04 x64                                 ubuntu-14-04
+7053293  CentOS        7.0 x64                                   centos-7-0-x
+7111343  Ubuntu        14.10 x64                                 ubuntu-14-10
+7111572  Ubuntu        14.10 x32                                 ubuntu-14-10
+7556046  CoreOS        CoreOS (alpha) 490.0.0                    coreos-alpha
 ```
-
 
 ### SSH keys (previously uploaded via DigitalOcean's webfrontend)
 
 ```shell
 ➜ knife digital_ocean sshkey list
-ID    Name
-1234  Alice
-1235  Bob
-1236  Chuck
-1237  Craig
-```
-
-
-## Commercial Support
-
-Commercial support is available. Please contact [https://roland.io/](https://roland.io/) or [http://moriz.com/](http://moriz.com/)
-
+ID    Name    Fingerprint
+1234  Alice   e0:1a:1b:30:7f:bd:b2:cf:f2:4f:3b:35:3c:87:46:1c
+1235  Bob     b0:ca:40:36:7f:bd:b2:cf:f2:4f:2b:45:3c:28:41:5f
+1236  Chuck   g0:da:3e:15:7f:bd:b2:cf:f2:4f:3a:26:3c:34:52:2b
+1237  Craig   f0:fa:2b:22:7f:bd:b2:cf:f2:4f:4c:18:3c:66:54:1c
+``
 
 ## Contributing
 
@@ -300,20 +286,7 @@ For more information and a complete list see [the contributor page on GitHub](ht
 
 Apache 2.0 (like Chef itself), see LICENSE.txt file.
 
-
-## Mobile Application
-
-Ever wanted to control your DigitalOcean Droplets with your iPhone, iPad or iPod Touch?
-
-[Get my CloudOcean App!](http://cloudoceanapp.com/)
-
-[![CloudOcean - DigitalOcean iOS app](http://i.imgur.com/JLQua2w.png)](http://cloudoceanapp.com/)
-
-
 ## Copyright
 
 Copyright © 2014 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)
-
-[![LinkedIn](http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png)](http://www.linkedin.com/in/rmoriz)
-[![Twitter](http://i.imgur.com/1kYFHlu.png)](https://twitter.com/rmoriz)
-
+Copyright © 2014 [Greg Fitzgerald](https://github.com/gregf)
