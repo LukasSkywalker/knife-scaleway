@@ -29,8 +29,8 @@ class Chef
           ui.color('Name',   :bold),
           ui.color('Size',   :bold),
           ui.color('Region', :bold),
-          ui.color('Image',  :bold),
           ui.color('IPv4',   :bold),
+          ui.color('Image',  :bold),
           ui.color('Status', :bold)
         ]
         droplets = client.droplets.all
@@ -40,8 +40,8 @@ class Chef
           droplet_list << droplet.name.to_s
           droplet_list << droplet.size_slug.to_s
           droplet_list << droplet.region.name.to_s
-          droplet_list << droplet.image.name.to_s
           droplet_list << droplet.public_ip.to_s
+          droplet_list << droplet.image.name.to_s
           droplet_list << droplet.status.to_s
         end
 

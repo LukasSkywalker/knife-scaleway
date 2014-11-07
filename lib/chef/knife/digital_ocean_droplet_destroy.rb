@@ -35,7 +35,7 @@ class Chef
         end
 
         result = client.droplets.delete(id: locate_config_value(:server))
-        puts JSON.parse(result)['message'] rescue ''
+        puts JSON.parse(result)['message'] rescue 'OK'
       end
     end
   end
