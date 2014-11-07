@@ -2,22 +2,20 @@
 ## A knife plugin to deal with the [DigitalOcean.com](https://www.digitalocean.com) Cloud services.
 
 [![Gem Version](https://badge.fury.io/rb/knife-digital_ocean.png)](http://badge.fury.io/rb/knife-digital_ocean)
-[![Build Status](https://travis-ci.org/gregf/knife-digital_ocean.png)](https://travis-ci.org/gregf/knife-digital_ocean)
-<a href="https://gemnasium.com/gregf/knife-digital_ocean"><img src="https://gemnasium.com/gregf/knife-digital_ocean.png"/></a>
-<a href="https://codeclimate.com/github/gregf/knife-digital_ocean"><img src="https://codeclimate.com/github/gregf/knife-digital_ocean.png"/></a>
+[![Build Status](https://travis-ci.org/rmoriz/knife-digital_ocean.png)](https://travis-ci.org/rmoriz/knife-digital_ocean)
+<a href="https://gemnasium.com/rmoriz/knife-digital_ocean"><img src="https://gemnasium.com/rmoriz/knife-digital_ocean.png"/></a>
+<a href="https://codeclimate.com/github/rmoriz/knife-digital_ocean"><img src="https://codeclimate.com/github/rmoriz/knife-digital_ocean.png"/></a>
 
 This is a plugin for [Chef's](http://www.opscode.com/chef/) [knife](http://wiki.opscode.com/display/chef/Knife) tool. It allows you to bootstrap virtual machines with [DigitalOcean.com](https://www.digitalocean.com/) including the initial bootstrapping of chef on that system.
 You can also use [knife-solo](http://matschaffer.github.com/knife-solo/) for chef bootstrapping or skip it altogether for another solution.
 
 This knife plugin uses the [droplet_kit](https://github.com/digitalocean/droplet_kit) rubygem.
 
-
 ## Installation
 
 ```shell
 ➜ gem install knife-digital_ocean
 ```
-
 
 ## Overview
 
@@ -285,6 +283,14 @@ For more information and a complete list see [the contributor page on GitHub](ht
 ## License
 
 Apache 2.0 (like Chef itself), see LICENSE.txt file.
+
+## Mobile Application
+
+Ever wanted to control your DigitalOcean Droplets with your iPhone, iPad or iPod Touch?
+
+[Get my CloudOcean App!](http://cloudoceanapp.com/)
+
+[![CloudOcean - DigitalOcean iOS app](http://i.imgur.com/JLQua2w.png)](http://cloudoceanapp.com/)
 
 ## Copyright
 
