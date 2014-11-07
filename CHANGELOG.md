@@ -1,4 +1,9 @@
-## unreleased
+## 2.0.0 / 2014-11-07
+
+* Now using Digital Ocean apiv2.
+* Switched to the droplet_kit gem
+* knife digital_ocean images list -G now replaced with -P or --public
+* knife[:digital_ocean_api_key] and knife[:digital_ocean_client_id] replaced with knife[:digitalocean_access_token]
 
 * [Full Changelog](https://github.com/rmoriz/knife-digital_ocean/compare/v0.7.0...master)
 
