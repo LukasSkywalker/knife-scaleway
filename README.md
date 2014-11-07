@@ -66,7 +66,7 @@ use method **A**:
 __Examples__
 
 ```shell
-➜ knife digital_ocean droplet create --server-name awesome-vm1.chef.io \
+➜ knife digital_ocean droplet create --server-name awesome-vm1.vm.io \
                                       --image debian-7-0-x64 \
                                       --location nyc3 \
                                       --size 1gb \
@@ -75,7 +75,7 @@ __Examples__
 ```
 
 ```shell
-➜ knife digital_ocean droplet create --server-name awesome-vm2.chef.io \
+➜ knife digital_ocean droplet create --server-name awesome-vm2.vm.io \
                                       --image debian-7.0-x64 \
                                       --location sfo1 \
                                       --size 512mb \
@@ -126,7 +126,7 @@ Please consult the [knife-solo documentation](http://matschaffer.github.io/knife
 __Example__
 
 ```bash
-➜ knife digital_ocean droplet create --server-name awesome-vm1.chef.io \
+➜ knife digital_ocean droplet create --server-name awesome-vm1.vm.io \
                                       --image debian-7-0-x64 \
                                       --location lon1 \
                                       --size 2gb \
@@ -142,7 +142,7 @@ This will just create a droplet and return its IP-address. Nothing else. You can
 __Example__
 
 ```bash
-➜ knife digital_ocean droplet create --server-name awesome-vm1.chef.io \
+➜ knife digital_ocean droplet create --server-name awesome-vm1.vm.io \
                                       --image debian-7-0-x64 \
                                       --location lon1 \
                                       --size 2gb \
@@ -154,8 +154,8 @@ __Example__
 ```shell
 ➜ knife digital_ocean droplet list
 ID     Name                  Size   Region       IPv4            Image                            Status
-12345  app20.ams.nl.chef.io  1gb    Amsterdam 1  185.14.123.123  25306 (Ubuntu 12.10 x32 Server)  active
-23456  awesome-vm1.chef.io   512mb  Amsterdam 1  185.14.124.125  25306 (Ubuntu 12.10 x32 Server)  active
+12345  app20.ams.nl.vm.io  1gb    Amsterdam 1  185.14.123.123  25306 (Ubuntu 12.10 x32 Server)  active
+23456  awesome-vm1.vm.io   512mb  Amsterdam 1  185.14.124.125  25306 (Ubuntu 12.10 x32 Server)  active
 ```
 
 ### Destroy a droplet (server) including all of its data!
@@ -284,15 +284,7 @@ For more information and a complete list see [the contributor page on GitHub](ht
 
 Apache 2.0 (like Chef itself), see LICENSE.txt file.
 
-## Mobile Application
-
-Ever wanted to control your DigitalOcean Droplets with your iPhone, iPad or iPod Touch?
-
-[Get my CloudOcean App!](http://cloudoceanapp.com/)
-
-[![CloudOcean - DigitalOcean iOS app](http://i.imgur.com/JLQua2w.png)](http://cloudoceanapp.com/)
-
 ## Copyright
 
-Copyright © 2014 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)  
-Copyright © 2014 [Greg Fitzgerald](https://github.com/gregf)  
+Copyright © 2014 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)
+Copyright © 2014 [Greg Fitzgerald](https://github.com/gregf)
