@@ -1,3 +1,9 @@
+## Unreleased
+
+* Better test coverage
+* -6 --ipv6-enabled option to enable ipv6
+* -b --backups-enabled option to enable backups, thanks to [@salemine](https://github.com/salemine) [PR #45]
+
 ## 2.0.0 / 2014-11-07
 
 * Now using Digital Ocean apiv2.
