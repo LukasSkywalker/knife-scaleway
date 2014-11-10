@@ -145,6 +145,18 @@ class Chef
              default: '22',
              proc: proc { |port| Chef::Config[:knife][:ssh_port] = port }
 
+      option :backups,
+             short: '-b',
+             long: '--backups-enabled',
+             description: 'Enables backups for the created droplet',
+             default: false
+
+      option :ipv6,
+             short: '-6',
+             long: '--ipv6-enabled',
+             description: 'Enables ipv6 for the created droplet',
+             default: false
+
       def run
         $stdout.sync = true
 
@@ -189,7 +201,11 @@ class Chef
                                           image: locate_config_value(:image),
                                           region: locate_config_value(:location),
                                           ssh_keys: locate_config_value(:ssh_key_ids).split(/, ?/),
-                                          private_networking: locate_config_value(:private_networking))
+                                          private_networking: locate_config_value(:private_networking),
+                                          backups: locate_config_value(:backups),
+                                          ipv6: locate_config_value(:ipv6)
+                                         )
+
 
         server = client.droplets.create(droplet)
 
