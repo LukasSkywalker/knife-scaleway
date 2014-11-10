@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.digitalocean.com/v2/regions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer FAKE_ACCESS_TOKEN
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Mon, 10 Nov 2014 02:00:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d8994d408033b66f3179aa41ee3dc9ba41415584837157; expires=Mon, 23-Dec-2019
+        23:50:00 GMT; path=/; domain=.digitalocean.com; HttpOnly
+      Status:
+      - 200 OK
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Ratelimit-Limit:
+      - '1200'
+      Ratelimit-Remaining:
+      - '1185'
+      Ratelimit-Reset:
+      - '1415584945'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - b5c82235-3b53-451a-acf1-ba2e15076ee0
+      X-Runtime:
+      - '0.049556'
+      Cf-Ray:
+      - 186ea85036a60ec7-EWR
+    body:
+      encoding: UTF-8
+      string: '{"regions":[{"name":"New York 1","slug":"nyc1","sizes":["32gb","16gb","2gb","1gb","4gb","8gb","512mb","64gb","48gb"],"features":["virtio","backups"],"available":true},{"name":"Amsterdam
+        1","slug":"ams1","sizes":["16gb","2gb","1gb","4gb","8gb","512mb"],"features":["virtio","backups"],"available":true},{"name":"San
+        Francisco 1","slug":"sfo1","sizes":["32gb","16gb","2gb","1gb","4gb","8gb","512mb","64gb","48gb"],"features":["virtio","backups","metadata"],"available":true},{"name":"New
+        York 2","slug":"nyc2","sizes":["32gb","16gb","2gb","1gb","4gb","8gb","512mb","64gb","48gb"],"features":["virtio","private_networking","backups"],"available":true},{"name":"Amsterdam
+        2","slug":"ams2","sizes":["32gb","16gb","2gb","1gb","4gb","8gb","512mb","64gb","48gb"],"features":["virtio","private_networking","backups","metadata"],"available":true},{"name":"Singapore
+        1","slug":"sgp1","sizes":["32gb","16gb","2gb","1gb","4gb","8gb","512mb","64gb","48gb"],"features":["virtio","private_networking","backups","ipv6","metadata"],"available":true},{"name":"London
+        1","slug":"lon1","sizes":["32gb","16gb","2gb","1gb","4gb","8gb","512mb","64gb","48gb"],"features":["virtio","private_networking","backups","ipv6","metadata"],"available":true},{"name":"New
+        York 3","slug":"nyc3","sizes":["32gb","16gb","2gb","1gb","4gb","8gb","512mb","64gb","48gb"],"features":["virtio","private_networking","backups","ipv6","metadata"],"available":true},{"name":"Amsterdam
+        3","slug":"ams3","sizes":["32gb","16gb","2gb","1gb","4gb","8gb","512mb","64gb","48gb"],"features":["virtio","private_networking","backups","ipv6","metadata"],"available":true}],"links":{},"meta":{"total":9}}'
+    http_version: 
+  recorded_at: Mon, 10 Nov 2014 02:00:37 GMT
+recorded_with: VCR 2.9.3
