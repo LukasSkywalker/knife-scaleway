@@ -20,6 +20,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rubocop', '~> 0.27'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'knife-solo'
+  gem.add_development_dependency 'webmock', '~> 1.20'
   gem.add_development_dependency 'vcr', '~> 2.9'
 
   gem.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
