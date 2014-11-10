@@ -11,6 +11,13 @@ require 'chef/knife/digital_ocean_image_list'
 require 'chef/knife/digital_ocean_region_list'
 require 'chef/knife/digital_ocean_size_list'
 require 'chef/knife/digital_ocean_sshkey_list'
+require 'chef/knife/digital_ocean_domain_list'
+require 'chef/knife/digital_ocean_domain_create'
+require 'chef/knife/digital_ocean_domain_destroy'
+require 'chef/knife/digital_ocean_domain_record_list'
+require 'chef/knife/digital_ocean_domain_record_create'
+require 'chef/knife/digital_ocean_domain_record_edit'
+require 'chef/knife/digital_ocean_domain_record_destroy'
 
 Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 
