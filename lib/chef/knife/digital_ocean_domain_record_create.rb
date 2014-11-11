@@ -21,9 +21,9 @@ class Chef
       banner 'knife digital_ocean domain record create (options)'
 
      option :domain,
-        :short       => '-D ID',
-        :long        => '--domain-id ID',
-        :description => 'The domain id'
+        :short       => '-D NAME',
+        :long        => '--domain-id NAME',
+        :description => 'The domain name'
 
       option :type,
         :short       => '-T RECORD TYPE',
@@ -36,7 +36,7 @@ class Chef
         :description => 'The record name'
 
       option :data,
-        :short       => '-d DATA',
+        :short       => '-a DATA',
         :long        => '--data DATA',
         :description => 'The record data'
 
@@ -65,13 +65,14 @@ class Chef
           exit 1
         end
 
-        result = client.domains.create_record locate_config_value(:domain),
-                                              :record_type => locate_config_value(:type),
-                                              :name => locate_config_value(:name),
-                                              :data => locate_config_value(:data)
-        puts result.status
+        domain_record = DropletKit::DomainRecord.new(
+          type: locate_config_value(:type),
+          name: locate_config_value(:name),
+          data: locate_config_value(:data)
+        )
+        result = client.domain_records.create domain_record, for_domain: locate_config_value(:domain)
+        ui.error JSON.parse(result)['message'] rescue 'OK'
       end
-
     end
   end
 end

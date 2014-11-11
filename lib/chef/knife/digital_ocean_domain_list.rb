@@ -13,31 +13,32 @@
 require 'chef/knife/digital_ocean_base'
 
 class Chef
-	class Knife
-		class DigitalOceanDomainList < Knife
-			include Knife::DigitalOceanBase
+  class Knife
+    class DigitalOceanDomainList < Knife
+      include Knife::DigitalOceanBase
 
-			banner 'knife digital_ocean domain list'
+      banner 'knife digital_ocean domain list'
 
-			def run
-				$stdout.sync = true
+      def run
+        $stdout.sync = true
 
-				validate!
+        validate!
 
-				domains = client.domains.list.domains
+        domains_list = [
+          ui.color('Name', :bold),
+          ui.color('TTL', :bold)
+        ]
 
-				domains_list = [
-					h.color('ID', :bold),
-					h.color('Name', :bold)
-				]
-				domains.each do |domain|
-					domains_list << domain.id.to_s
-					domains_list << domain.name.to_s
-				end
+        domains = client.domains.all
 
-				puts h.list(domains_list, :uneven_columns_across, 2)
-			end
+        domains.each do |domain|
+          domains_list << domain.name.to_s
+          domains_list << domain.ttl.to_s
+        end
 
-		end
-	end
+        puts ui.list(domains_list, :uneven_columns_across, 2)
+      end
+
+    end
+  end
 end

@@ -21,9 +21,9 @@ class Chef
       banner 'knife digital_ocean domain destroy (options)'
 
       option :domain,
-        :short       => '-D ID',
-        :long        => '--domain-id ID',
-        :description => 'The domain id'
+        :short       => '-D Name',
+        :long        => '--domain-name Name',
+        :description => 'The domain name'
 
       def run
         $stdout.sync = true
@@ -31,14 +31,13 @@ class Chef
         validate!
 
         unless locate_config_value(:domain)
-          ui.error("Domain cannot be empty. => -D <domain-id>")
+          ui.error("Domain cannot be empty. => -D <domain-name>")
           exit 1
         end
 
-        result = client.domains.delete locate_config_value(:domain)
-        puts result.status
+        result = client.domains.delete(name: locate_config_value(:domain))
+        ui.error JSON.parse(result)['message'] rescue 'OK'
       end
-
     end
   end
 end

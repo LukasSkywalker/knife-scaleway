@@ -21,9 +21,9 @@ class Chef
       banner 'knife digital_ocean domain record edit (options)'
 
       option :domain,
-        :short       => '-D ID',
-        :long        => '--domain-id ID',
-        :description => 'The domain id'
+        :short       => '-D NAME',
+        :long        => '--domain-id NAME',
+        :description => 'The domain name'
 
       option :record,
         :short       => '-R ID',
@@ -41,7 +41,7 @@ class Chef
         :description => 'The record name'
 
       option :data,
-        :short       => '-d DATA',
+        :short       => '-a DATA',
         :long        => '--data DATA',
         :description => 'The record data'
 
@@ -51,7 +51,7 @@ class Chef
         validate!
 
         unless locate_config_value(:domain)
-          ui.error("Domain cannot be empty. => -D <domain-id>")
+          ui.error("Domain cannot be empty. => -D <domain-name>")
           exit 1
         end
 
@@ -60,21 +60,29 @@ class Chef
           exit 1
         end
 
-        unless locate_config_value(:data) || locate_config_value(:type) || locate_config_value(:name)
-          ui.error("Must provide at least one value to change. => -T <record-type> => -N <record-name> -d <record-data>")
+        unless locate_config_value(:type)
+          ui.error("Record type cannot be empty. => -T <record-type>")
           exit 1
         end
 
-        result = client.domains.edit_record locate_config_value(:domain),
-                                            locate_config_value(:record),
-                                            {
-                                              :data => locate_config_value(:data),
-                                              :record_type => locate_config_value(:type),
-                                              :name => locate_config_value(:name)
-                                            }.delete_if {|key, value| value.nil?}
-        puts result.status
-      end
+        unless locate_config_value(:name)
+          ui.error("Record name cannot be empty. => -N <record-name>")
+          exit 1
+        end
 
+        unless locate_config_value(:data)
+          ui.error("Record data cannot be empty. => -d <data>")
+          exit 1
+        end
+
+        domain_record = DropletKit::DomainRecord.new(
+          type: locate_config_value(:type),
+          name: locate_config_value(:name),
+          data: locate_config_value(:data)
+        )
+        result = client.domain_records.update domain_record, for_domain: locate_config_value(:domain), id: locate_config_value(:record)
+        ui.error JSON.parse(result)['message'] rescue 'OK'
+      end
     end
   end
 end

@@ -21,9 +21,9 @@ class Chef
       banner 'knife digital_ocean domain record destroy (options)'
 
       option :domain,
-        :short       => '-D ID',
-        :long        => '--domain-id ID',
-        :description => 'The domain id'
+        :short       => '-D NAME',
+        :long        => '--domain-id NAME',
+        :description => 'The domain name'
 
       option :record,
         :short       => '-R ID',
@@ -36,7 +36,7 @@ class Chef
         validate!
 
         unless locate_config_value(:domain)
-          ui.error("Domain cannot be empty. => -D <domain-id>")
+          ui.error("Domain cannot be empty. => -D <domain-name>")
           exit 1
         end
 
@@ -45,8 +45,8 @@ class Chef
           exit 1
         end
 
-        result = client.domains.delete_record locate_config_value(:domain), locate_config_value(:record)
-        puts result.status
+        result = client.domain_records.delete for_domain: locate_config_value(:domain), id: locate_config_value(:record)
+        ui.error JSON.parse(result)['message'] rescue 'OK'
       end
 
     end

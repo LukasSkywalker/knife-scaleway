@@ -18,40 +18,39 @@ class Chef
 
       banner 'knife digital_ocean domain record list (options)'
 
-      option :id,
-        :short       => '-D ID',
-        :long        => '--domain-id ID',
-        :description => 'The domain id'
+      option :name,
+        :short       => '-D NAME',
+        :long        => '--domain-name NAME',
+        :description => 'The domain name'
 
       def run
         $stdout.sync = true
 
         validate!
 
-        unless locate_config_value(:id)
-          ui.error("Domain ID cannot be empty. => -D <domain-id>")
+        unless locate_config_value(:name)
+          ui.error("Domain Name cannot be empty. => -D <domain-name>")
           exit 1
         end
 
         domains_list = [
-          h.color('ID', :bold),
-          h.color('Type', :bold),
-          h.color('Name', :bold),
-          h.color('Data', :bold)
+          ui.color('ID', :bold),
+          ui.color('Type', :bold),
+          ui.color('Name', :bold),
+          ui.color('Data', :bold)
         ]
 
-        records = client.domains.list_records(locate_config_value(:id)).records
+        records = client.domain_records.all for_domain: locate_config_value(:name)
         records.each do |domain|
           domains_list << domain.id.to_s
-          domains_list << domain.record_type.to_s
+          domains_list << domain.type.to_s
           domains_list << domain.name.to_s
           domains_list << domain.data.to_s
         end
 
 
-        puts h.list(domains_list, :uneven_columns_across, 4)
+        puts ui.list(domains_list, :uneven_columns_across, 4)
       end
-
     end
   end
 end

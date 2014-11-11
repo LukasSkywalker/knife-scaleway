@@ -45,8 +45,9 @@ class Chef
           exit 1
         end
 
-        result = client.domains.create :name => locate_config_value(:name), :ip_address => locate_config_value(:ip_address)
-        puts result.status
+        domain = DropletKit::Domain.new ip_address: locate_config_value(:ip_address), name: locate_config_value(:name)
+        result = client.domains.create domain
+        ui.error JSON.parse(result)['message'] rescue 'OK'
       end
 
     end
