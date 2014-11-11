@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.digitalocean.com/v2/account
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer FAKE_ACCESS_TOKEN
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Tue, 11 Nov 2014 03:48:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d4ff495c6a4297ba6a268c69722a7928c1415677714886; expires=Mon, 23-Dec-2019
+        23:50:00 GMT; path=/; domain=.digitalocean.com; HttpOnly
+      Status:
+      - 200 OK
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Ratelimit-Limit:
+      - '1200'
+      Ratelimit-Remaining:
+      - '1180'
+      Ratelimit-Reset:
+      - '1415677540'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 8e7ba67a-eeca-432d-9a5f-951d3956a67c
+      X-Runtime:
+      - '0.022150'
+      Cf-Ray:
+      - 187783d60a990ecd-EWR
+    body:
+      encoding: UTF-8
+      string: '{"account":{"droplet_limit":20,"email":"greg@gregf.org","uuid":"49e2e737d3a7407a042bb7e88f4da8629166f2b9","email_verified":true}}'
+    http_version: 
+  recorded_at: Tue, 11 Nov 2014 03:48:34 GMT
+recorded_with: VCR 2.9.3

@@ -18,6 +18,7 @@ require 'chef/knife/digital_ocean_domain_record_list'
 require 'chef/knife/digital_ocean_domain_record_create'
 require 'chef/knife/digital_ocean_domain_record_edit'
 require 'chef/knife/digital_ocean_domain_record_destroy'
+require 'chef/knife/digital_ocean_account_info'
 
 Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 
