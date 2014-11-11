@@ -44,7 +44,7 @@ class Chef
 
         if locate_config_value(:all) && !client.droplets
           ui.error('You don`t have droplets')
-          exit 1                    
+          exit 1
         end
 
         if locate_config_value(:server)
