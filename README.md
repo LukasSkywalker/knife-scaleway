@@ -27,9 +27,6 @@ This plugin provides the following sub-commands:
 * knife digital_ocean droplet destroy (options)
   **Destroys the virtual machine and its data**
 
-* knife digital_ocean droplet destroy_all (options)
-  **Destroy all the virtual machines and its data**
-
 * knife digital_ocean droplet list (options)
   **Lists currently running virtual machines**
 
