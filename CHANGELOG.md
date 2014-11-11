@@ -1,4 +1,7 @@
-## Unreleased
+## 2.2.0 / Unreleased
+
+* Domain support, thanks to [@nozpheratu](https://github.com/nozpheratu) [PR #32]
+* New commands account info, sshkey create, sshkey destroy
 
 ## 2.1.0 / 2014-11-09
 
