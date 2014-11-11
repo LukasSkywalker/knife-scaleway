@@ -158,11 +158,21 @@ ID     Name                  Size   Region       IPv4            Image          
 23456  awesome-vm1.vm.io   512mb  Amsterdam 1  185.14.124.125  25306 (Ubuntu 12.10 x32 Server)  active
 ```
 
-### Destroy a droplet (server) including all of its data!
+### !WARNING! Destroy a droplet (server) including all of its data!
 
+#### Destroy droplet by id
 ```shell
 ➜ knife digital_ocean droplet destroy -S 23456
 OK
+```
+
+#### Destroy all droplets
+
+```shell
+➜ knife digital_ocean droplet destroy --all
+Delete droplet with id: 1824315
+Delete droplet with id: 1824316
+Delete droplet with id: 1824317
 ```
 
 ### List regions

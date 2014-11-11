@@ -24,18 +24,44 @@ class Chef
              long: '--server ID',
              description: 'The server id'
 
+      option :all,
+             short: '-a',
+             long: '--all',
+             description: '!WARNING! UNRECOVERABLE Destroy all droplets.'
+
+
       def run
         $stdout.sync = true
 
         validate!
 
-        unless locate_config_value(:server)
+        droplets_ids = []
+
+        unless locate_config_value(:server) || locate_config_value(:all)
           ui.error('Server cannot be empty. ALL DATA WILL BE LOST! => -S <server-id>')
           exit 1
         end
 
-        result = client.droplets.delete(id: locate_config_value(:server))
-        puts JSON.parse(result)['message'] rescue 'OK'
+        if locate_config_value(:all) && !client.droplets
+          ui.error('You don`t have droplets')
+          exit 1                    
+        end
+
+        if locate_config_value(:server)
+          droplets_ids = [locate_config_value(:server)]
+        end
+
+        if locate_config_value(:all)
+          droplets_ids = client.droplets.all.map do |droplet|
+            droplet.id
+          end
+        end
+
+        droplets_ids.each do |id|
+          puts "Delete droplet with id: #{id}"
+          result = client.droplets.delete(id: id)
+          puts JSON.parse(result)['message'] rescue 'OK'
+        end
       end
     end
   end
