@@ -276,6 +276,7 @@ ID    Name    Fingerprint
 1235  Bob     b0:ca:40:36:7f:bd:b2:cf:f2:4f:2b:45:3c:28:41:5f
 1236  Chuck   g0:da:3e:15:7f:bd:b2:cf:f2:4f:3a:26:3c:34:52:2b
 1237  Craig   f0:fa:2b:22:7f:bd:b2:cf:f2:4f:4c:18:3c:66:54:1c
+```
 
 #### Create a SSH key
 ```
@@ -305,6 +306,7 @@ OK
 ➜ knife digital_ocean domain destroy -D example.com
 OK
 ```
+
 #### List domains
 
 ```shell
@@ -325,6 +327,7 @@ example.com  1800
 ➜ knife digital_ocean domain destroy -D example.com -R 3355880
 OK
 ```
+
 #### List domain records
 
 ```shell
