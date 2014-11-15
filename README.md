@@ -110,6 +110,7 @@ __Examples__
                                       --size 512mb \
                                       --ssh-keys 1234,1235 \
                                       --bootstrap \
+                                      --bootstrap-version 11.16.4-1
                                       --run-list "role[base],role[webserver]" \
                                       --secret-file "/home/user/.ssh/secret_file" \
                                       --ssh-port 22 \
@@ -127,6 +128,7 @@ __Syntax__
                                       --ssh-keys <SSH KEY-ID(s), comma-separated> \
                                       --ssh-port <SSH PORT> \
                                       --bootstrap \
+                                      --bootstrap-version <VERSION NUMBER>
                                       --run-list "<RUNLIST>" \
                                       --secret-file "<FILENAME>" \
                                       --private_networking
