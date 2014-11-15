@@ -279,14 +279,13 @@ ID    Name    Fingerprint
 ```
 
 #### Create a SSH key
-```
+
 ```shell
 ➜ knife digital_ocean sshkey create -i ~/.ssh/id_rsa.pub -n Bob
 ```
 
 #### Destroy a SSH key
 
-```
 ```shell
 ➜ knife digital_ocean sshkey destroy -i 1236
 OK
