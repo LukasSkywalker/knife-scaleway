@@ -31,6 +31,9 @@ This plugin provides the following sub-commands:
 * knife digital_ocean droplet list (options)
   **Lists currently running virtual machines**
 
+* knife digital_ocean image destroy (options)
+  **Destroy your private images**
+
 * knife digital_ocean image list (options)
   **Lists available images (snapshots, backups, OS-images)**
 
@@ -291,6 +294,13 @@ ID       Distribution  Name                                      Slug
 7111343  Ubuntu        14.10 x64                                 ubuntu-14-10
 7111572  Ubuntu        14.10 x32                                 ubuntu-14-10
 7556046  CoreOS        CoreOS (alpha) 490.0.0                    coreos-alpha
+```
+
+#### Destroy Private Images
+
+```shell
+➜ knife digital_ocean image destroy -I 11112
+OK
 ```
 
 ### SSH keys
