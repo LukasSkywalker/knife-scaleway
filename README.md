@@ -265,7 +265,9 @@ ID       Distribution  Name                                      Slug
 7556046  CoreOS        CoreOS (alpha) 490.0.0                    coreos-alpha
 ```
 
-### SSH keys (previously uploaded via DigitalOcean's webfrontend)
+### SSH keys
+
+#### List SSH keys
 
 ```shell
 ➜ knife digital_ocean sshkey list
@@ -274,7 +276,74 @@ ID    Name    Fingerprint
 1235  Bob     b0:ca:40:36:7f:bd:b2:cf:f2:4f:2b:45:3c:28:41:5f
 1236  Chuck   g0:da:3e:15:7f:bd:b2:cf:f2:4f:3a:26:3c:34:52:2b
 1237  Craig   f0:fa:2b:22:7f:bd:b2:cf:f2:4f:4c:18:3c:66:54:1c
+
+#### Create a SSH key
 ```
+```shell
+➜ knife digital_ocean sshkey create -i ~/.ssh/id_rsa.pub -n Bob
+```
+
+#### Destroy a SSH key
+
+```
+```shell
+➜ knife digital_ocean sshkey destroy -i 1236
+OK
+```
+
+### DNS
+
+#### Create a domain
+
+```shell
+➜ knife digital_ocean domain create -N example.com -I 192.168.1.1
+```
+
+#### Destroy a domain
+
+```shell
+➜ knife digital_ocean domain destroy -D example.com
+OK
+```
+#### List domains
+
+```shell
+➜ knife digital_ocean domain list
+Name         TTL
+example.com  1800
+```
+
+#### Create a domain record
+
+```shell
+➜ knife digital_ocean domain create -D example.com -T cname -N www -a @
+```
+
+#### Destroy a domain record
+
+```shell
+➜ knife digital_ocean domain destroy -D example.com -R 3355880
+OK
+```
+#### List domain records
+
+```shell
+➜ knife digital_ocean domain record list -D example.com
+ID       Type  Name  Data
+3355877  NS    @     ns1.digitalocean.com
+3355878  NS    @     ns2.digitalocean.com
+3355879  NS    @     ns3.digitalocean.com
+3355880  A     @     192.168.1.1
+```
+
+### Account Info
+
+```shell
+➜ knife digital_ocean account info
+UUID                                      Email           Droplet Limit  Email Verified
+58e2e737d3b7407b042aa7f99f4da4229166f2a1  joe@example.com 10             true
+```
+
 
 ## Contributing
 
