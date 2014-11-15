@@ -40,8 +40,36 @@ This plugin provides the following sub-commands:
 * knife digital_ocean size list (options)
   **Lists the available server sizes**
 
+* knife digital_ocean domain create (options)
+  **Creates a domain name**
+
+* knife digital_ocean domain destroy (options)
+  **Destroys a domain name**
+
+* knife digital_ocean domain list
+  **Lists your domains added to Digital Ocean**
+
+* knife digital_ocean domain record create (options)
+  **Creates a record for an existing domain**
+
+* knife digital_ocean domain record destroy (options)
+  **Destroys a record for an existing domain**
+
+* knife digital_ocean domain record list (options)
+  **Lists records for an existing domain**
+
+* knife digital_ocean sshkey create (options)
+  **Creates a ssh key for use on digital ocean**
+
+* knife digital_ocean sshkey destroy (options)
+  **Destroys the ssh key**
+
 * knife digital_ocean sshkey list
   **Lists name + id of the uploaded known ssh keys**
+
+* knife digital_ocean account info
+  **Shows account information**
+
 
 
 ## Configuration
