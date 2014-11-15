@@ -209,10 +209,10 @@ class Chef
 
         server = client.droplets.create(droplet)
 
-        # if client.droplets.find(id: server.id).status != 'in-progress'
-        #   ui.error("Droplet could not be started #{server.inspect}")
-        #   exit 1
-        # end
+        if client.droplets.find(id: server.id).status != 'new'
+          ui.error("Droplet could not be started #{server.inspect}")
+          exit 1
+        end
 
         puts "Droplet creation for #{locate_config_value(:server_name)} started. Droplet-ID is #{server.id}"
 
