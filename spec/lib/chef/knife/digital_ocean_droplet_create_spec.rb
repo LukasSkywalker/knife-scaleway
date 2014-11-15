@@ -55,7 +55,8 @@ describe Chef::Knife::DigitalOceanDropletCreate do
   context 'bootstrapping for chef-server' do
     let(:custom_config) do
       {
-        bootstrap: true
+        bootstrap: true,
+        id: 123
       }
     end
 
@@ -63,6 +64,7 @@ describe Chef::Knife::DigitalOceanDropletCreate do
       let(:subject) do
         s = super()
         allow(s.client).to receive_message_chain(:droplets, :create).and_return mock_api_response(api_response)
+        allow(s.client).to receive_message_chain(:droplets, :find, :status).and_return 'new'
         allow(s).to receive(:ip_address_available).and_return '123.123.123.123'
         allow(s).to receive(:tcp_test_ssh).and_return true
         s
@@ -96,6 +98,7 @@ describe Chef::Knife::DigitalOceanDropletCreate do
       let(:subject) do
         s = super()
         allow(s.client).to receive_message_chain(:droplets, :create).and_return mock_api_response(api_response)
+        allow(s.client).to receive_message_chain(:droplets, :find, :status).and_return 'new'
         allow(s).to receive(:ip_address_available).and_return '123.123.123.123'
         allow(s).to receive(:tcp_test_ssh).and_return true
         s
@@ -135,6 +138,7 @@ describe Chef::Knife::DigitalOceanDropletCreate do
       let(:subject) do
         s = super()
         allow(s.client).to receive_message_chain(:droplets, :create).and_return mock_api_response(api_response)
+        allow(s.client).to receive_message_chain(:droplets, :find, :status).and_return 'new'
         allow(s).to receive(:ip_address_available).and_return '123.123.123.123'
         allow(s).to receive(:tcp_test_ssh).and_return true
         s
