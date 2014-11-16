@@ -13,22 +13,22 @@ describe Chef::Knife::DigitalOceanDropletList do
     allow(subject).to receive(:puts)
   end
 
-  describe "#run" do
-    it "should validate the Digital Ocean config keys exist" do
+  describe '#run' do
+    it 'should validate the Digital Ocean config keys exist' do
       VCR.use_cassette('droplet') do
         expect(subject).to receive(:validate!)
         subject.run
       end
     end
 
-    it "should output the column headers" do
+    it 'should output the column headers' do
       VCR.use_cassette('droplet') do
         expect(subject).to receive(:puts).with(/^ID\s+Name\s+Size\s+Region\s+IPv4\s+Image\s+Status\n/)
         subject.run
       end
     end
 
-    it "should output a list of the available Digital Ocean Droplets" do
+    it 'should output a list of the available Digital Ocean Droplets' do
       VCR.use_cassette('droplet') do
         expect(subject).to receive(:puts).with(/\b2257086\b/)
         subject.run

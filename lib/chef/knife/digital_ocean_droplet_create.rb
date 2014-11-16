@@ -206,7 +206,6 @@ class Chef
                                           ipv6: locate_config_value(:ipv6)
                                          )
 
-
         server = client.droplets.create(droplet)
 
         if client.droplets.find(id: server.id).status != 'new'

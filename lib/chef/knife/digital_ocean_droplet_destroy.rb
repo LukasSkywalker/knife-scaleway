@@ -29,7 +29,6 @@ class Chef
              long: '--all',
              description: '!WARNING! UNRECOVERABLE Destroy all droplets.'
 
-
       def run
         $stdout.sync = true
 
@@ -52,9 +51,7 @@ class Chef
         end
 
         if locate_config_value(:all)
-          droplets_ids = client.droplets.all.map do |droplet|
-            droplet.id
-          end
+          droplets_ids = client.droplets.all.map(&:id)
         end
 
         droplets_ids.each do |id|

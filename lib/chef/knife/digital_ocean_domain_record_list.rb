@@ -19,9 +19,9 @@ class Chef
       banner 'knife digital_ocean domain record list (options)'
 
       option :name,
-        :short       => '-D NAME',
-        :long        => '--domain-name NAME',
-        :description => 'The domain name'
+             short: '-D NAME',
+             long: '--domain-name NAME',
+             description: 'The domain name'
 
       def run
         $stdout.sync = true
@@ -29,7 +29,7 @@ class Chef
         validate!
 
         unless locate_config_value(:name)
-          ui.error("Domain Name cannot be empty. => -D <domain-name>")
+          ui.error('Domain Name cannot be empty. => -D <domain-name>')
           exit 1
         end
 
@@ -47,7 +47,6 @@ class Chef
           domains_list << domain.name.to_s
           domains_list << domain.data.to_s
         end
-
 
         puts ui.list(domains_list, :uneven_columns_across, 4)
       end

@@ -15,22 +15,22 @@ describe Chef::Knife::DigitalOceanRegionList do
     allow(subject).to receive(:puts)
   end
 
-  describe "#run" do
-    it "should validate the Digital Ocean config keys exist" do
+  describe '#run' do
+    it 'should validate the Digital Ocean config keys exist' do
       VCR.use_cassette('region') do
         expect(subject).to receive(:validate!)
         subject.run
       end
     end
 
-    it "should output the column headers" do
+    it 'should output the column headers' do
       VCR.use_cassette('region') do
         expect(subject).to receive(:puts).with(/^Name\s+Slug\n/)
         subject.run
       end
     end
 
-    it "should output a list of the available Digital Ocean flavors" do
+    it 'should output a list of the available Digital Ocean flavors' do
       VCR.use_cassette('region') do
         expect(subject).to receive(:puts).with(/\bNew York 1\b/)
         subject.run

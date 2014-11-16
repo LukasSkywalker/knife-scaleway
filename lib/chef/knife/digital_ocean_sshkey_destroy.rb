@@ -20,10 +20,10 @@ class Chef
 
       banner 'knife digital_ocean sshkey destroy (options)'
 
-     option :id,
-        :short       => '-i ID',
-        :long        => '--sshkey-id ID',
-        :description => 'The ssh key id'
+      option :id,
+             short: '-i ID',
+             long: '--sshkey-id ID',
+             description: 'The ssh key id'
 
       def run
         $stdout.sync = true
@@ -31,7 +31,7 @@ class Chef
         validate!
 
         unless locate_config_value(:id)
-          ui.error("SSH key id cannot be empty. => -i <id>")
+          ui.error('SSH key id cannot be empty. => -i <id>')
           exit 1
         end
 

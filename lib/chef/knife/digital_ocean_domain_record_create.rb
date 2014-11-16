@@ -20,25 +20,25 @@ class Chef
 
       banner 'knife digital_ocean domain record create (options)'
 
-     option :domain,
-        :short       => '-D NAME',
-        :long        => '--domain-id NAME',
-        :description => 'The domain name'
+      option :domain,
+             short: '-D NAME',
+             long: '--domain-id NAME',
+             description: 'The domain name'
 
       option :type,
-        :short       => '-T RECORD TYPE',
-        :long        => '--type RECORD TYPE',
-        :description => 'The type of record'
+             short: '-T RECORD TYPE',
+             long: '--type RECORD TYPE',
+             description: 'The type of record'
 
       option :name,
-        :short       => '-N RECORD NAME',
-        :long        => '--name RECORD NAME',
-        :description => 'The record name'
+             short: '-N RECORD NAME',
+             long: '--name RECORD NAME',
+             description: 'The record name'
 
       option :data,
-        :short       => '-a DATA',
-        :long        => '--data DATA',
-        :description => 'The record data'
+             short: '-a DATA',
+             long: '--data DATA',
+             description: 'The record data'
 
       def run
         $stdout.sync = true
@@ -46,22 +46,22 @@ class Chef
         validate!
 
         unless locate_config_value(:domain)
-          ui.error("Domain cannot be empty. => -D <domain-id>")
+          ui.error('Domain cannot be empty. => -D <domain-id>')
           exit 1
         end
 
         unless locate_config_value(:type)
-          ui.error("Record type cannot be empty. => -T <record-type>")
+          ui.error('Record type cannot be empty. => -T <record-type>')
           exit 1
         end
 
         unless locate_config_value(:name)
-          ui.error("Record name cannot be empty. => -N <record-name>")
+          ui.error('Record name cannot be empty. => -N <record-name>')
           exit 1
         end
 
         unless locate_config_value(:data)
-          ui.error("Record data cannot be empty. => -d <data>")
+          ui.error('Record data cannot be empty. => -d <data>')
           exit 1
         end
 

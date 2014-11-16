@@ -38,7 +38,6 @@ class Chef
 
         puts ui.list(domains_list, :uneven_columns_across, 2)
       end
-
     end
   end
 end

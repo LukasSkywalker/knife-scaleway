@@ -39,7 +39,7 @@ end
 RSpec.configure do |c|
   c.before(:each) do
     Chef::Config.reset
-    Chef::Config[:knife] ={}
+    Chef::Config[:knife] = {}
   end
 end
 
@@ -48,8 +48,8 @@ Coveralls.wear!
 # Cleverly borrowed from knife-rackspace, thank you!
 def filter_headers(interaction, pattern, placeholder)
   [interaction.request.headers, interaction.response.headers].each do | headers |
-    sensitive_tokens = headers.select{|key| key.to_s.match(pattern)}
-    sensitive_tokens.each do |key, value|
+    sensitive_tokens = headers.select { |key| key.to_s.match(pattern) }
+    sensitive_tokens.each do |key, _value|
       headers[key] = placeholder
     end
   end

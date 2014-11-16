@@ -14,22 +14,22 @@ describe Chef::Knife::DigitalOceanSshkeyCreate do
     subject.config[:public_key] = 'spec/fixtures/keys/id_rsa.pub'
   end
 
-  describe "#run" do
-    it "should validate the Digital Ocean config keys exist" do
+  describe '#run' do
+    it 'should validate the Digital Ocean config keys exist' do
       VCR.use_cassette('sshkey_create') do
         expect(subject).to receive(:validate!)
         subject.run
       end
     end
 
-    it "should create the domain and exit with 0" do
+    it 'should create the domain and exit with 0' do
       VCR.use_cassette('sshkey_create') do
         allow(subject.client).to receive_message_chain(:ssh_keys, :create)
         expect { subject.run }.not_to raise_error
       end
     end
 
-    it "should return OK" do
+    it 'should return OK' do
       VCR.use_cassette('sshkey_create') do
         expect(subject.run).to eq 'OK'
       end

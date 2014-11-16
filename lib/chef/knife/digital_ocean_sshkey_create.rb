@@ -20,15 +20,15 @@ class Chef
 
       banner 'knife digital_ocean sshkey create (options)'
 
-     option :name,
-        :short       => '-n NAME',
-        :long        => '--sshkey-name NAME',
-        :description => 'The ssh key name'
+      option :name,
+             short: '-n NAME',
+             long: '--sshkey-name NAME',
+             description: 'The ssh key name'
 
-     option :public_key,
-        :short       => '-i PUBLIC KEY',
-        :long        => '--public-key PUBLIC KEY',
-        :description => 'File that contains your public ssh key'
+      option :public_key,
+             short: '-i PUBLIC KEY',
+             long: '--public-key PUBLIC KEY',
+             description: 'File that contains your public ssh key'
 
       def run
         $stdout.sync = true
@@ -36,12 +36,12 @@ class Chef
         validate!
 
         unless locate_config_value(:name)
-          ui.error("SSH Key name cannot be empty. => -N <sshkey-name>")
+          ui.error('SSH Key name cannot be empty. => -N <sshkey-name>')
           exit 1
         end
 
         unless locate_config_value(:public_key)
-          ui.error("SSH key file needs to be specified. => -I <public_key>")
+          ui.error('SSH key file needs to be specified. => -I <public_key>')
           exit 1
         end
 

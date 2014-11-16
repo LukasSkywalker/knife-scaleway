@@ -15,22 +15,22 @@ describe Chef::Knife::DigitalOceanSizeList do
     allow(subject).to receive(:puts)
   end
 
-  describe "#run" do
-    it "should validate the Digital Ocean config keys exist" do
+  describe '#run' do
+    it 'should validate the Digital Ocean config keys exist' do
       VCR.use_cassette('sizes') do
         expect(subject).to receive(:validate!)
         subject.run
       end
     end
 
-    it "should output the column headers" do
+    it 'should output the column headers' do
       VCR.use_cassette('sizes') do
         expect(subject).to receive(:puts).with(/^Slug \n/)
         subject.run
       end
     end
 
-    it "should output a list of the available Digital Ocean sizes" do
+    it 'should output a list of the available Digital Ocean sizes' do
       VCR.use_cassette('sizes') do
         expect(subject).to receive(:puts).with(/\b512mb\b/)
         subject.run

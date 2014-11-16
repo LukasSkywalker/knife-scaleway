@@ -20,9 +20,9 @@ class Chef
       banner 'knife digital_ocean image destroy (options)'
 
       option :id,
-        :short       => '-I ID',
-        :long        => '--image-id ID',
-        :description => 'The image ID'
+             short: '-I ID',
+             long: '--image-id ID',
+             description: 'The image ID'
 
       def run
         $stdout.sync = true
@@ -30,7 +30,7 @@ class Chef
         validate!
 
         unless locate_config_value(:id)
-          ui.error("Image ID cannot be empty. => -I <image-id>")
+          ui.error('Image ID cannot be empty. => -I <image-id>')
           exit 1
         end
 

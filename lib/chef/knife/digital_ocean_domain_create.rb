@@ -21,14 +21,14 @@ class Chef
       banner 'knife digital_ocean domain create (options)'
 
       option :name,
-        :short       => '-N NAME',
-        :long        => '--name NAME',
-        :description => 'The domain name'
+             short: '-N NAME',
+             long: '--name NAME',
+             description: 'The domain name'
 
       option :ip_address,
-        :short       => '-I IP Address',
-        :long        => '--ip-address address',
-        :description => 'The ip address'
+             short: '-I IP Address',
+             long: '--ip-address address',
+             description: 'The ip address'
 
       def run
         $stdout.sync = true
@@ -36,12 +36,12 @@ class Chef
         validate!
 
         unless locate_config_value(:name)
-          ui.error("Name cannot be empty. => -N <domain-name>")
+          ui.error('Name cannot be empty. => -N <domain-name>')
           exit 1
         end
 
         unless locate_config_value(:ip_address)
-          ui.error("IP Address cannot be empty. => -I <ip-address>")
+          ui.error('IP Address cannot be empty. => -I <ip-address>')
           exit 1
         end
 
@@ -49,7 +49,6 @@ class Chef
         result = client.domains.create domain
         ui.error JSON.parse(result)['message'] rescue 'OK'
       end
-
     end
   end
 end
