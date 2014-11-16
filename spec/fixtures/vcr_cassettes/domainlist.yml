@@ -25,16 +25,14 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Tue, 11 Nov 2014 02:03:24 GMT
+      - Sun, 16 Nov 2014 00:35:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
-      Set-Cookie:
-      - __cfduid=da09923cc0418e749f91c7994a5bd60711415671404660; expires=Mon, 23-Dec-2019
-        23:50:00 GMT; path=/; domain=.digitalocean.com; HttpOnly
+      Set-Cookie: _COOKIE_ID_
       Status:
       - 200 OK
       X-Frame-Options:
@@ -46,24 +44,24 @@ http_interactions:
       Ratelimit-Limit:
       - '1200'
       Ratelimit-Remaining:
-      - '1199'
+      - '1179'
       Ratelimit-Reset:
-      - '1415675004'
+      - '1416100824'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 50c94a8d-a8aa-4a97-9443-65b5d36ef5ba
+      - 08d6e8c8-33d9-46bb-aa70-b5524ac532c0
       X-Runtime:
-      - '0.097458'
+      - '0.078832'
       Cf-Ray:
-      - 1876e9c7159c0ec7-EWR
+      - 189f9c9059ad0ecd-EWR
     body:
       encoding: UTF-8
       string: '{"domains":[{"name":"gregf.org","ttl":1800,"zone_file":"$ORIGIN gregf.org.\n$TTL
-        1800\ngregf.org. IN SOA ns1.digitalocean.com. hostmaster.gregf.org. 1415640503
+        1800\ngregf.org. IN SOA ns1.digitalocean.com. hostmaster.gregf.org. 1416010116
         10800 3600 604800 1800\ngregf.org. 1800 IN NS ns1.digitalocean.com.\ngregf.org.
         1800 IN NS ns2.digitalocean.com.\ngregf.org. 1800 IN NS ns3.digitalocean.com.\ngregf.org.
         1800 IN A 162.243.243.162\n"}],"links":{},"meta":{"total":1}}'
     http_version: 
-  recorded_at: Tue, 11 Nov 2014 02:03:24 GMT
+  recorded_at: Sun, 16 Nov 2014 00:35:58 GMT
 recorded_with: VCR 2.9.3

@@ -25,16 +25,14 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Mon, 10 Nov 2014 02:04:36 GMT
+      - Sun, 16 Nov 2014 00:36:34 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
-      Set-Cookie:
-      - __cfduid=d4428f6ec41d83ee8c8696f777e2b3b601415585076141; expires=Mon, 23-Dec-2019
-        23:50:00 GMT; path=/; domain=.digitalocean.com; HttpOnly
+      Set-Cookie: _COOKIE_ID_
       Status:
       - 200 OK
       X-Frame-Options:
@@ -46,22 +44,22 @@ http_interactions:
       Ratelimit-Limit:
       - '1200'
       Ratelimit-Remaining:
-      - '1185'
+      - '1171'
       Ratelimit-Reset:
-      - '1415584945'
+      - '1416100824'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 40c86c6c-4d40-46b2-83c6-3cba42230153
+      - c290e99f-9777-4234-8e5a-7865af8786fb
       X-Runtime:
-      - '0.032191'
+      - '0.033449'
       Cf-Ray:
-      - 186eae25ebeb0ecd-EWR
+      - 189f9d712c500ecd-EWR
     body:
       encoding: UTF-8
       string: '{"ssh_keys":[{"id":42795,"fingerprint":"e0:1a:1b:30:7f:bd:b2:cf:d2:3f:3b:35:07:77:46:1c","public_key":"ssh-rsa
         AAAAB3NzaC1yc2EAAAADAQABAAABAQDAu9RilgAABwriIMucsw8WqjVorUaIkLB/ge7qs3nrpCf+5x7Nb7LDeg7IYSVVSBkQ6soxcCg+7h45yOykQieXKuzHENCMQ4rrY0n3YPaADf+I4cIIFu3Wf54jELdkIHIo7CR0XOTAjgWmDFhKYDeQayE7TWkYEfV2JN+9W7MdwSd35Eq7eFrZ4iU/kv7ipxy4O6Se/7yoFynvPwr10cffqfkQz2+Vt/O/iUU0dXMTzSjQQteREu2JzfkOHtvJ2xT9KMW8d/I1rFuVHRfXup3m3tgi+aPFwplGfZLsMJY7EFCQdttmEcvlje065l3SnQXNrkX/Uzh3Sm1Z1HSUSyAR
         gregf@jerk","name":"gregf"}],"links":{},"meta":{"total":1}}'
     http_version: 
-  recorded_at: Mon, 10 Nov 2014 02:04:36 GMT
+  recorded_at: Sun, 16 Nov 2014 00:36:35 GMT
 recorded_with: VCR 2.9.3

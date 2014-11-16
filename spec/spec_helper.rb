@@ -28,6 +28,10 @@ VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   c.hook_into :webmock
   c.filter_sensitive_data('FAKE_ACCESS_TOKEN') { ENV['DIGITALOCEAN_ACCESS_TOKEN'] }
+
+  c.before_record do |interaction|
+    filter_headers(interaction, 'Set-Cookie', '_COOKIE_ID_')
+  end
 end
 
 # Clear config between each example
@@ -41,3 +45,12 @@ end
 
 Coveralls.wear!
 
+# Cleverly borrowed from knife-rackspace, thank you!
+def filter_headers(interaction, pattern, placeholder)
+  [interaction.request.headers, interaction.response.headers].each do | headers |
+    sensitive_tokens = headers.select{|key| key.to_s.match(pattern)}
+    sensitive_tokens.each do |key, value|
+      headers[key] = placeholder
+    end
+  end
+end

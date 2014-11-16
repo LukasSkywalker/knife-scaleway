@@ -25,16 +25,14 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Mon, 10 Nov 2014 02:00:37 GMT
+      - Sun, 16 Nov 2014 00:36:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
-      Set-Cookie:
-      - __cfduid=d8994d408033b66f3179aa41ee3dc9ba41415584837157; expires=Mon, 23-Dec-2019
-        23:50:00 GMT; path=/; domain=.digitalocean.com; HttpOnly
+      Set-Cookie: _COOKIE_ID_
       Status:
       - 200 OK
       X-Frame-Options:
@@ -46,17 +44,17 @@ http_interactions:
       Ratelimit-Limit:
       - '1200'
       Ratelimit-Remaining:
-      - '1185'
+      - '1173'
       Ratelimit-Reset:
-      - '1415584945'
+      - '1416100824'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - b5c82235-3b53-451a-acf1-ba2e15076ee0
+      - a9c33e06-a3a7-43f9-b849-41399fb98a8a
       X-Runtime:
-      - '0.049556'
+      - '0.070984'
       Cf-Ray:
-      - 186ea85036a60ec7-EWR
+      - 189f9d6acc0d0ecd-EWR
     body:
       encoding: UTF-8
       string: '{"regions":[{"name":"New York 1","slug":"nyc1","sizes":["32gb","16gb","2gb","1gb","4gb","8gb","512mb","64gb","48gb"],"features":["virtio","backups"],"available":true},{"name":"Amsterdam
@@ -69,5 +67,5 @@ http_interactions:
         York 3","slug":"nyc3","sizes":["32gb","16gb","2gb","1gb","4gb","8gb","512mb","64gb","48gb"],"features":["virtio","private_networking","backups","ipv6","metadata"],"available":true},{"name":"Amsterdam
         3","slug":"ams3","sizes":["32gb","16gb","2gb","1gb","4gb","8gb","512mb","64gb","48gb"],"features":["virtio","private_networking","backups","ipv6","metadata"],"available":true}],"links":{},"meta":{"total":9}}'
     http_version: 
-  recorded_at: Mon, 10 Nov 2014 02:00:37 GMT
+  recorded_at: Sun, 16 Nov 2014 00:36:33 GMT
 recorded_with: VCR 2.9.3

@@ -31,7 +31,7 @@ describe Chef::Knife::DigitalOceanImageList do
 
     it "should output a list of the available Digital Ocean Images" do
       VCR.use_cassette('image') do
-        expect(subject).to receive(:puts).with(/\b7753256\s+Debian\s+test-snapshot\s+\n/)
+        expect(subject).to receive(:puts).with(/\b7992108\s+Debian\s+Debian test\s+\n/)
         subject.run
       end
     end

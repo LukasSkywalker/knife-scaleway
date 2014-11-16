@@ -25,16 +25,14 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Tue, 11 Nov 2014 03:48:34 GMT
+      - Sun, 16 Nov 2014 00:35:57 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
-      Set-Cookie:
-      - __cfduid=d4ff495c6a4297ba6a268c69722a7928c1415677714886; expires=Mon, 23-Dec-2019
-        23:50:00 GMT; path=/; domain=.digitalocean.com; HttpOnly
+      Set-Cookie: _COOKIE_ID_
       Status:
       - 200 OK
       X-Frame-Options:
@@ -48,18 +46,18 @@ http_interactions:
       Ratelimit-Remaining:
       - '1180'
       Ratelimit-Reset:
-      - '1415677540'
+      - '1416100824'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 8e7ba67a-eeca-432d-9a5f-951d3956a67c
+      - 0b0ea2dd-4632-4a9e-a799-cf8f5369ee8a
       X-Runtime:
-      - '0.022150'
+      - '0.023825'
       Cf-Ray:
-      - 187783d60a990ecd-EWR
+      - 189f9c8d006b0ec7-EWR
     body:
       encoding: UTF-8
       string: '{"account":{"droplet_limit":20,"email":"greg@gregf.org","uuid":"49e2e737d3a7407a042bb7e88f4da8629166f2b9","email_verified":true}}'
     http_version: 
-  recorded_at: Tue, 11 Nov 2014 03:48:34 GMT
+  recorded_at: Sun, 16 Nov 2014 00:35:57 GMT
 recorded_with: VCR 2.9.3
