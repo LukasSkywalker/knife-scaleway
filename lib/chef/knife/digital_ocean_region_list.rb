@@ -31,7 +31,7 @@ class Chef
 
         regions = client.regions.all
 
-        regions.each do |region|
+        regions.sort_by(&:name).each do |region|
           region_list << region.name
           region_list << region.slug
         end

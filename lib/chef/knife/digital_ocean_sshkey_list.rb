@@ -32,7 +32,7 @@ class Chef
 
         sshkeys = client.ssh_keys.all
 
-        sshkeys.each do |sshkey|
+        sshkeys.sort_by(&:name).each do |sshkey|
           sshkey_list << sshkey.id.to_s
           sshkey_list << sshkey.name.to_s
           sshkey_list << sshkey.fingerprint.to_s
