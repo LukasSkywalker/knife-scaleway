@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.digitalocean.com/v2/domains
+    uri: https://api.digitalocean.com/v2/domains/kitchen-digital.org/records
     body:
       encoding: US-ASCII
       string: ''
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Sun, 16 Nov 2014 00:35:58 GMT
+      - Sun, 16 Nov 2014 01:22:40 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -44,24 +44,20 @@ http_interactions:
       Ratelimit-Limit:
       - '1200'
       Ratelimit-Remaining:
-      - '1179'
+      - '1168'
       Ratelimit-Reset:
-      - '1416100824'
+      - '1416100895'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 08d6e8c8-33d9-46bb-aa70-b5524ac532c0
+      - 0b474c88-a6e4-4e5a-a122-2aebcdfa0444
       X-Runtime:
-      - '0.078832'
+      - '0.112263'
       Cf-Ray:
-      - 189f9c9059ad0ecd-EWR
+      - 189fe0f81f070ecd-EWR
     body:
       encoding: UTF-8
-      string: '{"domains":[{"name":"gregf.org","ttl":1800,"zone_file":"$ORIGIN gregf.org.\n$TTL
-        1800\ngregf.org. IN SOA ns1.digitalocean.com. hostmaster.gregf.org. 1416010116
-        10800 3600 604800 1800\ngregf.org. 1800 IN NS ns1.digitalocean.com.\ngregf.org.
-        1800 IN NS ns2.digitalocean.com.\ngregf.org. 1800 IN NS ns3.digitalocean.com.\ngregf.org.
-        1800 IN A 162.243.243.162\n"}],"links":{},"meta":{"total":1}}'
+      string: '{"domain_records":[{"id":3364432,"type":"NS","name":"@","data":"ns1.digitalocean.com","priority":null,"port":null,"weight":null},{"id":3364433,"type":"NS","name":"@","data":"ns2.digitalocean.com","priority":null,"port":null,"weight":null},{"id":3364434,"type":"NS","name":"@","data":"ns3.digitalocean.com","priority":null,"port":null,"weight":null},{"id":3364435,"type":"A","name":"@","data":"192.168.1.1","priority":null,"port":null,"weight":null},{"id":3364507,"type":"A","name":"www","data":"192.168.1.1","priority":null,"port":null,"weight":null}],"links":{},"meta":{"total":5}}'
     http_version: 
-  recorded_at: Sun, 16 Nov 2014 00:35:58 GMT
+  recorded_at: Sun, 16 Nov 2014 01:22:40 GMT
 recorded_with: VCR 2.9.3

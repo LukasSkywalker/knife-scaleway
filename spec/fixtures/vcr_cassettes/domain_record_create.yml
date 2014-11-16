@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.digitalocean.com/v2/domains/kitchen-digital.org/records
+    body:
+      encoding: UTF-8
+      string: '{"type":"A","name":"www","data":"192.168.1.1","priority":null,"port":null,"weight":null}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer FAKE_ACCESS_TOKEN
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Sun, 16 Nov 2014 01:08:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie: _COOKIE_ID_
+      Status:
+      - 201 Created
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Ratelimit-Limit:
+      - '1200'
+      Ratelimit-Remaining:
+      - '1167'
+      Ratelimit-Reset:
+      - '1416100824'
+      Etag:
+      - '"9a031f3e3cd28531481c83660480748b"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - f7e7d8ff-50c8-49f2-8b6c-dfb96892a1d9
+      X-Runtime:
+      - '0.114278'
+      Cf-Ray:
+      - 189fcce48a5d0ec7-EWR
+    body:
+      encoding: UTF-8
+      string: '{"domain_record":{"id":3364507,"type":"A","name":"www","data":"192.168.1.1","priority":null,"port":null,"weight":null}}'
+    http_version: 
+  recorded_at: Sun, 16 Nov 2014 01:08:57 GMT
+recorded_with: VCR 2.9.3

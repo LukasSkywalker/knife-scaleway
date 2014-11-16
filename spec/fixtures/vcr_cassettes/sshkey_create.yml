@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.digitalocean.com/v2/account/keys
+    body:
+      encoding: UTF-8
+      string: '{"name":"test-key","public_key":"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDb2qoPVE2V/w5QZPC6MdPnnJVg8o9w4DNk7hT2rGAM7cyIOL4tqmmcfABPGCEpxen048aXhabpq2BgQXWP9WJw8/FUiqjV1Aohqyev5nl0v00f9xlFRfCP/hatNsn8EvnUL32ijJI/vnKaVhXF6cPz9mYH8DumKE9SxAXC9m6ALu/JJHPUmRqONTUwIASkdxiuBJsjIKei4jU0H1nb8dc/ar1f5KXGgnMTikMnoDIuZosv8+I8r1R2gTIx1HmdJaK9IJx3KbaEHoCasTAK5W2PiP/vkGKQlAjolakE6CVapgDOvkKH7YfT0UBB9JGsGMhEzUphZ6kddSBYLscpKhAx
+        gregf@betsy\n"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer FAKE_ACCESS_TOKEN
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Sun, 16 Nov 2014 01:17:02 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie: _COOKIE_ID_
+      Status:
+      - 201 Created
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Ratelimit-Limit:
+      - '1200'
+      Ratelimit-Remaining:
+      - '1166'
+      Ratelimit-Reset:
+      - '1416100824'
+      Etag:
+      - '"46d1e947b53d0a0f7522a7061bbfc12e"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 7ed61dab-87e5-447f-b228-30ec13868fc6
+      X-Runtime:
+      - '0.076178'
+      Cf-Ray:
+      - 189fd8b9cb690ecd-EWR
+    body:
+      encoding: UTF-8
+      string: '{"ssh_key":{"id":513519,"fingerprint":"42:98:44:fc:b9:91:ae:92:8f:5c:e4:1a:1c:92:cb:94","public_key":"ssh-rsa
+        AAAAB3NzaC1yc2EAAAADAQABAAABAQDb2qoPVE2V/w5QZPC6MdPnnJVg8o9w4DNk7hT2rGAM7cyIOL4tqmmcfABPGCEpxen048aXhabpq2BgQXWP9WJw8/FUiqjV1Aohqyev5nl0v00f9xlFRfCP/hatNsn8EvnUL32ijJI/vnKaVhXF6cPz9mYH8DumKE9SxAXC9m6ALu/JJHPUmRqONTUwIASkdxiuBJsjIKei4jU0H1nb8dc/ar1f5KXGgnMTikMnoDIuZosv8+I8r1R2gTIx1HmdJaK9IJx3KbaEHoCasTAK5W2PiP/vkGKQlAjolakE6CVapgDOvkKH7YfT0UBB9JGsGMhEzUphZ6kddSBYLscpKhAx
+        gregf@betsy","name":"test-key"}}'
+    http_version: 
+  recorded_at: Sun, 16 Nov 2014 01:17:02 GMT
+recorded_with: VCR 2.9.3
