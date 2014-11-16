@@ -31,7 +31,7 @@ class Chef
 
         domains = client.domains.all
 
-        domains.each do |domain|
+        domains.sort_by(&:name).each do |domain|
           domains_list << domain.name.to_s
           domains_list << domain.ttl.to_s
         end
