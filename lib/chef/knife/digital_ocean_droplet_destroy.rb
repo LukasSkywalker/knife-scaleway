@@ -55,9 +55,9 @@ class Chef
         end
 
         droplets_ids.each do |id|
-          puts "Delete droplet with id: #{id}"
+          ui.info "Delete droplet with id: #{id}"
           result = client.droplets.delete(id: id)
-          puts JSON.parse(result)['message'] rescue 'OK'
+          ui.info 'OK' if result == true or ui.error JSON.parse(result)['message']
         end
       end
     end

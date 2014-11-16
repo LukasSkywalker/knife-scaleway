@@ -31,7 +31,8 @@ describe Chef::Knife::DigitalOceanDomainCreate do
 
     it 'should return OK' do
       VCR.use_cassette('domain_create') do
-        expect(subject.run).to eq 'OK'
+        expect($stdout).to receive(:puts).with('OK')
+        expect(subject.run).to eq nil
       end
     end
   end

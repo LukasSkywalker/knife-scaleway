@@ -36,7 +36,7 @@ class Chef
         end
 
         result = client.domains.delete(name: locate_config_value(:domain))
-        ui.error JSON.parse(result)['message'] rescue 'OK'
+        ui.info 'OK' if result == true or ui.error JSON.parse(result)['message']
       end
     end
   end

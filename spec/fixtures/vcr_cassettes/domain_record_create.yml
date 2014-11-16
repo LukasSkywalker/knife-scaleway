@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Sun, 16 Nov 2014 01:08:57 GMT
+      - Sun, 16 Nov 2014 03:56:18 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -44,22 +44,22 @@ http_interactions:
       Ratelimit-Limit:
       - '1200'
       Ratelimit-Remaining:
-      - '1167'
+      - '1168'
       Ratelimit-Reset:
-      - '1416100824'
+      - '1416110320'
       Etag:
-      - '"9a031f3e3cd28531481c83660480748b"'
+      - '"4b1f4071506a80f05aefbc7bd95dcda1"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - f7e7d8ff-50c8-49f2-8b6c-dfb96892a1d9
+      - 0cfc045c-ddea-4c9e-824b-11ef8666790b
       X-Runtime:
-      - '0.114278'
+      - '0.139235'
       Cf-Ray:
-      - 189fcce48a5d0ec7-EWR
+      - 18a0c20905060ecd-EWR
     body:
       encoding: UTF-8
-      string: '{"domain_record":{"id":3364507,"type":"A","name":"www","data":"192.168.1.1","priority":null,"port":null,"weight":null}}'
+      string: '{"domain_record":{"id":3365311,"type":"A","name":"www","data":"192.168.1.1","priority":null,"port":null,"weight":null}}'
     http_version: 
-  recorded_at: Sun, 16 Nov 2014 01:08:57 GMT
+  recorded_at: Sun, 16 Nov 2014 03:56:18 GMT
 recorded_with: VCR 2.9.3

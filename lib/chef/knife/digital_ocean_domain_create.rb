@@ -47,7 +47,7 @@ class Chef
 
         domain = DropletKit::Domain.new ip_address: locate_config_value(:ip_address), name: locate_config_value(:name)
         result = client.domains.create domain
-        ui.error JSON.parse(result)['message'] rescue 'OK'
+        ui.info 'OK' if result.class == DropletKit::Domain or ui.error JSON.parse(result)['message']
       end
     end
   end
