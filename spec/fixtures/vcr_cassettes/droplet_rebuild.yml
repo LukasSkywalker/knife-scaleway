@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.digitalocean.com/v2/droplets/3193966/actions
+    body:
+      encoding: UTF-8
+      string: '{"type":"rebuild","image":"8073571"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer FAKE_ACCESS_TOKEN
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Tue, 18 Nov 2014 03:22:25 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie: _COOKIE_ID_
+      Status:
+      - 201 Created
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Ratelimit-Limit:
+      - '1200'
+      Ratelimit-Remaining:
+      - '1197'
+      Ratelimit-Reset:
+      - '1416284457'
+      Etag:
+      - '"ea08394e50630400950fc136b07a7c45"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 46a6bdb7-12e5-4670-ae26-95599119689c
+      X-Runtime:
+      - '0.124437'
+      Cf-Ray:
+      - 18b10b27665a0ecd-EWR
+    body:
+      encoding: UTF-8
+      string: '{"action":{"id":37042642,"status":"in-progress","type":"rebuild","started_at":"2014-11-18T03:22:25Z","completed_at":null,"resource_id":3193966,"resource_type":"droplet","region":"nyc3"}}'
+    http_version: 
+  recorded_at: Tue, 18 Nov 2014 03:22:25 GMT
+recorded_with: VCR 2.9.3

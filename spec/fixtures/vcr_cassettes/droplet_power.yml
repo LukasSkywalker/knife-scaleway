@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.digitalocean.com/v2/droplets/3195306/actions
+    body:
+      encoding: UTF-8
+      string: '{"type":"power_off"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer FAKE_ACCESS_TOKEN
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Tue, 18 Nov 2014 03:33:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie: _COOKIE_ID_
+      Status:
+      - 201 Created
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Ratelimit-Limit:
+      - '1200'
+      Ratelimit-Remaining:
+      - '1188'
+      Ratelimit-Reset:
+      - '1416284457'
+      Etag:
+      - '"1bc3da4be4525c3ccefeb5adf66857cf"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 32dc4a00-abd4-4d8b-96f1-2b491f05bc95
+      X-Runtime:
+      - '0.120867'
+      Cf-Ray:
+      - 18b11bad05190ecd-EWR
+    body:
+      encoding: UTF-8
+      string: '{"action":{"id":37043145,"status":"in-progress","type":"power_off","started_at":"2014-11-18T03:33:42Z","completed_at":null,"resource_id":3195306,"resource_type":"droplet","region":"nyc1"}}'
+    http_version: 
+  recorded_at: Tue, 18 Nov 2014 03:33:42 GMT
+recorded_with: VCR 2.9.3
