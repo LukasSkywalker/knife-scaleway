@@ -31,6 +31,27 @@ This plugin provides the following sub-commands:
 * knife digital_ocean droplet list (options)
   **Lists currently running virtual machines**
 
+* knife digital_ocean droplet power (options)
+  **Turn a droplet On/Off**
+
+* knife digital_ocean droplet powercycle (options)
+  **Powercycle a Droplet**
+
+* knife digital_ocean droplet reboot (options)
+  **Reboot a Droplet**
+
+* knife digital_ocean droplet snapshot (options)
+  **Take a snapshot of a Droplet**
+
+* knife digital_ocean droplet rename (options)
+  **Rename a Droplet**
+
+* knife digital_ocean droplet rebuild (options)
+  **Rebuild a Droplet**
+
+* knife digital_ocean droplet resize (options)
+  **Resize a Droplet**
+
 * knife digital_ocean image destroy (options)
   **Destroy your private images**
 
