@@ -1,3 +1,18 @@
+2.3.0 / Unreleased
+
+* New subcommands
+  - knife digital_ocean droplet power
+  - knife digital_ocean droplet powercycle
+  - knife digital_ocean droplet reboot
+  - knife digital_ocean droplet snapshot
+  - knife digital_ocean droplet rename
+  - knife digital_ocean droplet rebuild
+  - knife digital_ocean droplet resize
+* Removed hacky use of rescue
+* Use sort_by in list commands, where it makes sense
+* Add --bootstrap-version to examples, thanks to [@brandoncc ](https://github.com/brandoncc) [PR #54]
+* Fix status check during droplet create
+
 ## 2.2.0 / 2014-11-14
 
 * Domain support, thanks to [@nozpheratu](https://github.com/nozpheratu) [PR #32]
