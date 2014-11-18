@@ -14,4 +14,10 @@ RuboCop::RakeTask.new(:rubocop) do |task|
   task.patterns = ['lib/**/*.rb']
 end
 
+desc 'Display LOC stats'
+task :loc do
+  puts "\n## LOC Stats"
+  sh 'countloc -r lib/chef/knife'
+end
+
 task default: :spec

@@ -5,6 +5,8 @@ require 'vcr'
 require 'rspec'
 require 'chef/knife'
 require 'coveralls'
+require 'simplecov'
+require 'simplecov-console'
 
 require 'chef/knife/digital_ocean_droplet_create'
 require 'chef/knife/digital_ocean_droplet_destroy'
@@ -50,7 +52,12 @@ RSpec.configure do |c|
   end
 end
 
-Coveralls.wear!
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  Coveralls::SimpleCov::Formatter,
+  SimpleCov::Formatter::HTMLFormatter,
+  SimpleCov::Formatter::Console
+]
+SimpleCov.start
 
 # Cleverly borrowed from knife-rackspace, thank you!
 def filter_headers(interaction, pattern, placeholder)

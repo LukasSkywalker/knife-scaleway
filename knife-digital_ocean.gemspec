@@ -25,6 +25,10 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'guard', '~> 2.8'
   gem.add_development_dependency 'guard-rspec', '~> 4.3'
   gem.add_development_dependency 'coveralls'
+  gem.add_development_dependency 'countloc'
+  gem.add_development_dependency 'simplecov'
+  gem.add_development_dependency 'simplecov-console'
+
 
   gem.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
