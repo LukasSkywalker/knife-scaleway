@@ -46,7 +46,7 @@ class Chef
           sleep 3
           print('.')
 
-          break if client.droplets.find(id: locate_config_value(:id)).status != 'in-progress'
+          break if client.droplets.find(id: locate_config_value(:id)).status == 'active'
         end
         ui.info 'OK'
       end
