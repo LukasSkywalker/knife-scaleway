@@ -59,14 +59,7 @@ class Chef
           exit 1
         end
 
-        print 'Waiting '
-        while result.status == 'in-progress' do
-          sleep 3
-          print('.')
-
-          break if client.droplets.find(id: locate_config_value(:id)).status != 'in-progress'
-        end
-        ui.info 'OK'
+        wait_for_status(result)
       end
     end
   end

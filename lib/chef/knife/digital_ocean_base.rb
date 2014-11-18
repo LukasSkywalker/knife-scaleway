@@ -68,6 +68,21 @@ class Chef
         key = key.to_sym
         config[key] || Chef::Config[:knife][key]
       end
+
+      def wait_for_status(result, status: 'in-progress', sleep: 3)
+        print 'Waiting '
+        while result.status == 'in-progress' do
+          sleep sleep
+          print('.')
+
+          if status == 'in-progress'
+            break if client.droplets.find(id: locate_config_value(:id)).status != 'in-progress'
+          else
+            break if client.droplets.find(id: locate_config_value(:id)).status == status
+          end
+        end
+        ui.info 'OK'
+      end
     end
   end
 end
