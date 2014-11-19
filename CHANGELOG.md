@@ -1,4 +1,4 @@
-2.3.0 / Unreleased
+2.3.0 / 2014-11-18
 
 * New subcommands
   - knife digital_ocean droplet power
