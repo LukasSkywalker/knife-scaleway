@@ -58,6 +58,9 @@ This plugin provides the following sub-commands:
 * knife digital_ocean image list (options)
   **Lists available images (snapshots, backups, OS-images)**
 
+* knife digital_ocean image transfer (options)
+  **Transfer a image to another region**
+
 * knife digital_ocean region list (options)
   **Lists the server regions/locations/data-center**
 
