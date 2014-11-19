@@ -1,5 +1,5 @@
 # Knife::DigitalOcean
-## A knife plugin to deal with the [DigitalOcean.com](https://www.digitalocean.com) Cloud services.
+#### A knife plugin to deal with the [DigitalOcean.com](https://www.digitalocean.com) Cloud services.
 
 [![Gem Version](https://badge.fury.io/rb/knife-digital_ocean.png)](http://badge.fury.io/rb/knife-digital_ocean)
 [![Build Status](https://travis-ci.org/rmoriz/knife-digital_ocean.png)](https://travis-ci.org/rmoriz/knife-digital_ocean)
@@ -22,79 +22,79 @@ This knife plugin uses the [droplet_kit](https://github.com/digitalocean/droplet
 
 This plugin provides the following sub-commands:
 
-* knife digital_ocean droplet create (options)
-  **Creates a virtual machine with or without bootstrapping chef**
+* knife digital_ocean droplet create (options)  
+**Creates a virtual machine with or without bootstrapping chef**
 
-* knife digital_ocean droplet destroy (options)
+* knife digital_ocean droplet destroy (options)  
   **Destroys the virtual machine and its data**
 
-* knife digital_ocean droplet list (options)
+* knife digital_ocean droplet list (options)  
   **Lists currently running virtual machines**
 
-* knife digital_ocean droplet power (options)
+* knife digital_ocean droplet power (options)  
   **Turn a droplet On/Off**
 
-* knife digital_ocean droplet powercycle (options)
+* knife digital_ocean droplet powercycle (options)  
   **Powercycle a Droplet**
 
-* knife digital_ocean droplet reboot (options)
+* knife digital_ocean droplet reboot (options)  
   **Reboot a Droplet**
 
-* knife digital_ocean droplet snapshot (options)
+* knife digital_ocean droplet snapshot (options)  
   **Take a snapshot of a Droplet**
 
-* knife digital_ocean droplet rename (options)
+* knife digital_ocean droplet rename (options)  
   **Rename a Droplet**
 
-* knife digital_ocean droplet rebuild (options)
+* knife digital_ocean droplet rebuild (options)  
   **Rebuild a Droplet**
 
-* knife digital_ocean droplet resize (options)
+* knife digital_ocean droplet resize (options)  
   **Resize a Droplet**
 
-* knife digital_ocean image destroy (options)
+* knife digital_ocean image destroy (options)  
   **Destroy your private images**
 
-* knife digital_ocean image list (options)
+* knife digital_ocean image list (options)  
   **Lists available images (snapshots, backups, OS-images)**
 
-* knife digital_ocean image transfer (options)
+* knife digital_ocean image transfer (options)  
   **Transfer a image to another region**
 
-* knife digital_ocean region list (options)
+* knife digital_ocean region list (options)  
   **Lists the server regions/locations/data-center**
 
-* knife digital_ocean size list (options)
+* knife digital_ocean size list (options)  
   **Lists the available server sizes**
 
-* knife digital_ocean domain create (options)
+* knife digital_ocean domain create (options)  
   **Creates a domain name**
 
-* knife digital_ocean domain destroy (options)
+* knife digital_ocean domain destroy (options)  
   **Destroys a domain name**
 
-* knife digital_ocean domain list
+* knife digital_ocean domain list (options)  
   **Lists your domains added to Digital Ocean**
 
-* knife digital_ocean domain record create (options)
+* knife digital_ocean domain record create (options)  
   **Creates a record for an existing domain**
 
-* knife digital_ocean domain record destroy (options)
+* knife digital_ocean domain record destroy (options)  
   **Destroys a record for an existing domain**
 
-* knife digital_ocean domain record list (options)
+* knife digital_ocean domain record list (options)  
   **Lists records for an existing domain**
 
-* knife digital_ocean sshkey create (options)
+* knife digital_ocean sshkey create (options)  
   **Creates a ssh key for use on digital ocean**
 
-* knife digital_ocean sshkey destroy (options)
+* knife digital_ocean sshkey destroy (options)  
   **Destroys the ssh key**
 
-* knife digital_ocean sshkey list
+* knife digital_ocean sshkey list (options)  
   **Lists name + id of the uploaded known ssh keys**
 
-* knife digital_ocean account info
+* knife digital_ocean account info (options)  
   **Shows account information**
 
 
@@ -233,6 +233,54 @@ Delete droplet with id: 1824316
 Delete droplet with id: 1824317
 ```
 
+#### Reboot A Droplet
+```shell
+➜ knife digital_ocean droplet reboot -I 1824315
+OK
+```
+
+#### Turn Power On/Off
+```shell
+➜ knife digital_ocean power -I 1824315 -A on
+OK
+```
+
+```shell
+➜ knife digital_ocean power -I 1824315 -A off
+OK
+```
+
+#### Powercycle A Droplet
+```shell
+➜ knife digital_ocean powercycle -I 1824315
+OK
+```
+
+#### Rebuild A Droplet
+```shell
+➜ knife digital_ocean rebuild --droplet-id 1824315 --image-id 65420
+OK
+```
+
+#### Rename A Droplet
+```shell
+➜ knife digital_ocean rename -I 1824315 -N 'mydropletrocks.com'
+OK
+```
+
+
+#### Resize A Droplet
+```shell
+➜ knife digital_ocean rename -I 1824315 -s 1gb
+OK
+```
+
+#### Resize A Droplet
+```shell
+➜ knife digital_ocean snapshot -I 1824315 -N 'my-super-awesome-snapshot'
+OK
+```
+
 ### List regions
 
 ```shell
@@ -329,6 +377,14 @@ ID       Distribution  Name                                      Slug
 OK
 ```
 
+#### Transfer Private Images to Another Region
+
+```shell
+➜ knife digital_ocean image destroy -I 11112 -R ams1
+
+```
+
+
 ### SSH keys
 
 #### List SSH keys
@@ -410,7 +466,6 @@ UUID                                      Email           Droplet Limit  Email V
 58e2e737d3b7407b042aa7f99f4da4229166f2a1  joe@example.com 10             true
 ```
 
-
 ## Contributing
 
 1. Fork it
@@ -432,5 +487,6 @@ Apache 2.0 (like Chef itself), see LICENSE.txt file.
 
 ## Copyright
 
-Copyright © 2014 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)
+Copyright © 2014 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)  
 Copyright © 2014 [Greg Fitzgerald](https://github.com/gregf)
+
