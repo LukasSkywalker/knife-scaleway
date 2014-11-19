@@ -8,6 +8,7 @@
   - knife digital_ocean droplet rename
   - knife digital_ocean droplet rebuild
   - knife digital_ocean droplet resize
+  - knife digital_ocean image transfer
 * Removed hacky use of rescue
 * Use sort_by in list commands, where it makes sense
 * Add --bootstrap-version to examples, thanks to [@brandoncc ](https://github.com/brandoncc) [PR #54]
