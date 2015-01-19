@@ -44,7 +44,7 @@ class Chef
           found_images = images.find_all { |i| i.public == false }
         end
 
-        found_images.sort_by(&:slug).each do |image|
+        found_images.sort_by(&:distribution).each do |image|
           image_list << image.id.to_s
           image_list << image.distribution.to_s
           image_list << image.name.to_s
