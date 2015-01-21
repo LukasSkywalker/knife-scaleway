@@ -1,3 +1,7 @@
+2.3.1 / 2014-01-21
+
+* Fix knife digital_ocean image list --public
+
 2.3.0 / 2014-11-18
 
 * New subcommands
