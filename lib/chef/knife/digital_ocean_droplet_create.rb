@@ -200,7 +200,7 @@ class Chef
                                           size: locate_config_value(:size),
                                           image: locate_config_value(:image),
                                           region: locate_config_value(:location),
-                                          ssh_keys: locate_config_value(:ssh_key_ids).split(/, ?/),
+                                          ssh_keys: locate_config_value(:ssh_key_ids),
                                           private_networking: locate_config_value(:private_networking),
                                           backups: locate_config_value(:backups),
                                           ipv6: locate_config_value(:ipv6)
