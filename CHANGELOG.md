@@ -1,8 +1,12 @@
-2.3.1 / 2014-01-21
+# 2.3.2 / 2014-01-29
+
+* Removed duplicate splitting, Thanks to [@mikian](https://github.com/mikian) [PR #64]
+
+# 2.3.1 / 2014-01-21
 
 * Fix knife digital_ocean image list --public
 
-2.3.0 / 2014-11-18
+# 2.3.0 / 2014-11-18
 
 * New subcommands
   - knife digital_ocean droplet power
