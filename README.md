@@ -329,45 +329,52 @@ ID     Distribution  Name
 
 ```shell
 ➜ knife digital_ocean image list --public
-ID       Distribution  Name                                      Slug
-6376601  Ubuntu        Ruby on Rails on 14.04 (Nginx + Unicorn)  ruby-on-rail
-6423475  Ubuntu        WordPress on 14.04                        wordpress
-6732690  Ubuntu        LEMP on 14.04                             lemp
-6732691  Ubuntu        LAMP on 14.04                             lamp
-6734341  Ubuntu        node-v0.10.32 on 14.04                    node
-6734697  Ubuntu        Django on 14.04                           django
-6738037  Ubuntu        Dokku v0.2.3 on 14.04 (w/ Docker 1.2.0)   dokku
-6798184  Ubuntu        MEAN on 14.04                             mean
-6854006  Ubuntu        Drupal 7.32 on 14.04                      drupal
-6884371  Ubuntu        Magento 1.9.0.1 on 14.04                  magento
-7284647  Ubuntu        Ghost 0.5.3 on 14.04                      ghost
-7354580  Ubuntu        Docker 1.3.1 on 14.04                     docker
-7518201  Ubuntu        GitLab 7.4.3 CE on 14.04                  gitlab
-7572830  Ubuntu        Redmine on 14.04                          redmine
-6370882  Fedora        20 x64                                    fedora-20-x6
-6370885  Fedora        20 x32                                    fedora-20-x3
-6370968  Fedora        19 x64                                    fedora-19-x6
-6370969  Fedora        19 x32                                    fedora-19-x3
-6372105  CentOS        6.5 x32                                   centos-6-5-x
-6372108  CentOS        6.5 x64                                   centos-6-5-x
-6372321  CentOS        5.10 x64                                  centos-5-8-x
-6372425  CentOS        5.10 x32                                  centos-5-8-x
-6372526  Debian        7.0 x64                                   debian-7-0-x
-6372528  Debian        7.0 x32                                   debian-7-0-x
-6372581  Debian        6.0 x64                                   debian-6-0-x
-6372662  Debian        6.0 x32                                   debian-6-0-x
-6374124  Ubuntu        10.04 x64                                 ubuntu-10-04
-6374125  Ubuntu        10.04 x32                                 ubuntu-10-04
-6374128  Ubuntu        12.04.5 x64                               ubuntu-12-04
-6374130  Ubuntu        12.04.5 x32                               ubuntu-12-04
-6882384  CoreOS        444.5.0 (beta)                            coreos-beta
-6886342  CoreOS        444.5.0 (stable)                          coreos-stabl
-6918735  Ubuntu        14.04 x32                                 ubuntu-14-04
-6918990  Ubuntu        14.04 x64                                 ubuntu-14-04
-7053293  CentOS        7.0 x64                                   centos-7-0-x
-7111343  Ubuntu        14.10 x64                                 ubuntu-14-10
-7111572  Ubuntu        14.10 x32                                 ubuntu-14-10
-7556046  CoreOS        CoreOS (alpha) 490.0.0                    coreos-alpha
+ID        Distribution  Name                                      Slug       
+10322623  CentOS        7 x64                                     centos-7-0-x64  
+6372425   CentOS        5.10 x32                                  centos-5-8-x32  
+6372321   CentOS        5.10 x64                                  centos-5-8-x64  
+10325992  CentOS        6.5 x32                                   centos-6-5-x32  
+10325922  CentOS        6.5 x64                                   centos-6-5-x64  
+10679356  CoreOS        557.2.0 (stable)                          coreos-stable   
+10679369  CoreOS        593.0.0 (alpha)                           coreos-alpha    
+10692842  CoreOS        584.0.0 (beta)                            coreos-beta     
+10322059  Debian        7.0 x64                                   debian-7-0-x64  
+6372581   Debian        6.0 x64                                   debian-6-0-x64  
+6372662   Debian        6.0 x32                                   debian-6-0-x32  
+10322378  Debian        7.0 x32                                   debian-7-0-x32  
+9640922   Fedora        21 x64                                    fedora-21-x64   
+6370969   Fedora        19 x32                                    fedora-19-x32   
+6370882   Fedora        20 x64                                    fedora-20-x64   
+6370968   Fedora        19 x64                                    fedora-19-x64   
+6370885   Fedora        20 x32                                    fedora-20-x32   
+10163059  FreeBSD       FreeBSD AMP on 10.1                       freebsd-amp     
+10144573  FreeBSD       10.1                                      freebsd-10-1-x64
+6732690   Ubuntu        LEMP on 14.04                             lemp            
+10321870  Ubuntu        10.04 x32                                 ubuntu-10-04-x32
+10321777  Ubuntu        12.04.5 x32                               ubuntu-12-04-x32
+10321756  Ubuntu        12.04.5 x64                               ubuntu-12-04-x64
+9801948   Ubuntu        14.04 x32                                 ubuntu-14-04-x32
+9801954   Ubuntu        14.10 x64                                 ubuntu-14-10-x64
+9801951   Ubuntu        14.10 x32                                 ubuntu-14-10-x32
+6376601   Ubuntu        Ruby on Rails on 14.04 (Nginx + Unicorn)  ruby-on-rails   
+6423475   Ubuntu        WordPress on 14.04                        wordpress       
+10321819  Ubuntu        10.04 x64                                 ubuntu-10-04-x64
+6732691   Ubuntu        LAMP on 14.04                             lamp            
+6798184   Ubuntu        MEAN on 14.04                             mean            
+8375425   Ubuntu        Drupal 7.34 on 14.04                      drupal          
+8412876   Ubuntu        Magento 1.9.1.0 on 14.04                  magento         
+8953301   Ubuntu        ELK Logging Stack on 14.04                elk             
+9918633   Ubuntu        Ghost 0.5.8 on 14.04                      ghost           
+9967718   Ubuntu        Django on 14.04                           django          
+9801950   Ubuntu        14.04 x64                                 ubuntu-14-04-x64
+10274087  Ubuntu        GitLab 7.7.1 CE on 14.04                  gitlab          
+10321359  Ubuntu        MediaWiki 1.24.0 on 14.04                 mediawiki       
+10462503  Ubuntu        Drone on 14.04                            drone           
+10507592  Ubuntu        node-v0.12.0 on 14.04                     node            
+10563620  Ubuntu        Dokku v0.3.14 on 14.04                    dokku           
+10565666  Ubuntu        ownCloud 8.0 on 14.04                     owncloud        
+10581649  Ubuntu        Docker 1.5.0 on 14.04                     docker          
+7572830   Ubuntu        Redmine on 14.04                          redmine
 ```
 
 #### Destroy Private Images
