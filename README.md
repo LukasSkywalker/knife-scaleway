@@ -159,6 +159,7 @@ __Syntax__
                                       --run-list "<RUNLIST>" \
                                       --secret-file "<FILENAME>" \
                                       --private_networking
+                                      --ipv6-enabled
 ```
 
 __Short Syntax__
@@ -172,6 +173,7 @@ __Short Syntax__
                                       -p <SSH PORT> \
                                       -B \
                                       -r "<RUNLIST>"
+                                      -6
 ```
 
 #### B. With knife-solo bootstrapping
