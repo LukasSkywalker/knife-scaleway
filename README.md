@@ -243,12 +243,12 @@ OK
 
 #### Turn Power On/Off
 ```shell
-➜ knife digital_ocean power -I 1824315 -A on
+➜ knife digital_ocean power -I 1824315 -a on
 OK
 ```
 
 ```shell
-➜ knife digital_ocean power -I 1824315 -A off
+➜ knife digital_ocean power -I 1824315 -a off
 OK
 ```
 
