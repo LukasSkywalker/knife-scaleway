@@ -25,6 +25,7 @@ class Chef
         # Knife loads subcommands automatically, so we can just check if the
         # class exists.
         Chef::Knife::SoloBootstrap.load_deps if defined? Chef::Knife::SoloBootstrap
+        Chef::Knife::Zerobootstrap.load_deps if defined? Chef::Knife::Zerobootstrap
       end
 
       banner 'knife digital_ocean droplet create (options)'
@@ -74,6 +75,11 @@ class Chef
              long: '--[no-]solo',
              description: 'Do a chef-solo bootstrap on the droplet using knife-solo',
              proc: proc { |s| Chef::Config[:knife][:solo] = s }
+
+      option :zero,
+            long: '--[no-]zero',
+            description: 'Do a chef-zero bootstrap on the droplet using knife-zero',
+            proc: proc {|z| Chef::Config[:knife][:zero] = z }
 
       option :ssh_user,
              short: '-x USERNAME',
@@ -196,6 +202,15 @@ class Chef
           exit 1
         end
 
+        if zero_bootstrap? && !defined?(Chef::Knife::ZeroBootstrap)
+          ui.error [
+            'Knife plugin knife-zero was not found.',
+            'Please add the knife-zero gem to your Gemfile or',
+            'install it manually with `gem install knife-zero`.'
+          ].join(' ')
+          exit 1
+        end
+
         droplet = DropletKit::Droplet.new(name: locate_config_value(:server_name),
                                           size: locate_config_value(:size),
                                           image: locate_config_value(:image),
@@ -232,7 +247,7 @@ class Chef
           puts 'done'
         end
 
-        if locate_config_value(:bootstrap) || solo_bootstrap?
+        if locate_config_value(:bootstrap) || solo_bootstrap? || zero_bootstrap?
           bootstrap_for_node(ip_address).run
         else
           puts ip_address
@@ -293,11 +308,21 @@ class Chef
       end
 
       def bootstrap_class
-        solo_bootstrap? ? Chef::Knife::SoloBootstrap : Chef::Knife::Bootstrap
+        if solo_bootstrap?
+          Chef::Knife::SoloBootstrap
+        elsif zero_bootstrap?
+          Chef::Knife::ZeroBootstrap
+        else
+          Chef::Knife::Bootstrap
+        end
       end
 
       def solo_bootstrap?
         config[:solo] || (config[:solo].nil? && Chef::Config[:knife][:solo])
+      end
+
+      def zero_bootstrap?
+        config[:zero] || (config[:zero].nil? && Chef::Config[:knife][:zero])
       end
     end
   end
