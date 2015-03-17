@@ -36,9 +36,14 @@ class Chef
 
         droplets_ids = []
 
-        unless locate_config_value(:server) || locate_config_value(:all)
-          ui.error('Server cannot be empty. ALL DATA WILL BE LOST! => -S <server-id>')
+        unless locate_config_value(:server)
+          ui.error('Server cannot be empty. => -S <server-id>')
           exit 1
+        end
+
+        unless locate_config_value(:all)
+          ui.error('Warning all servers will be lost unless you exit with ctrl-c now!')
+          15.times{|x| print x; print 13.chr; sleep 15}
         end
 
         if locate_config_value(:all) && !client.droplets
