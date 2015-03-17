@@ -1,3 +1,7 @@
+# 2.3.3 / 2015-03-17
+
+* Bump droplet_kit version to fix a few bugs with api changes.
+
 # 2.3.2 / 2014-01-29
 
 * Removed duplicate splitting, Thanks to [@mikian](https://github.com/mikian) [PR #64]
