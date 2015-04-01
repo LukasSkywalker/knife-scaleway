@@ -25,7 +25,7 @@ class Chef
         # Knife loads subcommands automatically, so we can just check if the
         # class exists.
         Chef::Knife::SoloBootstrap.load_deps if defined? Chef::Knife::SoloBootstrap
-        Chef::Knife::Zerobootstrap.load_deps if defined? Chef::Knife::Zerobootstrap
+        Chef::Knife::ZeroBootstrap.load_deps if defined? Chef::Knife::ZeroBootstrap
       end
 
       banner 'knife digital_ocean droplet create (options)'
