@@ -8,7 +8,7 @@
 [![Coverage Status](https://coveralls.io/repos/rmoriz/knife-digital_ocean/badge.png?branch=master)](https://coveralls.io/r/rmoriz/knife-digital_ocean?branch=master)
 
 This is a plugin for [Chef's](http://www.opscode.com/chef/) [knife](http://wiki.opscode.com/display/chef/Knife) tool. It allows you to bootstrap virtual machines with [DigitalOcean.com](https://www.digitalocean.com/) including the initial bootstrapping of chef on that system.
-You can also use [knife-solo](http://matschaffer.github.com/knife-solo/) for chef bootstrapping or skip it altogether for another solution.
+You can also use [knife-solo](http://matschaffer.github.com/knife-solo/) or [knife-zero](https://github.com/higanworks/knife-zero) for chef bootstrapping or skip it altogether for another solution.
 
 This knife plugin uses the [droplet_kit](https://github.com/digitalocean/droplet_kit) rubygem.
 
@@ -114,8 +114,9 @@ knife[:digital_ocean_access_token]   = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
 There are three different ways of creating a server/droplet instance:
 
 If you just want to launch an instance
-form the command line without any bootstrapping, go for option **C**.
-If you use ```knife-solo``` try **B** and if you are a ```chef-server```-fan
+form the command line without any bootstrapping, go for option **D**.
+If you use ```knife-zero``` try **C**,
+if you use ```knife-solo``` try **B** and if you are a ```chef-server```-fan
 use method **A**:
 #### A. With bootstrapping in an chef-server environment:
 
@@ -195,7 +196,26 @@ __Example__
                                       --solo
 ```
 
-#### C. With your custom external bootstrapping script or without chef at all
+#### C. With knife-zero bootstrapping
+
+You need to have [knife-zero](https://github.com/higanworks/knife-zero) gem installed.
+
+This will create a droplet and run `knife zero bootstrap <IP>` equivalent for it.
+Please consult the [knife-zero documentation](https://github.com/higanworks/knife-zero#knife-zero-bootstrap) for further details.
+
+__Example__
+
+```bash
+➜ knife digital_ocean droplet create --server-name awesome-vm1.vm.io \
+                                      --image debian-7-0-x64 \
+                                      --location lon1 \
+                                      --size 2gb \
+                                      --ssh-keys 1234,4567 \
+                                      --run-list "<RUNLIST>" \
+                                      --zero
+```
+
+#### D. With your custom external bootstrapping script or without chef at all
 
 This will just create a droplet and return its IP-address. Nothing else. You can now run your custom solution to provision the droplet.
 
