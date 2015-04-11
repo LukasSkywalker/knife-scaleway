@@ -1,4 +1,4 @@
-# 2.4 / 2015-04-11
+# 2.4.0 / 2015-04-11
 
 * Add knife-zero bootstrapping support
 
