@@ -11,7 +11,7 @@ describe Chef::Knife::DigitalOceanDropletPowercycle do
     Chef::Config['knife']['digital_ocean_access_token'] = access_token
     allow(subject).to receive(:puts)
     allow(subject).to receive(:wait_for_status).and_return('OK')
-    subject.config[:id] = '3193966'
+    subject.config[:id] = '4829346'
   end
 
   describe '#run' do

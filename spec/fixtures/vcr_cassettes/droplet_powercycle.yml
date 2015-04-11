@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.digitalocean.com/v2/droplets/3193966/actions
+    uri: https://api.digitalocean.com/v2/droplets/4829346/actions
     body:
       encoding: UTF-8
       string: '{"type":"power_cycle"}'
@@ -12,7 +12,7 @@ http_interactions:
       Authorization:
       - Bearer FAKE_ACCESS_TOKEN
       User-Agent:
-      - Faraday v0.9.0
+      - Faraday v0.9.1
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Tue, 18 Nov 2014 01:45:59 GMT
+      - Sat, 11 Apr 2015 23:30:14 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -42,86 +42,25 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Ratelimit-Limit:
-      - '1200'
+      - '5000'
       Ratelimit-Remaining:
-      - '1124'
+      - '4994'
       Ratelimit-Reset:
-      - '1416274890'
+      - '1428797844'
       Etag:
-      - '"101af51ace9699b82585e8eccb827f99"'
+      - '"584c42220a5ecaaddd2c2acbbfcc79bf"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 9e5617cd-453c-45a7-a0d7-1f137640db5a
+      - b5a00c07-3d6b-44a8-897c-8dd6fdc2d22a
       X-Runtime:
-      - '0.080858'
+      - '0.177778'
       Cf-Ray:
-      - 18b07de2187a0ec7-EWR
+      - 1d5a7a65e40400ad-EWR
     body:
       encoding: UTF-8
-      string: '{"action":{"id":37038185,"status":"in-progress","type":"power_cycle","started_at":"2014-11-18T01:45:59Z","completed_at":null,"resource_id":3193966,"resource_type":"droplet","region":"nyc3"}}'
+      string: '{"action":{"id":47949379,"status":"in-progress","type":"power_cycle","started_at":"2015-04-11T23:30:14Z","completed_at":null,"resource_id":4829346,"resource_type":"droplet","region":{"name":"New
+        York 3","slug":"nyc3","sizes":["512mb","1gb","2gb","4gb","8gb","16gb","32gb","48gb","64gb"],"features":["virtio","private_networking","backups","ipv6","metadata"],"available":true},"region_slug":"nyc3"}}'
     http_version: 
-  recorded_at: Tue, 18 Nov 2014 01:45:59 GMT
-- request:
-    method: get
-    uri: https://api.digitalocean.com/v2/droplets/3193966
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Content-Type:
-      - application/json
-      Authorization:
-      - Bearer FAKE_ACCESS_TOKEN
-      User-Agent:
-      - Faraday v0.9.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - cloudflare-nginx
-      Date:
-      - Tue, 18 Nov 2014 01:46:02 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Set-Cookie: _COOKIE_ID_
-      Status:
-      - 200 OK
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      Ratelimit-Limit:
-      - '1200'
-      Ratelimit-Remaining:
-      - '1123'
-      Ratelimit-Reset:
-      - '1416275267'
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 8721b3f7-6e49-4e20-853c-d966b8997887
-      X-Runtime:
-      - '0.173148'
-      Cf-Ray:
-      - 18b07df667200ecd-EWR
-    body:
-      encoding: UTF-8
-      string: '{"droplet":{"id":3193966,"name":"twerkit.gregf.org","memory":512,"vcpus":1,"disk":20,"locked":true,"status":"active","kernel":{"id":952,"name":"Debian
-        7.0 x64 vmlinuz-3.2.0-4-amd64 (3.2.54-2)","version":"3.2.0-4-amd64"},"created_at":"2014-11-18T00:29:26Z","features":["virtio"],"backup_ids":[],"snapshot_ids":[8073571],"image":{"id":8073571,"name":"rebuild-snapshot","distribution":"Debian","slug":null,"public":false,"regions":["nyc3","nyc3"],"created_at":"2014-11-18T00:58:36Z","min_disk_size":20},"size_slug":"512mb","networks":{"v4":[{"ip_address":"104.236.29.101","netmask":"255.255.192.0","gateway":"104.236.0.1","type":"public"}],"v6":[]},"region":{"name":"New
-        York 3","slug":"nyc3","sizes":["32gb","16gb","2gb","1gb","4gb","8gb","512mb","64gb","48gb"],"features":["virtio","private_networking","backups","ipv6","metadata"],"available":true}}}'
-    http_version: 
-  recorded_at: Tue, 18 Nov 2014 01:46:02 GMT
+  recorded_at: Sat, 11 Apr 2015 23:30:14 GMT
 recorded_with: VCR 2.9.3

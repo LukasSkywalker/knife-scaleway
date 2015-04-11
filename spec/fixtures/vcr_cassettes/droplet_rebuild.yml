@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.digitalocean.com/v2/droplets/3193966/actions
+    uri: https://api.digitalocean.com/v2/droplets/4829346/actions
     body:
       encoding: UTF-8
-      string: '{"type":"rebuild","image":"8073571"}'
+      string: '{"type":"rebuild","image":"10322059"}'
     headers:
       Content-Type:
       - application/json
       Authorization:
       - Bearer FAKE_ACCESS_TOKEN
       User-Agent:
-      - Faraday v0.9.0
+      - Faraday v0.9.1
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Tue, 18 Nov 2014 03:22:25 GMT
+      - Sat, 11 Apr 2015 23:33:41 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -42,24 +42,25 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Ratelimit-Limit:
-      - '1200'
+      - '5000'
       Ratelimit-Remaining:
-      - '1197'
+      - '4986'
       Ratelimit-Reset:
-      - '1416284457'
+      - '1428797844'
       Etag:
-      - '"ea08394e50630400950fc136b07a7c45"'
+      - '"d44909df3094d7c57563eeff2ae9a9c7"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 46a6bdb7-12e5-4670-ae26-95599119689c
+      - 5e399a3c-23cc-4647-8d3c-abd6dc42233a
       X-Runtime:
-      - '0.124437'
+      - '0.124368'
       Cf-Ray:
-      - 18b10b27665a0ecd-EWR
+      - 1d5a7f75b3a61876-EWR
     body:
       encoding: UTF-8
-      string: '{"action":{"id":37042642,"status":"in-progress","type":"rebuild","started_at":"2014-11-18T03:22:25Z","completed_at":null,"resource_id":3193966,"resource_type":"droplet","region":"nyc3"}}'
+      string: '{"action":{"id":47949482,"status":"in-progress","type":"rebuild","started_at":"2015-04-11T23:33:41Z","completed_at":null,"resource_id":4829346,"resource_type":"droplet","region":{"name":"New
+        York 3","slug":"nyc3","sizes":["512mb","1gb","2gb","4gb","8gb","16gb","32gb","48gb","64gb"],"features":["virtio","private_networking","backups","ipv6","metadata"],"available":true},"region_slug":"nyc3"}}'
     http_version: 
-  recorded_at: Tue, 18 Nov 2014 03:22:25 GMT
+  recorded_at: Sat, 11 Apr 2015 23:33:41 GMT
 recorded_with: VCR 2.9.3

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.digitalocean.com/v2/droplets/3195306/actions
+    uri: https://api.digitalocean.com/v2/droplets/4829346/actions
     body:
       encoding: UTF-8
       string: '{"type":"power_off"}'
@@ -12,7 +12,7 @@ http_interactions:
       Authorization:
       - Bearer FAKE_ACCESS_TOKEN
       User-Agent:
-      - Faraday v0.9.0
+      - Faraday v0.9.1
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Tue, 18 Nov 2014 03:33:42 GMT
+      - Sat, 11 Apr 2015 23:27:14 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -42,24 +42,25 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Ratelimit-Limit:
-      - '1200'
+      - '5000'
       Ratelimit-Remaining:
-      - '1188'
+      - '4997'
       Ratelimit-Reset:
-      - '1416284457'
+      - '1428797844'
       Etag:
-      - '"1bc3da4be4525c3ccefeb5adf66857cf"'
+      - '"8add870987c9c4e49d74ba6b653690a3"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 32dc4a00-abd4-4d8b-96f1-2b491f05bc95
+      - e2cac9ba-7bc9-444f-939c-02c57920221c
       X-Runtime:
-      - '0.120867'
+      - '0.166743'
       Cf-Ray:
-      - 18b11bad05190ecd-EWR
+      - 1d5a76021bd31834-EWR
     body:
       encoding: UTF-8
-      string: '{"action":{"id":37043145,"status":"in-progress","type":"power_off","started_at":"2014-11-18T03:33:42Z","completed_at":null,"resource_id":3195306,"resource_type":"droplet","region":"nyc1"}}'
+      string: '{"action":{"id":47949289,"status":"in-progress","type":"power_off","started_at":"2015-04-11T23:27:14Z","completed_at":null,"resource_id":4829346,"resource_type":"droplet","region":{"name":"New
+        York 3","slug":"nyc3","sizes":["512mb","1gb","2gb","4gb","8gb","16gb","32gb","48gb","64gb"],"features":["virtio","private_networking","backups","ipv6","metadata"],"available":true},"region_slug":"nyc3"}}'
     http_version: 
-  recorded_at: Tue, 18 Nov 2014 03:33:42 GMT
+  recorded_at: Sat, 11 Apr 2015 23:27:14 GMT
 recorded_with: VCR 2.9.3
