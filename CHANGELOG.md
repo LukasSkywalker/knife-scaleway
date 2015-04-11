@@ -1,3 +1,7 @@
+# 2.4 / 2015-04-11
+
+* Add knife-zero bootstrapping support
+
 # 2.3.3 / 2015-03-17
 
 * Bump droplet_kit version to fix a few bugs with api changes.
