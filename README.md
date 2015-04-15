@@ -297,7 +297,7 @@ OK
 OK
 ```
 
-#### Resize A Droplet
+#### Create a droplet from a Snapshot
 ```shell
 ➜ knife digital_ocean snapshot -I 1824315 -N 'my-super-awesome-snapshot'
 OK
