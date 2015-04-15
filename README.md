@@ -308,15 +308,16 @@ OK
 ```shell
 ➜ knife digital_ocean region list
 Name             Slug
-New York 1       nyc1
 Amsterdam 1      ams1
-San Francisco 1  sfo1
-New York 2       nyc2
 Amsterdam 2      ams2
-Singapore 1      sgp1
-London 1         lon1
-New York 3       nyc3
 Amsterdam 3      ams3
+Frankfurt 1      fra1
+London 1         lon1
+New York 1       nyc1
+New York 2       nyc2
+New York 3       nyc3
+San Francisco 1  sfo1
+Singapore 1      sgp1
 ```
 
 ### List sizes (instance types)
