@@ -71,7 +71,7 @@ class Chef
           data: locate_config_value(:data)
         )
         result = client.domain_records.create domain_record, for_domain: locate_config_value(:domain)
-        ui.info 'OK' if result.class == DropletKit::DomainRecord or ui.error JSON.parse(result)['message']
+        ui.info 'OK' if result.class == DropletKit::DomainRecord || ui.error(JSON.parse(result)['message'])
       end
     end
   end

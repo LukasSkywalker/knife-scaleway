@@ -59,9 +59,7 @@ class Chef
           end
         end
 
-        if errors.each { |e| ui.error(e) }.any?
-          exit 1
-        end
+        exit 1 if errors.each { |e| ui.error(e) }.any?
       end
 
       def locate_config_value(key)
@@ -71,7 +69,7 @@ class Chef
 
       def wait_for_status(result, status: 'in-progress', sleep: 3)
         print 'Waiting '
-        while result.status == 'in-progress' do
+        while result.status == 'in-progress'
           sleep sleep
           print('.')
 

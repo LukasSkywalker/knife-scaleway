@@ -43,7 +43,7 @@ class Chef
 
         unless locate_config_value(:all)
           ui.error('Warning all servers will be lost unless you exit with ctrl-c now!')
-          15.times{|x| print x; print 13.chr; sleep 15}
+          15.times { |x| print x; print 13.chr; sleep 15 }
         end
 
         if locate_config_value(:all) && !client.droplets
@@ -62,7 +62,7 @@ class Chef
         droplets_ids.each do |id|
           ui.info "Delete droplet with id: #{id}"
           result = client.droplets.delete(id: id)
-          ui.info 'OK' if result == true or ui.error JSON.parse(result)['message']
+          ui.info 'OK' if result == true || ui.error(JSON.parse(result)['message'])
         end
       end
     end

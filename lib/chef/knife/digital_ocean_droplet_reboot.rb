@@ -14,7 +14,7 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-   class DigitalOceanDropletReboot < Knife
+    class DigitalOceanDropletReboot < Knife
       include Knife::DigitalOceanBase
 
       banner 'knife digital_ocean droplet reboot (options)'
@@ -43,6 +43,6 @@ class Chef
 
         wait_for_status(result)
       end
-    end
+     end
   end
 end

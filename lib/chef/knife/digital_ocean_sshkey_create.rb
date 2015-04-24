@@ -47,7 +47,7 @@ class Chef
 
         ssh_key = DropletKit::SSHKey.new name: locate_config_value(:name), public_key: File.read(File.expand_path(locate_config_value(:public_key)))
         result = client.ssh_keys.create(ssh_key)
-        ui.info 'OK' if result.class == DropletKit::SSHKey or ui.error JSON.parse(result)['message']
+        ui.info 'OK' if result.class == DropletKit::SSHKey || ui.error(JSON.parse(result)['message'])
       end
     end
   end

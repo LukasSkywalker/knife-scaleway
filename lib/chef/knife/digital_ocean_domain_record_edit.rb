@@ -81,7 +81,7 @@ class Chef
           data: locate_config_value(:data)
         )
         result = client.domain_records.update domain_record, for_domain: locate_config_value(:domain), id: locate_config_value(:record)
-        ui.info 'OK' if result == true or ui.error JSON.parse(result)['message']
+        ui.info 'OK' if result == true || ui.error(JSON.parse(result)['message'])
       end
     end
   end

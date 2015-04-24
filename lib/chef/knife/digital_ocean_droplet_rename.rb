@@ -14,7 +14,7 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-   class DigitalOceanDropletRename < Knife
+    class DigitalOceanDropletRename < Knife
       include Knife::DigitalOceanBase
 
       banner 'knife digital_ocean droplet rename (options)'
@@ -53,6 +53,6 @@ class Chef
 
         wait_for_status(result)
       end
-    end
+     end
   end
 end

@@ -14,7 +14,7 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-   class DigitalOceanDropletSnapshot < Knife
+    class DigitalOceanDropletSnapshot < Knife
       include Knife::DigitalOceanBase
 
       banner 'knife digital_ocean droplet snapshot (options)'
@@ -53,6 +53,6 @@ class Chef
 
         wait_for_status(result, status: 'active')
       end
-    end
+     end
   end
 end

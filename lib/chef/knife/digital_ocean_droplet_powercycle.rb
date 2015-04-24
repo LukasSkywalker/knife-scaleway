@@ -14,7 +14,7 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-   class DigitalOceanDropletPowercycle < Knife
+    class DigitalOceanDropletPowercycle < Knife
       include Knife::DigitalOceanBase
 
       banner 'knife digital_ocean droplet powercycle (options)'
@@ -43,6 +43,6 @@ class Chef
 
         wait_for_status(result, status: 'active')
       end
-    end
+     end
   end
 end

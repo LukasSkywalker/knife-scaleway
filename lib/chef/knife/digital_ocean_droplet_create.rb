@@ -58,7 +58,7 @@ class Chef
              short: '-K KEYID',
              long: '--ssh-keys KEY_ID',
              description: 'Comma spearated list of your SSH key ids',
-             proc: lambda { |o| o.split(/[\s,]+/) }
+             proc: ->(o) { o.split(/[\s,]+/) }
 
       option :identity_file,
              short: '-i IDENTITY_FILE',
@@ -77,9 +77,9 @@ class Chef
              proc: proc { |s| Chef::Config[:knife][:solo] = s }
 
       option :zero,
-            long: '--[no-]zero',
-            description: 'Do a chef-zero bootstrap on the droplet using knife-zero',
-            proc: proc {|z| Chef::Config[:knife][:zero] = z }
+             long: '--[no-]zero',
+             description: 'Do a chef-zero bootstrap on the droplet using knife-zero',
+             proc: proc { |z| Chef::Config[:knife][:zero] = z }
 
       option :ssh_user,
              short: '-x USERNAME',
@@ -98,7 +98,7 @@ class Chef
              short: '-r RUN_LIST',
              long: '--run-list RUN_LIST',
              description: 'Comma separated list of roles/recipes to apply',
-             proc: lambda { |o| o.split(/[\s,]+/) },
+             proc: ->(o) { o.split(/[\s,]+/) },
              default: []
 
       option :template_file,
@@ -132,7 +132,7 @@ class Chef
              short: '-j JSON',
              long: '--json-attributes JSON',
              description: 'A JSON string to be added to the first run of chef-client',
-             proc: lambda { |o| JSON.parse(o) }
+             proc: ->(o) { JSON.parse(o) }
 
       option :private_networking,
              long: '--private_networking',

@@ -36,7 +36,7 @@ class Chef
         end
 
         result = client.ssh_keys.delete id: locate_config_value(:id)
-        ui.info 'OK' if result == true or ui.error JSON.parse(result)['message']
+        ui.info 'OK' if result == true || ui.error(JSON.parse(result)['message'])
       end
     end
   end

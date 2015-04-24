@@ -52,12 +52,12 @@ class Chef
         end
 
         print 'Waiting '
-        while result.status == 'in-progress' do
+        while result.status == 'in-progress'
           sleep 8
           print('.')
 
-          break if client.images.find(id: locate_config_value(:id)).
-            regions.include? locate_config_value(:region)
+          break if client.images.find(id: locate_config_value(:id))
+                   .regions.include? locate_config_value(:region)
         end
         ui.info 'OK'
       end
