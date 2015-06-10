@@ -36,27 +36,20 @@ class Chef
 
         droplets_ids = []
 
-        unless locate_config_value(:server)
-          ui.error('Server cannot be empty. => -S <server-id>')
-          exit 1
-        end
-
-        unless locate_config_value(:all)
-          ui.error('Warning all servers will be lost unless you exit with ctrl-c now!')
-          15.times { |x| print x; print 13.chr; sleep 15 }
-        end
-
-        if locate_config_value(:all) && !client.droplets
-          ui.error('You don`t have droplets')
-          exit 1
-        end
-
         if locate_config_value(:server)
           droplets_ids = [locate_config_value(:server)]
+        elsif locate_config_value(:all)
+          ui.error('Warning all servers will be lost unless you exit with ctrl-c now!')
+          15.times { |x| print x; print 13.chr; sleep 1 }
+          droplets_ids = client.droplets.all.map(&:id)
+        else
+          ui.error 'You need to specify either a --server id or --all'
+          exit 1
         end
 
-        if locate_config_value(:all)
-          droplets_ids = client.droplets.all.map(&:id)
+        if droplet_ids.empty?
+          ui.error('Could not find any droplet(s)')
+          exit 1
         end
 
         droplets_ids.each do |id|
