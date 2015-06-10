@@ -1,3 +1,7 @@
+# 2.4.1 / unreleased
+
+* Fix knife digital_ocean droplet destroy
+
 # 2.4.0 / 2015-04-11
 
 * Add knife-zero bootstrapping support
