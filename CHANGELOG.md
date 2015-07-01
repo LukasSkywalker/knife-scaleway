@@ -1,4 +1,4 @@
-# 2.4.1 / unreleased
+# 2.4.1 / 2015-07-01
 
 * Fix knife digital_ocean droplet destroy
 
