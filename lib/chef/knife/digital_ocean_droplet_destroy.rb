@@ -47,7 +47,7 @@ class Chef
           exit 1
         end
 
-        if droplet_ids.empty?
+        if droplets_ids.empty?
           ui.error('Could not find any droplet(s)')
           exit 1
         end
