@@ -1,6 +1,10 @@
-# 2.4.1 / 2015-07-01
+# 2.4.2 / 2015-07-04
 
 * Fix knife digital_ocean droplet destroy
+
+# 2.4.1 / 2015-07-01
+
+* Fix knife digital_ocean droplet destroy (broken)
 
 # 2.4.0 / 2015-04-11
 
