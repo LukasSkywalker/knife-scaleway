@@ -36,12 +36,12 @@ class Chef
         validate!
 
         unless locate_config_value(:name)
-          ui.error('SSH Key name cannot be empty. => -N <sshkey-name>')
+          ui.error('SSH Key name cannot be empty. => -n <sshkey-name>')
           exit 1
         end
 
         unless locate_config_value(:public_key)
-          ui.error('SSH key file needs to be specified. => -I <public_key>')
+          ui.error('SSH key file needs to be specified. => -i <public_key>')
           exit 1
         end
 
