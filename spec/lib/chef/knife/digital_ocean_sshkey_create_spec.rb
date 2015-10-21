@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Chef::Knife::DigitalOceanSshkeyCreate do
-
   subject { Chef::Knife::DigitalOceanSshkeyCreate.new }
 
   let(:access_token) { ENV['DIGITALOCEAN_ACCESS_TOKEN'] }
@@ -29,7 +28,7 @@ describe Chef::Knife::DigitalOceanSshkeyCreate do
       end
     end
 
-    # TODO Figure out why this is now failing
+    # TODO: Figure out why this is now failing
     # it 'should return OK' do
     #   VCR.use_cassette('sshkey_create') do
     #     expect($stdout).to receive(:puts).with('OK')

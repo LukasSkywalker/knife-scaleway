@@ -20,14 +20,14 @@ class Chef
       banner 'knife digital_ocean droplet resize (options)'
 
       option :size,
-             short: '-s SIZE',
-             long: '--size SIZE',
-             description: 'Power Action On/Off'
+        short: '-s SIZE',
+        long: '--size SIZE',
+        description: 'Power Action On/Off'
 
       option :id,
-             short: '-I ID',
-             long: '--droplet-id ID',
-             description: 'Droplet ID'
+        short: '-I ID',
+        long: '--droplet-id ID',
+        description: 'Droplet ID'
 
       def run
         $stdout.sync = true
@@ -53,6 +53,6 @@ class Chef
 
         wait_for_status(result)
       end
-     end
+    end
   end
 end

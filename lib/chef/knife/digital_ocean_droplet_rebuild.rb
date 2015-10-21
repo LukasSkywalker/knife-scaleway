@@ -20,14 +20,14 @@ class Chef
       banner 'knife digital_ocean droplet rebuild (options)'
 
       option :image,
-             short: '-i IMAGE',
-             long: '--image-id IMAGE',
-             description: 'Image ID'
+        short: '-i IMAGE',
+        long: '--image-id IMAGE',
+        description: 'Image ID'
 
       option :id,
-             short: '-I ID',
-             long: '--droplet-id ID',
-             description: 'Droplet ID'
+        short: '-I ID',
+        long: '--droplet-id ID',
+        description: 'Droplet ID'
 
       def run
         $stdout.sync = true
@@ -44,7 +44,10 @@ class Chef
           exit 1
         end
 
-        result = client.droplet_actions.rebuild(droplet_id: locate_config_value(:id), image: locate_config_value(:image))
+        result = client.droplet_actions.rebuild(
+          droplet_id: locate_config_value(:id),
+          image: locate_config_value(:image)
+        )
 
         unless result.class == DropletKit::Action
           ui.error JSON.parse(result)['message']
@@ -53,6 +56,6 @@ class Chef
 
         wait_for_status(result, status: 'active')
       end
-     end
+    end
   end
 end

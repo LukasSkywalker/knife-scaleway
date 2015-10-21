@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Chef::Knife::DigitalOceanDomainList do
-
   subject { Chef::Knife::DigitalOceanDomainList.new }
 
   let(:access_token) { ENV['DIGITALOCEAN_ACCESS_TOKEN'] }

@@ -1,3 +1,4 @@
+# rubocop:disable Style/FileName
 require 'knife-digital_ocean/version'
 
 module Knife

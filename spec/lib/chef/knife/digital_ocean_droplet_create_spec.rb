@@ -5,7 +5,6 @@ def mock_api_response(data = {})
 end
 
 describe Chef::Knife::DigitalOceanDropletCreate do
-
   subject do
     s = Chef::Knife::DigitalOceanDropletCreate.new
     allow(s).to receive(:client).and_return double(DropletKit::Droplet)
@@ -82,7 +81,6 @@ describe Chef::Knife::DigitalOceanDropletCreate do
   end
 
   context 'bootstrapping for knife-solo' do
-
     let(:custom_config) do
       {
         solo: true
@@ -126,7 +124,6 @@ describe Chef::Knife::DigitalOceanDropletCreate do
         expect { subject.run }.to raise_error(SystemExit)
       end
     end
-
   end
 
   context 'no bootstrapping' do
@@ -199,5 +196,4 @@ describe Chef::Knife::DigitalOceanDropletCreate do
       expect(bootstrap.config[:ssh_port]).to eql(ssh_port)
     end
   end
-
 end

@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Chef::Knife::DigitalOceanSshkeyList do
-
   subject do
     s = Chef::Knife::DigitalOceanSshkeyList.new
     s

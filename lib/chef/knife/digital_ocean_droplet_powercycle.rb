@@ -20,9 +20,9 @@ class Chef
       banner 'knife digital_ocean droplet powercycle (options)'
 
       option :id,
-             short: '-I ID',
-             long: '--droplet-id ID',
-             description: 'Droplet ID'
+        short: '-I ID',
+        long: '--droplet-id ID',
+        description: 'Droplet ID'
 
       def run
         $stdout.sync = true
@@ -43,6 +43,6 @@ class Chef
 
         wait_for_status(result, status: 'active')
       end
-     end
+    end
   end
 end

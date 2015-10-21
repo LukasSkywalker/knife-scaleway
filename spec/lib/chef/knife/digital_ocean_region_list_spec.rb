@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Chef::Knife::DigitalOceanRegionList do
-
   subject do
     s = Chef::Knife::DigitalOceanRegionList.new
     s

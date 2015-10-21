@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Chef::Knife::DigitalOceanSizeList do
-
   subject do
     s = Chef::Knife::DigitalOceanSizeList.new
     s

@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Chef::Knife::DigitalOceanDomainCreate do
-
   subject { Chef::Knife::DigitalOceanDomainCreate.new }
 
   let(:access_token) { ENV['DIGITALOCEAN_ACCESS_TOKEN'] }
@@ -29,7 +28,7 @@ describe Chef::Knife::DigitalOceanDomainCreate do
       end
     end
 
-    # TODO Figure out why this is now failing
+    # TODO: Figure out why this is now failing
     # it 'should return OK' do
     #   VCR.use_cassette('domain_create') do
     #     expect($stdout).to receive(:puts).with('OK')

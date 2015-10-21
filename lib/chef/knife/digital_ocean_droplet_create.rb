@@ -27,7 +27,7 @@ class Chef
         Chef::Knife::SoloBootstrap.load_deps if defined? Chef::Knife::SoloBootstrap
         if defined? Chef::Knife::ZeroBootstrap
           Chef::Knife::ZeroBootstrap.load_deps
-          self.options = Chef::Knife::ZeroBootstrap.options.merge(self.options)
+          self.options = Chef::Knife::ZeroBootstrap.options.merge(options)
         end
       end
 

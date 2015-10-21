@@ -61,7 +61,7 @@ SimpleCov.start
 
 # Cleverly borrowed from knife-rackspace, thank you!
 def filter_headers(interaction, pattern, placeholder)
-  [interaction.request.headers, interaction.response.headers].each do | headers |
+  [interaction.request.headers, interaction.response.headers].each do |headers|
     sensitive_tokens = headers.select { |key| key.to_s.match(pattern) }
     sensitive_tokens.each do |key, _value|
       headers[key] = placeholder

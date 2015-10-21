@@ -55,7 +55,8 @@ class Chef
 
         keys.each do |k|
           if locate_config_value(k).nil?
-            errors << "You did not provide a valid '#{k}' value. Please set knife[:#{k}] in your knife.rb or pass as an option."
+            errors << "You did not provide a valid '#{k}' value. " \
+                      "Please set knife[:#{k}] in your knife.rb or pass as an option."
           end
         end
 

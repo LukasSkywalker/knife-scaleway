@@ -20,14 +20,14 @@ class Chef
       banner 'knife digital_ocean droplet destroy (options)'
 
       option :server,
-             short: '-S ID',
-             long: '--server ID',
-             description: 'The server id'
+        short: '-S ID',
+        long: '--server ID',
+        description: 'The server id'
 
       option :all,
-             short: '-a',
-             long: '--all',
-             description: '!WARNING! UNRECOVERABLE Destroy all droplets.'
+        short: '-a',
+        long: '--all',
+        description: '!WARNING! UNRECOVERABLE Destroy all droplets.'
 
       def run
         $stdout.sync = true
@@ -40,7 +40,13 @@ class Chef
           droplets_ids = [locate_config_value(:server)]
         elsif locate_config_value(:all)
           ui.error('Warning all servers will be lost unless you exit with ctrl-c now!')
-          15.times { |x| print x; print 13.chr; sleep 1 }
+
+          15.times do |x|
+            print x
+            print 13.chr
+            sleep 1
+          end
+
           droplets_ids = client.droplets.all.map(&:id)
         else
           ui.error 'You need to specify either a --server id or --all'

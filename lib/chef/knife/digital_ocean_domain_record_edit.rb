@@ -80,7 +80,10 @@ class Chef
           name: locate_config_value(:name),
           data: locate_config_value(:data)
         )
-        result = client.domain_records.update domain_record, for_domain: locate_config_value(:domain), id: locate_config_value(:record)
+        result = client.domain_records.update(domain_record,
+                                              for_domain: locate_config_value(:domain),
+                                              id: locate_config_value(:record)
+                                             )
         ui.info 'OK' if result == true || ui.error(JSON.parse(result)['message'])
       end
     end

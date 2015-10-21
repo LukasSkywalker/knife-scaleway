@@ -53,6 +53,6 @@ class Chef
 
         wait_for_status(result, status: 'active')
       end
-     end
+    end
   end
 end
