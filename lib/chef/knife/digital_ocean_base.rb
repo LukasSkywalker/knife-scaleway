@@ -18,6 +18,7 @@ class Chef
       def self.load_deps
         require 'droplet_kit'
         require 'json'
+        require 'chef/mixin/shell_out'
       end
 
       def self.included(includer)
