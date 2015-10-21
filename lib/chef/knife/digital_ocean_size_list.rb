@@ -25,7 +25,7 @@ class Chef
         validate!
 
         size_list = [
-          ui.color('Slug',   :bold)
+          ui.color('Slug', :bold)
         ]
 
         sizes = client.sizes.all

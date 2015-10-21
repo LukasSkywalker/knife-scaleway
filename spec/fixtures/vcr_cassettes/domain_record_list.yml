@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.digitalocean.com/v2/domains/kitchen-digital.org/records
+    uri: https://api.digitalocean.com/v2/domains/kitchen-digital.org/records?page=1&per_page=20
     body:
       encoding: US-ASCII
       string: ''

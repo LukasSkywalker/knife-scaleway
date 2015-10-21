@@ -25,7 +25,7 @@ class Chef
         validate!
 
         region_list = [
-          ui.color('Name',   :bold),
+          ui.color('Name', :bold),
           ui.color('Slug', :bold)
         ]
 
