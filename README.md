@@ -467,7 +467,7 @@ example.com  1800
 #### Create a domain record
 
 ```shell
-➜ knife digital_ocean domain record create -D example.com -T cname -N www -a @
+➜ knife digital_ocean domain record create -D example.com -T CNAME -N www -a @
 ```
 
 #### Destroy a domain record
