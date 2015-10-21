@@ -5,6 +5,8 @@
 * fix to work with chef 12.5.x
 * update droplet_kit dependency to 1.3.x
 * fixed some rubocop issues (some are still pending)
+* we will drop support for chef 10 and chef 11 soon,
+  please upgrade to chef 12 ASAP!
 
 # 2.4.2 / 2015-07-04
 

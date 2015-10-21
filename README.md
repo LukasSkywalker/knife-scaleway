@@ -12,11 +12,23 @@ You can also use [knife-solo](http://matschaffer.github.com/knife-solo/) or [kni
 
 This knife plugin uses the [droplet_kit](https://github.com/digitalocean/droplet_kit) rubygem.
 
+Knife::DigitalOcean supports Chef 12, legacy support for older Chefs
+will be removed with 3.x.x by the end of 2015.
+
 ## Installation
+
+### when using ChefDK
+
+```shell
+➜ chef gem install knife-digital_ocean
+```
+
+### in typical Ruby setup
 
 ```shell
 ➜ gem install knife-digital_ocean
 ```
+
 
 ## Overview
 
@@ -511,7 +523,7 @@ To run tests, please declare the `DIGITALOCEAN_ACCESS_TOKEN`
 environment variable, e.g.:
 
 ```shell
-expor DIGITALOCEAN_ACCESS_TOKEN="fake_access_token"
+export DIGITALOCEAN_ACCESS_TOKEN="fake_access_token"
 rspec
 ```
 
@@ -539,6 +551,6 @@ Apache 2.0 (like Chef itself), see LICENSE.txt file.
 
 ## Copyright
 
-Copyright © 2014 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)  
-Copyright © 2014 [Greg Fitzgerald](https://github.com/gregf)
+Copyright © 2015 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)  
+Copyright © 2015 [Greg Fitzgerald](https://github.com/gregf)
 
