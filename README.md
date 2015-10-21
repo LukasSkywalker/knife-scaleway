@@ -504,6 +504,28 @@ UUID                                      Email           Droplet Limit  Email V
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+
+### Tests
+
+To run tests, please declare the `DIGITALOCEAN_ACCESS_TOKEN`
+environment variable, e.g.:
+
+```shell
+expor DIGITALOCEAN_ACCESS_TOKEN="fake_access_token"
+rspec
+```
+
+
+### RuboCop / Ruby Style Guide
+
+We want to make sure that our code complies with the Ruby Style Guide:
+
+see:
+
+- https://github.com/bbatsov/ruby-style-guide
+- https://github.com/bbatsov/rubocop
+
+
 ### Contributors
 
 *   [Teemu Matilainen](https://github.com/tmatilai)
