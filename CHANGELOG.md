@@ -1,3 +1,11 @@
+# 2.5.0 / unreleased
+
+* fix vcr cassettes (droplet_kit pagination)
+* drop support for Ruby 2.0.0
+* fix to work with chef 12.5.x
+* update droplet_kit dependency to 1.3.x
+* fixed some rubocop issues (some are still pending)
+
 # 2.4.2 / 2015-07-04
 
 * Fix knife digital_ocean droplet destroy
