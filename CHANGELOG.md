@@ -1,4 +1,4 @@
-# 2.5.0 / unreleased
+# 2.5.0 / 2016-04-19
 
 * fix vcr cassettes (droplet_kit pagination)
 * drop support for Ruby 2.0.0
