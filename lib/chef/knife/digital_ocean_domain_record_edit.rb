@@ -16,7 +16,7 @@ require 'chef/knife/digital_ocean_base'
 class Chef
   class Knife
     class DigitalOceanDomainRecordEdit < Knife
-      include Knife::DigitalOceanBase
+      include Knife::ScalewayBase
 
       banner 'knife digital_ocean domain record edit (options)'
 

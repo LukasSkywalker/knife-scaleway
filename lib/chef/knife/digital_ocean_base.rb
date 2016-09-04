@@ -14,7 +14,7 @@
 #
 class Chef
   class Knife
-    module DigitalOceanBase
+    module ScalewayBase
       def self.load_deps
         require_relative 'scaleway'
         require 'json'
@@ -29,15 +29,15 @@ class Chef
           # previous ones, so if the including class calls it, it needs to also
           # call our #load_deps, i.e:
           #
-          #   Include Chef::Knife::DigitalOceanBase
+          #   Include Chef::Knife::ScalewayBase
           #
           #   deps do
           #     require 'foo'
           #     require 'bar'
-          #     Chef::Knife::DigitalOceanBase.load_deps
+          #     Chef::Knife::ScalewayBase.load_deps
           #   end
           #
-          deps { Chef::Knife::DigitalOceanBase.load_deps }
+          deps { Chef::Knife::ScalewayBase.load_deps }
 
           option :digital_ocean_access_token,
                  short: '-A ACCESS_TOKEN',

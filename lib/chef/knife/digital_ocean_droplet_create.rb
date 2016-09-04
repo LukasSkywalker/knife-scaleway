@@ -15,13 +15,13 @@ require 'chef/knife/digital_ocean_base'
 class Chef
   class Knife
     class ScalewayServerCreate < Knife
-      include Knife::DigitalOceanBase
+      include Knife::ScalewayBase
 
       deps do
         require 'socket'
         require 'chef/knife/bootstrap'
         Chef::Knife::Bootstrap.load_deps
-        Chef::Knife::DigitalOceanBase.load_deps
+        Chef::Knife::ScalewayBase.load_deps
         # Knife loads subcommands automatically, so we can just check if the
         # class exists.
         Chef::Knife::SoloBootstrap.load_deps if defined? Chef::Knife::SoloBootstrap

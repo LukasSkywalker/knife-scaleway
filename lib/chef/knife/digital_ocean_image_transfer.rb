@@ -15,7 +15,7 @@ require 'chef/knife/digital_ocean_base'
 class Chef
   class Knife
     class ScalewayImageTransfer < Knife
-      include Knife::DigitalOceanBase
+      include Knife::ScalewayBase
 
       banner 'knife digital_ocean image transfer (options)'
 

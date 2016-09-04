@@ -15,7 +15,7 @@ require 'chef/knife/digital_ocean_base'
 class Chef
   class Knife
     class ScalewayServerPower < Knife
-      include Knife::DigitalOceanBase
+      include Knife::ScalewayBase
 
       banner 'knife digital_ocean droplet power (options)'
 

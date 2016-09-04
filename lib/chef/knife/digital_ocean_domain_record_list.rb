@@ -14,7 +14,7 @@
 class Chef
   class Knife
     class DigitalOceanDomainRecordList < Knife
-      include Knife::DigitalOceanBase
+      include Knife::ScalewayBase
 
       banner 'knife digital_ocean domain record list (options)'
 
