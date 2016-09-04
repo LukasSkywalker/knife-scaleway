@@ -180,7 +180,7 @@ class Chef
           ui.error('Image cannot be empty: -I <image>')
           exit 1
         end
-
+=begin
         unless locate_config_value(:size)
           ui.error('Size cannot be empty: -S <size>')
           exit 1
@@ -195,7 +195,7 @@ class Chef
           ui.error('One or more DigitalOcean SSH key ids missing: -K <KEY1>, <KEY2> ...')
           exit 1
         end
-
+=end
         if solo_bootstrap? && !defined?(Chef::Knife::SoloBootstrap)
           ui.error [
             'Knife plugin knife-solo was not found.',
@@ -213,7 +213,7 @@ class Chef
           ].join(' ')
           exit 1
         end
-
+=begin
         droplet = DropletKit::Droplet.new(name: locate_config_value(:server_name),
                                           size: locate_config_value(:size),
                                           image: locate_config_value(:image),
@@ -223,10 +223,12 @@ class Chef
                                           backups: locate_config_value(:backups),
                                           ipv6: locate_config_value(:ipv6)
                                          )
+=end
+        server = Scaleway::Server.create(locate_config_value(:server_name), locate_config_value(:image), 'VC1S')
 
-        server = client.droplets.create(droplet)
+        #server = client.droplets.create(droplet)
 
-        if client.droplets.find(id: server.id).status != 'new'
+        if Scaleway::Server.find(server.id).state != 'stopped'
           ui.error("Droplet could not be started #{server.inspect}")
           exit 1
         end
@@ -237,29 +239,33 @@ class Chef
           puts ui.color("JSON Attributes: #{config[:json_attributes]}", :magenta)
         end
 
+        puts "Starting droplet #{server.id}"
+
+        Scaleway::Server.action(server.id, 'poweron')
+
         print ui.color('Waiting for IPv4-Address', :magenta)
         print('.') until ip_address = ip_address_available(server.id) do
           puts 'done'
         end
 
-        puts ui.color("IPv4 address is: #{ip_address}", :green)
+        puts ui.color("IPv4 address is: #{ip_address.address}", :green)
 
         print ui.color('Waiting for sshd:', :magenta)
-        print('.') until tcp_test_ssh(ip_address) do
+        print('.') until tcp_test_ssh(ip_address.address) do
           sleep 2
           puts 'done'
         end
 
         if locate_config_value(:bootstrap) || solo_bootstrap? || zero_bootstrap?
-          bootstrap_for_node(ip_address).run
+          bootstrap_for_node(ip_address.address).run
         else
-          puts ip_address
+          puts ip_address.address
           exit 0
         end
       end
 
       def ip_address_available(droplet_id)
-        server = client.droplets.find(id: droplet_id)
+        server = Scaleway::Server.find(droplet_id)
         if server.public_ip
           yield
           server.public_ip

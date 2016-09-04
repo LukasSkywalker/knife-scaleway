@@ -14,7 +14,6 @@ Gem::Specification.new do |gem|
   gem.license       = 'Apache 2.0'
 
   gem.add_dependency 'chef', '>= 10.18'
-  gem.add_dependency 'droplet_kit', '~> 1.3.0'
 
   gem.add_development_dependency 'rspec', '~> 3.1'
   gem.add_development_dependency 'rubocop', '~> 0.27'

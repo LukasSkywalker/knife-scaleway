@@ -16,14 +16,14 @@ class Chef
   class Knife
     module DigitalOceanBase
       def self.load_deps
-        require 'droplet_kit'
+        require_relative 'scaleway'
         require 'json'
         require 'chef/mixin/shell_out'
       end
 
       def self.included(includer)
         includer.class_eval do
-          category 'digital_ocean'
+          category 'scaleway'
 
           # Lazy load our dependencies. Later calls to `Knife#deps` override
           # previous ones, so if the including class calls it, it needs to also
@@ -48,10 +48,10 @@ class Chef
       end
 
       def client
-        DropletKit::Client.new(access_token: Chef::Config[:knife][:digital_ocean_access_token])
+        Scaleway::Client.new(Chef::Config[:knife][:scaleway_access_key], Chef::Config[:knife][:scaleway_token])
       end
 
-      def validate!(keys = [:digital_ocean_access_token])
+      def validate!(keys = [:scaleway_access_key, :scaleway_token])
         errors = []
 
         keys.each do |k|
@@ -70,16 +70,17 @@ class Chef
       end
 
       def wait_for_status(result, status: 'in-progress', sleep: 3)
-        print 'Waiting '
-        while result.status == 'in-progress'
+        print "Waiting for state #{status}"
+        result = Scaleway::Server.find(locate_config_value(:id))
+        while result.state != status
           sleep sleep
           print('.')
 
-          if status == 'in-progress'
-            break if client.droplets.find(id: locate_config_value(:id)).status != 'in-progress'
-          else
-            break if client.droplets.find(id: locate_config_value(:id)).status == status
-          end
+          #if status == 'starting' || status == 'stopping'
+            #break if client.droplets.find(id: locate_config_value(:id)).status != 'in-progress'
+          #else
+            break if Scaleway::Server.find(locate_config_value(:id)).state == status
+          #end
         end
         ui.info 'OK'
       end

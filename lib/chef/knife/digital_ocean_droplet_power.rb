@@ -46,20 +46,23 @@ class Chef
 
         case locate_config_value(:action)
         when /(on)/i
-          result = client.droplet_actions.power_on(droplet_id: locate_config_value(:id))
+          poweron = true
+          result = Scaleway::Server.action(locate_config_value(:id), 'poweron')
         when /(off)/i
-          result = client.droplet_actions.power_off(droplet_id: locate_config_value(:id))
+          poweroff = true
+          result = Scaleway::Server.action(locate_config_value(:id), 'poweroff')
         else
           ui.error 'Bad Action: Use on/off.'
           exit 1
         end
 
-        unless result.class == DropletKit::Action
-          ui.error JSON.parse(result)['message']
+        unless result.task.description
+          #ui.error JSON.parse(result)['message']
           exit 1
         end
 
-        wait_for_status(result)
+        wait_for_status(result, status: 'running') if poweron
+        wait_for_status(result, status: 'stopped') if poweroff
       end
     end
   end

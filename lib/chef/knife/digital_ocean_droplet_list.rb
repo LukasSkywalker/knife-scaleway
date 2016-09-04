@@ -14,10 +14,10 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-    class DigitalOceanDropletList < Knife
+    class ScalewayServerList < Knife
       include Knife::DigitalOceanBase
 
-      banner 'knife digital_ocean droplet list (options)'
+      banner 'knife scaleway droplet list (options)'
 
       def run
         $stdout.sync = true
@@ -33,16 +33,18 @@ class Chef
           ui.color('Image',  :bold),
           ui.color('Status', :bold)
         ]
-        droplets = client.droplets.all
+        droplets = Scaleway::Server.all
 
         droplets.each do |droplet|
+          ip = droplet.public_ip ? droplet.public_ip.address.to_s : ''.to_s
+
           droplet_list << droplet.id.to_s
           droplet_list << droplet.name.to_s
-          droplet_list << droplet.size_slug.to_s
-          droplet_list << droplet.region.name.to_s
-          droplet_list << droplet.public_ip.to_s
+          droplet_list << '?' # droplet.size_slug.to_s
+          droplet_list << 'fr-1' # droplet.region.name.to_s
+          droplet_list << ip
           droplet_list << droplet.image.name.to_s
-          droplet_list << droplet.status.to_s
+          droplet_list << droplet.state.to_s
         end
 
         puts ui.list(droplet_list, :uneven_columns_across, 7)
