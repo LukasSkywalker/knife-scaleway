@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Chef::Knife::DigitalOceanDropletSnapshot do
-  subject { Chef::Knife::DigitalOceanDropletSnapshot.new }
+describe Chef::Knife::ScalewayServerSnapshot do
+  subject { Chef::Knife::ScalewayServerSnapshot.new }
 
   let(:access_token) { ENV['DIGITALOCEAN_ACCESS_TOKEN'] }
 
   before :each do
-    Chef::Knife::DigitalOceanDropletSnapshot.load_deps
+    Chef::Knife::ScalewayServerSnapshot.load_deps
     Chef::Config['knife']['digital_ocean_access_token'] = access_token
     allow(subject).to receive(:puts)
     allow(subject).to receive(:wait_for_status).and_return('OK')

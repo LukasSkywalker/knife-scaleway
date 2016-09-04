@@ -14,7 +14,7 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-    class DigitalOceanDropletDestroy < Knife
+    class ScalewayServerDestroy < Knife
       include Knife::DigitalOceanBase
 
       banner 'knife digital_ocean droplet destroy (options)'

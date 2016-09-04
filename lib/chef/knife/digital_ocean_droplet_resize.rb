@@ -14,7 +14,7 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-    class DigitalOceanDropletResize < Knife
+    class ScalewayServerResize < Knife
       include Knife::DigitalOceanBase
 
       banner 'knife digital_ocean droplet resize (options)'

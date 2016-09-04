@@ -14,7 +14,7 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-    class DigitalOceanDropletPowercycle < Knife
+    class ScalewayServerPowercycle < Knife
       include Knife::DigitalOceanBase
 
       banner 'knife digital_ocean droplet powercycle (options)'

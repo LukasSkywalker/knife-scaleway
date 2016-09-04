@@ -4,9 +4,9 @@ def mock_api_response(data = {})
   Hashie::Mash.new(data)
 end
 
-describe Chef::Knife::DigitalOceanDropletCreate do
+describe Chef::Knife::ScalewayServerCreate do
   subject do
-    s = Chef::Knife::DigitalOceanDropletCreate.new
+    s = Chef::Knife::ScalewayServerCreate.new
     allow(s).to receive(:client).and_return double(DropletKit::Droplet)
     s
   end
@@ -34,7 +34,7 @@ describe Chef::Knife::DigitalOceanDropletCreate do
   end
 
   before do
-    Chef::Knife::DigitalOceanDropletCreate.load_deps
+    Chef::Knife::ScalewayServerCreate.load_deps
 
     # reset
     if Chef::Config[:knife].respond_to?(:reset)

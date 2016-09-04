@@ -14,7 +14,7 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-    class DigitalOceanDropletCreate < Knife
+    class ScalewayServerCreate < Knife
       include Knife::DigitalOceanBase
 
       deps do

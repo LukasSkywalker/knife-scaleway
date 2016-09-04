@@ -14,7 +14,7 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-    class DigitalOceanImageDestroy < Knife
+    class ScalewayImageDestroy < Knife
       include Knife::DigitalOceanBase
 
       banner 'knife digital_ocean image destroy (options)'

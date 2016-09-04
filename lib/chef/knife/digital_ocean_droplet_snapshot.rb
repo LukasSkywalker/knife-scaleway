@@ -14,7 +14,7 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-    class DigitalOceanDropletSnapshot < Knife
+    class ScalewayServerSnapshot < Knife
       include Knife::DigitalOceanBase
 
       banner 'knife digital_ocean droplet snapshot (options)'

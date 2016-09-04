@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Chef::Knife::DigitalOceanImageList do
-  subject { Chef::Knife::DigitalOceanImageList.new }
+describe Chef::Knife::ScalewayImageList do
+  subject { Chef::Knife::ScalewayImageList.new }
 
   let(:access_token) { ENV['DIGITALOCEAN_ACCESS_TOKEN'] }
 
   before :each do
-    Chef::Knife::DigitalOceanImageList.load_deps
+    Chef::Knife::ScalewayImageList.load_deps
     Chef::Config['knife']['digital_ocean_access_token'] = access_token
     allow(subject).to receive(:puts)
   end
