@@ -10,33 +10,36 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 require 'chef/knife/scaleway_base'
 
 class Chef
   class Knife
-    class ScalewayDomainDestroy < Knife
+    class ScalewayIpList < Knife
       include Knife::ScalewayBase
 
-      banner 'knife scaleway domain destroy (options)'
-
-      option :domain,
-             short: '-D Name',
-             long: '--domain-name Name',
-             description: 'The domain name'
+      banner 'knife scaleway ip list (options)'
 
       def run
         $stdout.sync = true
 
         validate!
 
-        unless locate_config_value(:domain)
-          ui.error('Domain cannot be empty. => -D <domain-name>')
-          exit 1
+        ip_list = [
+          ui.color('ID',           :bold),
+          ui.color('Address',      :bold),
+          ui.color('Server',       :bold),
+        ]
+
+        ips = Scaleway::Ip.all
+
+        ips.each do |ip|
+          server_name = ip.server ? ip.server.name : ''
+          ip_list << ip.id.to_s
+          ip_list << ip.address.to_s
+          ip_list << server_name
         end
 
-        result = client.domains.delete(name: locate_config_value(:domain))
-        ui.info 'OK' if result == true || ui.error(JSON.parse(result)['message'])
+        puts ui.list(ip_list, :uneven_columns_across, 3)
       end
     end
   end

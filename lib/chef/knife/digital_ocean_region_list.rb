@@ -29,7 +29,7 @@ class Chef
           ui.color('Slug', :bold)
         ]
 
-        regions = client.regions.all
+        regions = [OpenStruct.new(name: 'France 1', slug: 'fr-1')]
 
         regions.sort_by(&:name).each do |region|
           region_list << region.name

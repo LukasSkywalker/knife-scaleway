@@ -20,7 +20,7 @@ module Scaleway
     end
 
     def request(path, method, payload = nil)
-      host = @host1 if path.index('/servers') || path.index('/images') || path.index('/volumes')
+      host = @host1 if path.index('/servers') || path.index('/images') || path.index('/volumes') || path.index('/ips')
       host = @host2 if path.index('/organizations')
       raise StandardError, "Add /#{path.split('/')[1]} to host map" if host.nil?
 
@@ -61,6 +61,12 @@ module Scaleway
     end
   end
 
+  class Ip
+    def self.all
+      Client.instance.get('/ips').ips
+    end
+  end
+
   class Image
     def self.all
       Client.instance.get('/images').images
@@ -98,7 +104,7 @@ module Scaleway
 
   class Volume
     def self.all
-      Client.instance.get('/volumes')
+      Client.instance.get('/volumes').volumes
     end
   end
 end
