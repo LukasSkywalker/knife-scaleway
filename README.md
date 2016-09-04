@@ -1,19 +1,12 @@
 # Knife::Scaleway
-#### A knife plugin to deal with the [Scaleway.com](https://www.digitalocean.com) Cloud services.
+#### A knife plugin to deal with the [Scaleway.com](https://www.scaleway.com) Cloud services.
 
-[![Gem Version](https://badge.fury.io/rb/knife-scaleway.png)](http://badge.fury.io/rb/knife-scaleway)
-[![Build Status](https://travis-ci.org/rmoriz/knife-scaleway.png)](https://travis-ci.org/rmoriz/knife-scaleway)
-<a href="https://gemnasium.com/rmoriz/knife-scaleway"><img src="https://gemnasium.com/rmoriz/knife-scaleway.png"/></a>
-<a href="https://codeclimate.com/github/rmoriz/knife-scaleway"><img src="https://codeclimate.com/github/rmoriz/knife-scaleway.png"/></a>
-[![Coverage Status](https://coveralls.io/repos/rmoriz/knife-scaleway/badge.png?branch=master)](https://coveralls.io/r/rmoriz/knife-scaleway?branch=master)
-
-This is a plugin for [Chef's](http://www.opscode.com/chef/) [knife](http://wiki.opscode.com/display/chef/Knife) tool. It allows you to bootstrap virtual machines with [Scaleway.com](https://www.digitalocean.com/) including the initial bootstrapping of chef on that system.
+This is a plugin for [Chef's](http://www.opscode.com/chef/) [knife](http://wiki.opscode.com/display/chef/Knife) tool. It allows you to bootstrap virtual machines with [Scaleway.com](https://www.scaleway.com/) including the initial bootstrapping of chef on that system.
 You can also use [knife-solo](http://matschaffer.github.com/knife-solo/) or [knife-zero](https://github.com/higanworks/knife-zero) for chef bootstrapping or skip it altogether for another solution.
 
-This knife plugin uses the [server_kit](https://github.com/digitalocean/server_kit) rubygem.
+This knife plugin uses the scaleway ruby library.
 
-Knife::Scaleway supports Chef 12, legacy support for older Chefs
-will be removed with 3.x.x by the end of 2015.
+Knife::Scaleway supports Chef 12.
 
 ## Installation
 
@@ -37,78 +30,23 @@ This plugin provides the following sub-commands:
 * knife scaleway server create (options)  
 **Creates a virtual machine with or without bootstrapping chef**
 
-* knife scaleway server destroy (options)  
-  **Destroys the virtual machine and its data**
-
 * knife scaleway server list (options)  
   **Lists currently running virtual machines**
 
 * knife scaleway server power (options)  
   **Turn a server On/Off**
 
-* knife scaleway server powercycle (options)  
-  **Powercycle a Droplet**
-
-* knife scaleway server reboot (options)  
-  **Reboot a Droplet**
-
-* knife scaleway server snapshot (options)  
-  **Take a snapshot of a Droplet**
-
-* knife scaleway server rename (options)  
-  **Rename a Droplet**
-
-* knife scaleway server rebuild (options)  
-  **Rebuild a Droplet**
-
-* knife scaleway server resize (options)  
-  **Resize a Droplet**
-
-* knife scaleway image destroy (options)  
-  **Destroy your private images**
-
 * knife scaleway image list (options)  
   **Lists available images (snapshots, backups, OS-images)**
-
-* knife scaleway image transfer (options)  
-  **Transfer a image to another region**
 
 * knife scaleway region list (options)  
   **Lists the server regions/locations/data-center**
 
-* knife scaleway size list (options)  
-  **Lists the available server sizes**
+* knife scaleway volume list (options)  
+  **Lists the storage volumes**
 
-* knife scaleway domain create (options)  
-  **Creates a domain name**
-
-* knife scaleway domain destroy (options)  
-  **Destroys a domain name**
-
-* knife scaleway domain list (options)  
-  **Lists your domains added to Digital Ocean**
-
-* knife scaleway domain record create (options)  
-  **Creates a record for an existing domain**
-
-* knife scaleway domain record destroy (options)  
-  **Destroys a record for an existing domain**
-
-* knife scaleway domain record list (options)  
-  **Lists records for an existing domain**
-
-* knife scaleway sshkey create (options)  
-  **Creates a ssh key for use on digital ocean**
-
-* knife scaleway sshkey destroy (options)  
-  **Destroys the ssh key**
-
-* knife scaleway sshkey list (options)  
-  **Lists name + id of the uploaded known ssh keys**
-
-* knife scaleway account info (options)  
-  **Shows account information**
-
+* knife scaleway ip list (options)  
+  **Lists the reserved ip addresses**
 
 
 ## Configuration
@@ -116,14 +54,15 @@ This plugin provides the following sub-commands:
 The best way is to put your API-credentials of Scaleway in your knife.rb file of choice (e.g. in ```~/.chef/knife.rb```):
 
 ```ruby
-knife[:scaleway_access_token]   = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
+knife[:scaleway_access_key]   = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
+knife[:scaleway_token]        = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
 ```
 
 ## Usage
 
-### Create a Droplet
+### Create a Server
 
-There are three different ways of creating a server/server instance:
+There are three different ways of creating a server instance:
 
 If you just want to launch an instance
 form the command line without any bootstrapping, go for option **D**.
@@ -137,10 +76,6 @@ __Examples__
 ```shell
 ➜ knife scaleway server create --server-name awesome-vm1.vm.io \
                                       --image debian-7-0-x64 \
-                                      --location nyc3 \
-                                      --size 1gb \
-                                      --ssh-keys 1234,1235 \
-                                      --ssh-port 22
 ```
 
 ```shell
@@ -267,7 +202,7 @@ Delete server with id: 1824316
 Delete server with id: 1824317
 ```
 
-#### Reboot A Droplet
+#### Reboot A Server
 ```shell
 ➜ knife scaleway server reboot -I 1824315
 OK
@@ -284,26 +219,26 @@ OK
 OK
 ```
 
-#### Powercycle A Droplet
+#### Powercycle A Server
 ```shell
 ➜ knife scaleway powercycle -I 1824315
 OK
 ```
 
-#### Rebuild A Droplet
+#### Rebuild A Server
 ```shell
 ➜ knife scaleway rebuild --server-id 1824315 --image-id 65420
 OK
 ```
 
-#### Rename A Droplet
+#### Rename A Server
 ```shell
 ➜ knife scaleway rename -I 1824315 -N 'myserverrocks.com'
 OK
 ```
 
 
-#### Resize A Droplet
+#### Resize A Server
 ```shell
 ➜ knife scaleway rename -I 1824315 -s 1gb
 OK
@@ -494,9 +429,9 @@ OK
 ```shell
 ➜ knife scaleway domain record list -D example.com
 ID       Type  Name  Data
-3355877  NS    @     ns1.digitalocean.com
-3355878  NS    @     ns2.digitalocean.com
-3355879  NS    @     ns3.digitalocean.com
+3355877  NS    @     ns1.scaleway.com
+3355878  NS    @     ns2.scaleway.com
+3355879  NS    @     ns3.scaleway.com
 3355880  A     @     192.168.1.1
 ```
 
@@ -504,7 +439,7 @@ ID       Type  Name  Data
 
 ```shell
 ➜ knife scaleway account info
-UUID                                      Email           Droplet Limit  Email Verified
+UUID                                      Email           Server Limit  Email Verified
 58e2e737d3b7407b042aa7f99f4da4229166f2a1  joe@example.com 10             true
 ```
 
@@ -515,17 +450,6 @@ UUID                                      Email           Droplet Limit  Email V
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
-
-
-### Tests
-
-To run tests, please declare the `DIGITALOCEAN_ACCESS_TOKEN`
-environment variable, e.g.:
-
-```shell
-export DIGITALOCEAN_ACCESS_TOKEN="fake_access_token"
-rspec
-```
 
 
 ### RuboCop / Ruby Style Guide
@@ -542,6 +466,7 @@ see:
 
 *   [Teemu Matilainen](https://github.com/tmatilai)
 *   [Salvatore Poliandro](https://github.com/popsikle)
+*   [Lukas Diener](https://bitbucket.org/Lukas_Skywalker)
 
 For more information and a complete list see [the contributor page on GitHub](https://github.com/rmoriz/knife-scaleway/contributors).
 
@@ -553,4 +478,3 @@ Apache 2.0 (like Chef itself), see LICENSE.txt file.
 
 Copyright © 2015 [Roland Moriz](https://roland.io), [Moriz GmbH](https://moriz.de/)  
 Copyright © 2015 [Greg Fitzgerald](https://github.com/gregf)
-
