@@ -15,7 +15,7 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-    class DigitalOceanSshkeyDestroy < Knife
+    class ScalewaySshkeyDestroy < Knife
       include Knife::ScalewayBase
 
       banner 'knife digital_ocean sshkey destroy (options)'

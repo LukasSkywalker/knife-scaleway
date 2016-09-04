@@ -13,7 +13,7 @@
 
 class Chef
   class Knife
-    class DigitalOceanDomainRecordList < Knife
+    class ScalewayDomainRecordList < Knife
       include Knife::ScalewayBase
 
       banner 'knife digital_ocean domain record list (options)'

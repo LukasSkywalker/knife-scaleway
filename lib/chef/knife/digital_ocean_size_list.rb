@@ -14,7 +14,7 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-    class DigitalOceanSizeList < Knife
+    class ScalewaySizeList < Knife
       include Knife::ScalewayBase
 
       banner 'knife digital_ocean size list (options)'

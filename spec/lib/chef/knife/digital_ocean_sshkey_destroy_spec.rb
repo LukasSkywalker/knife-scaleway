@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Chef::Knife::DigitalOceanSshkeyDestroy do
+describe Chef::Knife::ScalewaySshkeyDestroy do
   pending
 end

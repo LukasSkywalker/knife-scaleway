@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-describe Chef::Knife::DigitalOceanRegionList do
+describe Chef::Knife::ScalewayRegionList do
   subject do
-    s = Chef::Knife::DigitalOceanRegionList.new
+    s = Chef::Knife::ScalewayRegionList.new
     s
   end
 
   let(:access_token) { ENV['DIGITALOCEAN_ACCESS_TOKEN'] }
 
   before :each do
-    Chef::Knife::DigitalOceanRegionList.load_deps
+    Chef::Knife::ScalewayRegionList.load_deps
     Chef::Config['knife']['digital_ocean_access_token'] = access_token
     allow(subject).to receive(:puts)
   end

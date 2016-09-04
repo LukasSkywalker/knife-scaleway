@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Chef::Knife::DigitalOceanSshkeyCreate do
-  subject { Chef::Knife::DigitalOceanSshkeyCreate.new }
+describe Chef::Knife::ScalewaySshkeyCreate do
+  subject { Chef::Knife::ScalewaySshkeyCreate.new }
 
   let(:access_token) { ENV['DIGITALOCEAN_ACCESS_TOKEN'] }
 
   before :each do
-    Chef::Knife::DigitalOceanSshkeyCreate.load_deps
+    Chef::Knife::ScalewaySshkeyCreate.load_deps
     Chef::Config['knife']['digital_ocean_access_token'] = access_token
     allow(subject).to receive(:puts)
     subject.config[:name] = 'test-key'

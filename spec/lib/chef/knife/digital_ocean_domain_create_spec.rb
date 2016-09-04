@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Chef::Knife::DigitalOceanDomainCreate do
-  subject { Chef::Knife::DigitalOceanDomainCreate.new }
+describe Chef::Knife::ScalewayDomainCreate do
+  subject { Chef::Knife::ScalewayDomainCreate.new }
 
   let(:access_token) { ENV['DIGITALOCEAN_ACCESS_TOKEN'] }
 
   before :each do
-    Chef::Knife::DigitalOceanDomainCreate.load_deps
+    Chef::Knife::ScalewayDomainCreate.load_deps
     Chef::Config['knife']['digital_ocean_access_token'] = access_token
     allow(subject).to receive(:puts)
     subject.config[:name] = 'kitchen-digital.org'

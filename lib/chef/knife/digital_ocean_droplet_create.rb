@@ -42,19 +42,19 @@ class Chef
       option :image,
              short: '-I IMAGE',
              long: '--image IMAGE',
-             description: 'Your DigitalOcean Image',
+             description: 'Your Scaleway Image',
              proc: proc { |image| Chef::Config[:knife][:image] = image }
 
       option :size,
              short: '-S SIZE',
              long: '--size SIZE',
-             description: 'Your DigitalOcean Size',
+             description: 'Your Scaleway Size',
              proc: proc { |size| Chef::Config[:knife][:size] = size }
 
       option :location,
              short: '-L REGION',
              long: '--location REGION',
-             description: 'DigitalOcean Location (Region)',
+             description: 'Scaleway Location (Region)',
              proc: proc { |location| Chef::Config[:knife][:location] = location }
 
       option :ssh_key_ids,
@@ -192,7 +192,7 @@ class Chef
         end
 
         unless locate_config_value(:ssh_key_ids)
-          ui.error('One or more DigitalOcean SSH key ids missing: -K <KEY1>, <KEY2> ...')
+          ui.error('One or more Scaleway SSH key ids missing: -K <KEY1>, <KEY2> ...')
           exit 1
         end
 =end

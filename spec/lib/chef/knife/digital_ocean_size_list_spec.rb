@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-describe Chef::Knife::DigitalOceanSizeList do
+describe Chef::Knife::ScalewaySizeList do
   subject do
-    s = Chef::Knife::DigitalOceanSizeList.new
+    s = Chef::Knife::ScalewaySizeList.new
     s
   end
 
   let(:access_token) { ENV['DIGITALOCEAN_ACCESS_TOKEN'] }
 
   before :each do
-    Chef::Knife::DigitalOceanSizeList.load_deps
+    Chef::Knife::ScalewaySizeList.load_deps
     Chef::Config['knife']['digital_ocean_access_token'] = access_token
     allow(subject).to receive(:puts)
   end

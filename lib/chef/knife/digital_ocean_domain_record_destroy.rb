@@ -15,7 +15,7 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-    class DigitalOceanDomainRecordDestroy < Knife
+    class ScalewayDomainRecordDestroy < Knife
       include Knife::ScalewayBase
 
       banner 'knife digital_ocean domain record destroy (options)'

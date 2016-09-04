@@ -1,5 +1,5 @@
-# Knife::DigitalOcean
-#### A knife plugin to deal with the [DigitalOcean.com](https://www.digitalocean.com) Cloud services.
+# Knife::Scaleway
+#### A knife plugin to deal with the [Scaleway.com](https://www.digitalocean.com) Cloud services.
 
 [![Gem Version](https://badge.fury.io/rb/knife-digital_ocean.png)](http://badge.fury.io/rb/knife-digital_ocean)
 [![Build Status](https://travis-ci.org/rmoriz/knife-digital_ocean.png)](https://travis-ci.org/rmoriz/knife-digital_ocean)
@@ -7,12 +7,12 @@
 <a href="https://codeclimate.com/github/rmoriz/knife-digital_ocean"><img src="https://codeclimate.com/github/rmoriz/knife-digital_ocean.png"/></a>
 [![Coverage Status](https://coveralls.io/repos/rmoriz/knife-digital_ocean/badge.png?branch=master)](https://coveralls.io/r/rmoriz/knife-digital_ocean?branch=master)
 
-This is a plugin for [Chef's](http://www.opscode.com/chef/) [knife](http://wiki.opscode.com/display/chef/Knife) tool. It allows you to bootstrap virtual machines with [DigitalOcean.com](https://www.digitalocean.com/) including the initial bootstrapping of chef on that system.
+This is a plugin for [Chef's](http://www.opscode.com/chef/) [knife](http://wiki.opscode.com/display/chef/Knife) tool. It allows you to bootstrap virtual machines with [Scaleway.com](https://www.digitalocean.com/) including the initial bootstrapping of chef on that system.
 You can also use [knife-solo](http://matschaffer.github.com/knife-solo/) or [knife-zero](https://github.com/higanworks/knife-zero) for chef bootstrapping or skip it altogether for another solution.
 
 This knife plugin uses the [droplet_kit](https://github.com/digitalocean/droplet_kit) rubygem.
 
-Knife::DigitalOcean supports Chef 12, legacy support for older Chefs
+Knife::Scaleway supports Chef 12, legacy support for older Chefs
 will be removed with 3.x.x by the end of 2015.
 
 ## Installation
@@ -113,7 +113,7 @@ This plugin provides the following sub-commands:
 
 ## Configuration
 
-The best way is to put your API-credentials of DigitalOcean in your knife.rb file of choice (e.g. in ```~/.chef/knife.rb```):
+The best way is to put your API-credentials of Scaleway in your knife.rb file of choice (e.g. in ```~/.chef/knife.rb```):
 
 ```ruby
 knife[:digital_ocean_access_token]   = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'

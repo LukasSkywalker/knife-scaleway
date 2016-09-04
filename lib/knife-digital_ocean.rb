@@ -2,7 +2,7 @@
 require 'knife-digital_ocean/version'
 
 module Knife
-  module DigitalOcean
+  module Scaleway
     # Your code goes here...
   end
 end

@@ -42,7 +42,7 @@ class Chef
           option :digital_ocean_access_token,
                  short: '-A ACCESS_TOKEN',
                  long: '--digital_ocean_access_token ACCESS_TOKEN',
-                 description: 'Your DigitalOcean ACCESS_TOKEN',
+                 description: 'Your Scaleway ACCESS_TOKEN',
                  proc: proc { |access_token| Chef::Config[:knife][:digital_ocean_access_token] = access_token }
         end
       end

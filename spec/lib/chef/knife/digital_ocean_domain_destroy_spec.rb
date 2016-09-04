@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Chef::Knife::DigitalOceanDomainDestroy do
+describe Chef::Knife::ScalewayDomainDestroy do
   pending
 end

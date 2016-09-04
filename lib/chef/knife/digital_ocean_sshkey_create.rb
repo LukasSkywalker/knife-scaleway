@@ -15,7 +15,7 @@ require 'chef/knife/digital_ocean_base'
 
 class Chef
   class Knife
-    class DigitalOceanSshkeyCreate < Knife
+    class ScalewaySshkeyCreate < Knife
       include Knife::ScalewayBase
 
       banner 'knife digital_ocean sshkey create (options)'

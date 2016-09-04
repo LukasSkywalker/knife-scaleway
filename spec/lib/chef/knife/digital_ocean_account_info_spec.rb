@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Chef::Knife::DigitalOceanAccountInfo do
-  subject { Chef::Knife::DigitalOceanAccountInfo.new }
+describe Chef::Knife::ScalewayAccountInfo do
+  subject { Chef::Knife::ScalewayAccountInfo.new }
 
   let(:access_token) { ENV['DIGITALOCEAN_ACCESS_TOKEN'] }
 
   before :each do
-    Chef::Knife::DigitalOceanAccountInfo.load_deps
+    Chef::Knife::ScalewayAccountInfo.load_deps
     Chef::Config['knife']['digital_ocean_access_token'] = access_token
     allow(subject).to receive(:puts)
   end
