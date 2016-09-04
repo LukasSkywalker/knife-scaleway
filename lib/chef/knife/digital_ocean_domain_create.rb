@@ -11,14 +11,14 @@
 # limitations under the License.
 #
 
-require 'chef/knife/digital_ocean_base'
+require 'chef/knife/scaleway_base'
 
 class Chef
   class Knife
     class ScalewayDomainCreate < Knife
       include Knife::ScalewayBase
 
-      banner 'knife digital_ocean domain create (options)'
+      banner 'knife scaleway domain create (options)'
 
       option :name,
              short: '-N NAME',

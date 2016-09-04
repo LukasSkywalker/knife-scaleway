@@ -7,7 +7,7 @@ describe Chef::Knife::ScalewayServerList do
 
   before :each do
     Chef::Knife::ScalewayServerList.load_deps
-    Chef::Config['knife']['digital_ocean_access_token'] = access_token
+    Chef::Config['knife']['scaleway_access_token'] = access_token
     Chef::Config['knife']['public_droplets'] = true
     allow(subject).to receive(:puts)
   end

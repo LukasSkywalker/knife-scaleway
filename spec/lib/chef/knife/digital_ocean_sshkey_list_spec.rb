@@ -10,7 +10,7 @@ describe Chef::Knife::ScalewaySshkeyList do
 
   before :each do
     Chef::Knife::ScalewaySshkeyList.load_deps
-    Chef::Config['knife']['digital_ocean_access_token'] = access_token
+    Chef::Config['knife']['scaleway_access_token'] = access_token
     allow(subject).to receive(:puts)
   end
 

@@ -10,7 +10,7 @@ describe Chef::Knife::ScalewaySizeList do
 
   before :each do
     Chef::Knife::ScalewaySizeList.load_deps
-    Chef::Config['knife']['digital_ocean_access_token'] = access_token
+    Chef::Config['knife']['scaleway_access_token'] = access_token
     allow(subject).to receive(:puts)
   end
 

@@ -10,14 +10,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-require 'chef/knife/digital_ocean_base'
+require 'chef/knife/scaleway_base'
 
 class Chef
   class Knife
     class ScalewaySizeList < Knife
       include Knife::ScalewayBase
 
-      banner 'knife digital_ocean size list (options)'
+      banner 'knife scaleway size list (options)'
 
       def run
         $stdout.sync = true

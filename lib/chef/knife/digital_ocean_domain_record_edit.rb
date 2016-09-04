@@ -11,14 +11,14 @@
 # limitations under the License.
 #
 
-require 'chef/knife/digital_ocean_base'
+require 'chef/knife/scaleway_base'
 
 class Chef
   class Knife
     class ScalewayDomainRecordEdit < Knife
       include Knife::ScalewayBase
 
-      banner 'knife digital_ocean domain record edit (options)'
+      banner 'knife scaleway domain record edit (options)'
 
       option :domain,
              short: '-D NAME',

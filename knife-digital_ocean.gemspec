@@ -1,16 +1,16 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'knife-digital_ocean/version'
+require 'knife-scaleway/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = 'knife-digital_ocean'
+  gem.name          = 'knife-scaleway'
   gem.version       = Knife::Scaleway::VERSION
   gem.authors       = ['Roland Moriz', 'Greg Fitzgerald']
   gem.email         = ['roland@moriz.de', 'greg@gregf.org']
   gem.description   = "A plugin for chef's knife to manage instances of Scaleway servers"
   gem.summary       = "A plugin for chef's knife to manage instances of Scaleway servers"
-  gem.homepage      = 'https://github.com/rmoriz/knife-digital_ocean'
+  gem.homepage      = 'https://github.com/rmoriz/knife-scaleway'
   gem.license       = 'Apache 2.0'
 
   gem.add_dependency 'chef', '>= 10.18'

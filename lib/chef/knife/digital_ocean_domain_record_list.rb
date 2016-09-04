@@ -16,7 +16,7 @@ class Chef
     class ScalewayDomainRecordList < Knife
       include Knife::ScalewayBase
 
-      banner 'knife digital_ocean domain record list (options)'
+      banner 'knife scaleway domain record list (options)'
 
       option :name,
              short: '-D NAME',

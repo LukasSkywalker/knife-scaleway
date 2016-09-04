@@ -7,7 +7,7 @@ describe Chef::Knife::ScalewayServerReboot do
 
   before :each do
     Chef::Knife::ScalewayServerReboot.load_deps
-    Chef::Config['knife']['digital_ocean_access_token'] = access_token
+    Chef::Config['knife']['scaleway_access_token'] = access_token
     allow(subject).to receive(:puts)
     allow(subject).to receive(:wait_for_status).and_return('OK')
     subject.config[:id] = '4829346'

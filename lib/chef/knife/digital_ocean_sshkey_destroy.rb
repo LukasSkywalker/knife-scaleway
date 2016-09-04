@@ -11,14 +11,14 @@
 # limitations under the License.
 #
 
-require 'chef/knife/digital_ocean_base'
+require 'chef/knife/scaleway_base'
 
 class Chef
   class Knife
     class ScalewaySshkeyDestroy < Knife
       include Knife::ScalewayBase
 
-      banner 'knife digital_ocean sshkey destroy (options)'
+      banner 'knife scaleway sshkey destroy (options)'
 
       option :id,
              short: '-i ID',

@@ -13,7 +13,7 @@ describe Chef::Knife::ScalewayServerCreate do
 
   let(:config) do
     {
-      digital_ocean_access_token: 'ACCESS_TOKEN',
+      scaleway_access_token: 'ACCESS_TOKEN',
       server_name: 'sever-name.example.com',
       image: 11_111,
       location: 22_222,

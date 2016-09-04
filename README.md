@@ -1,11 +1,11 @@
 # Knife::Scaleway
 #### A knife plugin to deal with the [Scaleway.com](https://www.digitalocean.com) Cloud services.
 
-[![Gem Version](https://badge.fury.io/rb/knife-digital_ocean.png)](http://badge.fury.io/rb/knife-digital_ocean)
-[![Build Status](https://travis-ci.org/rmoriz/knife-digital_ocean.png)](https://travis-ci.org/rmoriz/knife-digital_ocean)
-<a href="https://gemnasium.com/rmoriz/knife-digital_ocean"><img src="https://gemnasium.com/rmoriz/knife-digital_ocean.png"/></a>
-<a href="https://codeclimate.com/github/rmoriz/knife-digital_ocean"><img src="https://codeclimate.com/github/rmoriz/knife-digital_ocean.png"/></a>
-[![Coverage Status](https://coveralls.io/repos/rmoriz/knife-digital_ocean/badge.png?branch=master)](https://coveralls.io/r/rmoriz/knife-digital_ocean?branch=master)
+[![Gem Version](https://badge.fury.io/rb/knife-scaleway.png)](http://badge.fury.io/rb/knife-scaleway)
+[![Build Status](https://travis-ci.org/rmoriz/knife-scaleway.png)](https://travis-ci.org/rmoriz/knife-scaleway)
+<a href="https://gemnasium.com/rmoriz/knife-scaleway"><img src="https://gemnasium.com/rmoriz/knife-scaleway.png"/></a>
+<a href="https://codeclimate.com/github/rmoriz/knife-scaleway"><img src="https://codeclimate.com/github/rmoriz/knife-scaleway.png"/></a>
+[![Coverage Status](https://coveralls.io/repos/rmoriz/knife-scaleway/badge.png?branch=master)](https://coveralls.io/r/rmoriz/knife-scaleway?branch=master)
 
 This is a plugin for [Chef's](http://www.opscode.com/chef/) [knife](http://wiki.opscode.com/display/chef/Knife) tool. It allows you to bootstrap virtual machines with [Scaleway.com](https://www.digitalocean.com/) including the initial bootstrapping of chef on that system.
 You can also use [knife-solo](http://matschaffer.github.com/knife-solo/) or [knife-zero](https://github.com/higanworks/knife-zero) for chef bootstrapping or skip it altogether for another solution.
@@ -20,13 +20,13 @@ will be removed with 3.x.x by the end of 2015.
 ### when using ChefDK
 
 ```shell
-➜ chef gem install knife-digital_ocean
+➜ chef gem install knife-scaleway
 ```
 
 ### in typical Ruby setup
 
 ```shell
-➜ gem install knife-digital_ocean
+➜ gem install knife-scaleway
 ```
 
 
@@ -34,79 +34,79 @@ will be removed with 3.x.x by the end of 2015.
 
 This plugin provides the following sub-commands:
 
-* knife digital_ocean droplet create (options)  
+* knife scaleway droplet create (options)  
 **Creates a virtual machine with or without bootstrapping chef**
 
-* knife digital_ocean droplet destroy (options)  
+* knife scaleway droplet destroy (options)  
   **Destroys the virtual machine and its data**
 
-* knife digital_ocean droplet list (options)  
+* knife scaleway droplet list (options)  
   **Lists currently running virtual machines**
 
-* knife digital_ocean droplet power (options)  
+* knife scaleway droplet power (options)  
   **Turn a droplet On/Off**
 
-* knife digital_ocean droplet powercycle (options)  
+* knife scaleway droplet powercycle (options)  
   **Powercycle a Droplet**
 
-* knife digital_ocean droplet reboot (options)  
+* knife scaleway droplet reboot (options)  
   **Reboot a Droplet**
 
-* knife digital_ocean droplet snapshot (options)  
+* knife scaleway droplet snapshot (options)  
   **Take a snapshot of a Droplet**
 
-* knife digital_ocean droplet rename (options)  
+* knife scaleway droplet rename (options)  
   **Rename a Droplet**
 
-* knife digital_ocean droplet rebuild (options)  
+* knife scaleway droplet rebuild (options)  
   **Rebuild a Droplet**
 
-* knife digital_ocean droplet resize (options)  
+* knife scaleway droplet resize (options)  
   **Resize a Droplet**
 
-* knife digital_ocean image destroy (options)  
+* knife scaleway image destroy (options)  
   **Destroy your private images**
 
-* knife digital_ocean image list (options)  
+* knife scaleway image list (options)  
   **Lists available images (snapshots, backups, OS-images)**
 
-* knife digital_ocean image transfer (options)  
+* knife scaleway image transfer (options)  
   **Transfer a image to another region**
 
-* knife digital_ocean region list (options)  
+* knife scaleway region list (options)  
   **Lists the server regions/locations/data-center**
 
-* knife digital_ocean size list (options)  
+* knife scaleway size list (options)  
   **Lists the available server sizes**
 
-* knife digital_ocean domain create (options)  
+* knife scaleway domain create (options)  
   **Creates a domain name**
 
-* knife digital_ocean domain destroy (options)  
+* knife scaleway domain destroy (options)  
   **Destroys a domain name**
 
-* knife digital_ocean domain list (options)  
+* knife scaleway domain list (options)  
   **Lists your domains added to Digital Ocean**
 
-* knife digital_ocean domain record create (options)  
+* knife scaleway domain record create (options)  
   **Creates a record for an existing domain**
 
-* knife digital_ocean domain record destroy (options)  
+* knife scaleway domain record destroy (options)  
   **Destroys a record for an existing domain**
 
-* knife digital_ocean domain record list (options)  
+* knife scaleway domain record list (options)  
   **Lists records for an existing domain**
 
-* knife digital_ocean sshkey create (options)  
+* knife scaleway sshkey create (options)  
   **Creates a ssh key for use on digital ocean**
 
-* knife digital_ocean sshkey destroy (options)  
+* knife scaleway sshkey destroy (options)  
   **Destroys the ssh key**
 
-* knife digital_ocean sshkey list (options)  
+* knife scaleway sshkey list (options)  
   **Lists name + id of the uploaded known ssh keys**
 
-* knife digital_ocean account info (options)  
+* knife scaleway account info (options)  
   **Shows account information**
 
 
@@ -116,7 +116,7 @@ This plugin provides the following sub-commands:
 The best way is to put your API-credentials of Scaleway in your knife.rb file of choice (e.g. in ```~/.chef/knife.rb```):
 
 ```ruby
-knife[:digital_ocean_access_token]   = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
+knife[:scaleway_access_token]   = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
 ```
 
 ## Usage
@@ -135,7 +135,7 @@ use method **A**:
 __Examples__
 
 ```shell
-➜ knife digital_ocean droplet create --server-name awesome-vm1.vm.io \
+➜ knife scaleway droplet create --server-name awesome-vm1.vm.io \
                                       --image debian-7-0-x64 \
                                       --location nyc3 \
                                       --size 1gb \
@@ -144,7 +144,7 @@ __Examples__
 ```
 
 ```shell
-➜ knife digital_ocean droplet create --server-name awesome-vm2.vm.io \
+➜ knife scaleway droplet create --server-name awesome-vm2.vm.io \
                                       --image debian-7.0-x64 \
                                       --location sfo1 \
                                       --size 512mb \
@@ -161,7 +161,7 @@ __Examples__
 __Syntax__
 
 ```shell
-➜ knife digital_ocean droplet create --server-name <FQDN> \
+➜ knife scaleway droplet create --server-name <FQDN> \
                                       --image <IMAGE SLUG> \
                                       --location <REGION SLUG> \
                                       --size <SIZE SLUG> \
@@ -178,7 +178,7 @@ __Syntax__
 __Short Syntax__
 
 ```shell
-➜ knife digital_ocean droplet create -N <FQDN> \
+➜ knife scaleway droplet create -N <FQDN> \
                                       -I <IMAGE SLUG> \
                                       -L <REGION SLUG> \
                                       -S <SIZE SLUG> \
@@ -199,7 +199,7 @@ Please consult the [knife-solo documentation](http://matschaffer.github.io/knife
 __Example__
 
 ```bash
-➜ knife digital_ocean droplet create --server-name awesome-vm1.vm.io \
+➜ knife scaleway droplet create --server-name awesome-vm1.vm.io \
                                       --image debian-7-0-x64 \
                                       --location lon1 \
                                       --size 2gb \
@@ -218,7 +218,7 @@ Please consult the [knife-zero documentation](https://github.com/higanworks/knif
 __Example__
 
 ```bash
-➜ knife digital_ocean droplet create --server-name awesome-vm1.vm.io \
+➜ knife scaleway droplet create --server-name awesome-vm1.vm.io \
                                       --image debian-7-0-x64 \
                                       --location lon1 \
                                       --size 2gb \
@@ -234,7 +234,7 @@ This will just create a droplet and return its IP-address. Nothing else. You can
 __Example__
 
 ```bash
-➜ knife digital_ocean droplet create --server-name awesome-vm1.vm.io \
+➜ knife scaleway droplet create --server-name awesome-vm1.vm.io \
                                       --image debian-7-0-x64 \
                                       --location lon1 \
                                       --size 2gb \
@@ -244,7 +244,7 @@ __Example__
 ### List running droplets (servers)
 
 ```shell
-➜ knife digital_ocean droplet list
+➜ knife scaleway droplet list
 ID     Name                  Size   Region       IPv4            Image                            Status
 12345  app20.ams.nl.vm.io  1gb    Amsterdam 1  185.14.123.123  25306 (Ubuntu 12.10 x32 Server)  active
 23456  awesome-vm1.vm.io   512mb  Amsterdam 1  185.14.124.125  25306 (Ubuntu 12.10 x32 Server)  active
@@ -254,14 +254,14 @@ ID     Name                  Size   Region       IPv4            Image          
 
 #### Destroy droplet by id
 ```shell
-➜ knife digital_ocean droplet destroy -S 23456
+➜ knife scaleway droplet destroy -S 23456
 OK
 ```
 
 #### Destroy all droplets
 
 ```shell
-➜ knife digital_ocean droplet destroy --all
+➜ knife scaleway droplet destroy --all
 Delete droplet with id: 1824315
 Delete droplet with id: 1824316
 Delete droplet with id: 1824317
@@ -269,56 +269,56 @@ Delete droplet with id: 1824317
 
 #### Reboot A Droplet
 ```shell
-➜ knife digital_ocean droplet reboot -I 1824315
+➜ knife scaleway droplet reboot -I 1824315
 OK
 ```
 
 #### Turn Power On/Off
 ```shell
-➜ knife digital_ocean power -I 1824315 -a on
+➜ knife scaleway power -I 1824315 -a on
 OK
 ```
 
 ```shell
-➜ knife digital_ocean power -I 1824315 -a off
+➜ knife scaleway power -I 1824315 -a off
 OK
 ```
 
 #### Powercycle A Droplet
 ```shell
-➜ knife digital_ocean powercycle -I 1824315
+➜ knife scaleway powercycle -I 1824315
 OK
 ```
 
 #### Rebuild A Droplet
 ```shell
-➜ knife digital_ocean rebuild --droplet-id 1824315 --image-id 65420
+➜ knife scaleway rebuild --droplet-id 1824315 --image-id 65420
 OK
 ```
 
 #### Rename A Droplet
 ```shell
-➜ knife digital_ocean rename -I 1824315 -N 'mydropletrocks.com'
+➜ knife scaleway rename -I 1824315 -N 'mydropletrocks.com'
 OK
 ```
 
 
 #### Resize A Droplet
 ```shell
-➜ knife digital_ocean rename -I 1824315 -s 1gb
+➜ knife scaleway rename -I 1824315 -s 1gb
 OK
 ```
 
 #### Create a droplet from a Snapshot
 ```shell
-➜ knife digital_ocean snapshot -I 1824315 -N 'my-super-awesome-snapshot'
+➜ knife scaleway snapshot -I 1824315 -N 'my-super-awesome-snapshot'
 OK
 ```
 
 ### List regions
 
 ```shell
-➜ knife digital_ocean region list
+➜ knife scaleway region list
 Name             Slug
 Amsterdam 1      ams1
 Amsterdam 2      ams2
@@ -335,7 +335,7 @@ Singapore 1      sgp1
 ### List sizes (instance types)
 
 ```shell
-➜ knife digital_ocean size list
+➜ knife scaleway size list
 Slug
 512mb
 1gb
@@ -353,7 +353,7 @@ Slug
 #### Custom images (snapshots, backups) (default)
 
 ```shell
-➜ knife digital_ocean image list
+➜ knife scaleway image list
 ID     Distribution  Name
 11111  Ubuntu        app100.ams.nlxxxxx.net 2013-02-01
 11112  Ubuntu        app100.ams.nlxxxxx.net 2013-02-03
@@ -363,7 +363,7 @@ ID     Distribution  Name
 #### Public images (OS)
 
 ```shell
-➜ knife digital_ocean image list --public
+➜ knife scaleway image list --public
 ID        Distribution  Name                                      Slug       
 10322623  CentOS        7 x64                                     centos-7-0-x64  
 6372425   CentOS        5.10 x32                                  centos-5-8-x32  
@@ -415,14 +415,14 @@ ID        Distribution  Name                                      Slug
 #### Destroy Private Images
 
 ```shell
-➜ knife digital_ocean image destroy -I 11112
+➜ knife scaleway image destroy -I 11112
 OK
 ```
 
 #### Transfer Private Images to Another Region
 
 ```shell
-➜ knife digital_ocean image destroy -I 11112 -R ams1
+➜ knife scaleway image destroy -I 11112 -R ams1
 
 ```
 
@@ -432,7 +432,7 @@ OK
 #### List SSH keys
 
 ```shell
-➜ knife digital_ocean sshkey list
+➜ knife scaleway sshkey list
 ID    Name    Fingerprint
 1234  Alice   e0:1a:1b:30:7f:bd:b2:cf:f2:4f:3b:35:3c:87:46:1c
 1235  Bob     b0:ca:40:36:7f:bd:b2:cf:f2:4f:2b:45:3c:28:41:5f
@@ -443,13 +443,13 @@ ID    Name    Fingerprint
 #### Create a SSH key
 
 ```shell
-➜ knife digital_ocean sshkey create -i ~/.ssh/id_rsa.pub -n Bob
+➜ knife scaleway sshkey create -i ~/.ssh/id_rsa.pub -n Bob
 ```
 
 #### Destroy a SSH key
 
 ```shell
-➜ knife digital_ocean sshkey destroy -i 1236
+➜ knife scaleway sshkey destroy -i 1236
 OK
 ```
 
@@ -458,20 +458,20 @@ OK
 #### Create a domain
 
 ```shell
-➜ knife digital_ocean domain create -N example.com -I 192.168.1.1
+➜ knife scaleway domain create -N example.com -I 192.168.1.1
 ```
 
 #### Destroy a domain
 
 ```shell
-➜ knife digital_ocean domain destroy -D example.com
+➜ knife scaleway domain destroy -D example.com
 OK
 ```
 
 #### List domains
 
 ```shell
-➜ knife digital_ocean domain list
+➜ knife scaleway domain list
 Name         TTL
 example.com  1800
 ```
@@ -479,20 +479,20 @@ example.com  1800
 #### Create a domain record
 
 ```shell
-➜ knife digital_ocean domain record create -D example.com -T CNAME -N www -a @
+➜ knife scaleway domain record create -D example.com -T CNAME -N www -a @
 ```
 
 #### Destroy a domain record
 
 ```shell
-➜ knife digital_ocean domain record destroy -D example.com -R 3355880
+➜ knife scaleway domain record destroy -D example.com -R 3355880
 OK
 ```
 
 #### List domain records
 
 ```shell
-➜ knife digital_ocean domain record list -D example.com
+➜ knife scaleway domain record list -D example.com
 ID       Type  Name  Data
 3355877  NS    @     ns1.digitalocean.com
 3355878  NS    @     ns2.digitalocean.com
@@ -503,7 +503,7 @@ ID       Type  Name  Data
 ### Account Info
 
 ```shell
-➜ knife digital_ocean account info
+➜ knife scaleway account info
 UUID                                      Email           Droplet Limit  Email Verified
 58e2e737d3b7407b042aa7f99f4da4229166f2a1  joe@example.com 10             true
 ```
@@ -543,7 +543,7 @@ see:
 *   [Teemu Matilainen](https://github.com/tmatilai)
 *   [Salvatore Poliandro](https://github.com/popsikle)
 
-For more information and a complete list see [the contributor page on GitHub](https://github.com/rmoriz/knife-digital_ocean/contributors).
+For more information and a complete list see [the contributor page on GitHub](https://github.com/rmoriz/knife-scaleway/contributors).
 
 ## License
 

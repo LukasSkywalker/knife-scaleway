@@ -7,7 +7,7 @@ describe Chef::Knife::ScalewayDomainCreate do
 
   before :each do
     Chef::Knife::ScalewayDomainCreate.load_deps
-    Chef::Config['knife']['digital_ocean_access_token'] = access_token
+    Chef::Config['knife']['scaleway_access_token'] = access_token
     allow(subject).to receive(:puts)
     subject.config[:name] = 'kitchen-digital.org'
     subject.config[:ip_address] = '192.168.1.1'

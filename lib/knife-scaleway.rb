@@ -1,5 +1,5 @@
 # rubocop:disable Style/FileName
-require 'knife-digital_ocean/version'
+require 'knife-scaleway/version'
 
 module Knife
   module Scaleway
