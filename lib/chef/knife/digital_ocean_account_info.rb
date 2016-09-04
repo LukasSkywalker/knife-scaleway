@@ -35,7 +35,7 @@ class Chef
 
         account_info << account.uuid.to_s
         account_info << account.email.to_s
-        account_info << account.droplet_limit.to_s
+        account_info << account.server_limit.to_s
         account_info << account.email_verified.to_s
 
         puts ui.list(account_info, :uneven_columns_across, 4)

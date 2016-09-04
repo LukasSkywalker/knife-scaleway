@@ -17,16 +17,16 @@ class Chef
     class ScalewayServerRename < Knife
       include Knife::ScalewayBase
 
-      banner 'knife scaleway droplet rename (options)'
+      banner 'knife scaleway server rename (options)'
 
       option :name,
         short: '-N NAME',
-        long: '--droplet-name NAME',
-        description: 'Name of droplet'
+        long: '--server-name NAME',
+        description: 'Name of server'
 
       option :id,
         short: '-I ID',
-        long: '--droplet-id ID',
+        long: '--server-id ID',
         description: 'Droplet ID'
 
       def run
@@ -44,7 +44,7 @@ class Chef
           exit 1
         end
 
-        result = client.droplet_actions.rename(droplet_id: locate_config_value(:id), name: locate_config_value(:name))
+        result = client.server_actions.rename(server_id: locate_config_value(:id), name: locate_config_value(:name))
 
         unless result.class == DropletKit::Action
           ui.error JSON.parse(result)['message']

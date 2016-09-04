@@ -17,7 +17,7 @@ class Chef
     class ScalewayServerDestroy < Knife
       include Knife::ScalewayBase
 
-      banner 'knife scaleway droplet destroy (options)'
+      banner 'knife scaleway server destroy (options)'
 
       option :server,
         short: '-S ID',
@@ -27,17 +27,17 @@ class Chef
       option :all,
         short: '-a',
         long: '--all',
-        description: '!WARNING! UNRECOVERABLE Destroy all droplets.'
+        description: '!WARNING! UNRECOVERABLE Destroy all servers.'
 
       def run
         $stdout.sync = true
 
         validate!
 
-        droplets_ids = []
+        servers_ids = []
 
         if locate_config_value(:server)
-          droplets_ids = [locate_config_value(:server)]
+          servers_ids = [locate_config_value(:server)]
         elsif locate_config_value(:all)
           ui.error('Warning all servers will be lost unless you exit with ctrl-c now!')
 
@@ -47,20 +47,20 @@ class Chef
             sleep 1
           end
 
-          droplets_ids = client.droplets.all.map(&:id)
+          servers_ids = client.servers.all.map(&:id)
         else
           ui.error 'You need to specify either a --server id or --all'
           exit 1
         end
 
-        if droplets_ids.empty?
-          ui.error('Could not find any droplet(s)')
+        if servers_ids.empty?
+          ui.error('Could not find any server(s)')
           exit 1
         end
 
-        droplets_ids.each do |id|
-          ui.info "Delete droplet with id: #{id}"
-          result = client.droplets.delete(id: id)
+        servers_ids.each do |id|
+          ui.info "Delete server with id: #{id}"
+          result = client.servers.delete(id: id)
           ui.info 'OK' if result == true || ui.error(JSON.parse(result)['message'])
         end
       end

@@ -17,14 +17,14 @@ class Chef
     class ScalewayServerList < Knife
       include Knife::ScalewayBase
 
-      banner 'knife scaleway droplet list (options)'
+      banner 'knife scaleway server list (options)'
 
       def run
         $stdout.sync = true
 
         validate!
 
-        droplet_list = [
+        server_list = [
           ui.color('ID',     :bold),
           ui.color('Name',   :bold),
           ui.color('Size',   :bold),
@@ -33,21 +33,21 @@ class Chef
           ui.color('Image',  :bold),
           ui.color('Status', :bold)
         ]
-        droplets = Scaleway::Server.all
+        servers = Scaleway::Server.all
 
-        droplets.each do |droplet|
-          ip = droplet.public_ip ? droplet.public_ip.address.to_s : ''.to_s
+        servers.each do |server|
+          ip = server.public_ip ? server.public_ip.address.to_s : ''.to_s
 
-          droplet_list << droplet.id.to_s
-          droplet_list << droplet.name.to_s
-          droplet_list << '?' # droplet.size_slug.to_s
-          droplet_list << 'fr-1' # droplet.region.name.to_s
-          droplet_list << ip
-          droplet_list << droplet.image.name.to_s
-          droplet_list << droplet.state.to_s
+          server_list << server.id.to_s
+          server_list << server.name.to_s
+          server_list << '?' # server.size_slug.to_s
+          server_list << 'fr-1' # server.region.name.to_s
+          server_list << ip
+          server_list << server.image.name.to_s
+          server_list << server.state.to_s
         end
 
-        puts ui.list(droplet_list, :uneven_columns_across, 7)
+        puts ui.list(server_list, :uneven_columns_across, 7)
       end
     end
   end

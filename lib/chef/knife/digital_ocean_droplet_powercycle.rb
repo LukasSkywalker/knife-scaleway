@@ -17,11 +17,11 @@ class Chef
     class ScalewayServerPowercycle < Knife
       include Knife::ScalewayBase
 
-      banner 'knife scaleway droplet powercycle (options)'
+      banner 'knife scaleway server powercycle (options)'
 
       option :id,
         short: '-I ID',
-        long: '--droplet-id ID',
+        long: '--server-id ID',
         description: 'Droplet ID'
 
       def run
@@ -34,7 +34,7 @@ class Chef
           exit 1
         end
 
-        result = client.droplet_actions.power_cycle(droplet_id: locate_config_value(:id))
+        result = client.server_actions.power_cycle(server_id: locate_config_value(:id))
 
         unless result.class == DropletKit::Action
           ui.error JSON.parse(result)['message']

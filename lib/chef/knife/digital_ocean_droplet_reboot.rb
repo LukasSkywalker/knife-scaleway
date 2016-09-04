@@ -17,11 +17,11 @@ class Chef
     class ScalewayServerReboot < Knife
       include Knife::ScalewayBase
 
-      banner 'knife scaleway droplet reboot (options)'
+      banner 'knife scaleway server reboot (options)'
 
       option :id,
         short: '-I ID',
-        long: '--droplet-id ID',
+        long: '--server-id ID',
         description: 'Droplet ID'
 
       def run
@@ -34,7 +34,7 @@ class Chef
           exit 1
         end
 
-        result = client.droplet_actions.reboot(droplet_id: locate_config_value(:id))
+        result = client.server_actions.reboot(server_id: locate_config_value(:id))
 
         unless result.class == DropletKit::Action
           ui.error JSON.parse(result)['message']

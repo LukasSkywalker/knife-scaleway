@@ -17,7 +17,7 @@ class Chef
     class ScalewayServerRebuild < Knife
       include Knife::ScalewayBase
 
-      banner 'knife scaleway droplet rebuild (options)'
+      banner 'knife scaleway server rebuild (options)'
 
       option :image,
         short: '-i IMAGE',
@@ -26,7 +26,7 @@ class Chef
 
       option :id,
         short: '-I ID',
-        long: '--droplet-id ID',
+        long: '--server-id ID',
         description: 'Droplet ID'
 
       def run
@@ -44,8 +44,8 @@ class Chef
           exit 1
         end
 
-        result = client.droplet_actions.rebuild(
-          droplet_id: locate_config_value(:id),
+        result = client.server_actions.rebuild(
+          server_id: locate_config_value(:id),
           image: locate_config_value(:image)
         )
 

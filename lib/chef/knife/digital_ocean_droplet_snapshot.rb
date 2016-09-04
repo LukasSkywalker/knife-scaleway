@@ -17,7 +17,7 @@ class Chef
     class ScalewayServerSnapshot < Knife
       include Knife::ScalewayBase
 
-      banner 'knife scaleway droplet snapshot (options)'
+      banner 'knife scaleway server snapshot (options)'
 
       option :name,
              short: '-N NAME',
@@ -26,7 +26,7 @@ class Chef
 
       option :id,
              short: '-I ID',
-             long: '--droplet-id ID',
+             long: '--server-id ID',
              description: 'Droplet ID'
 
       def run
@@ -44,7 +44,7 @@ class Chef
           exit 1
         end
 
-        result = client.droplet_actions.snapshot(droplet_id: locate_config_value(:id), name: locate_config_value(:name))
+        result = client.server_actions.snapshot(server_id: locate_config_value(:id), name: locate_config_value(:name))
 
         unless result.class == DropletKit::Action
           ui.error JSON.parse(result)['message']

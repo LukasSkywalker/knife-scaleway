@@ -77,7 +77,7 @@ class Chef
           print('.')
 
           #if status == 'starting' || status == 'stopping'
-            #break if client.droplets.find(id: locate_config_value(:id)).status != 'in-progress'
+            #break if client.servers.find(id: locate_config_value(:id)).status != 'in-progress'
           #else
             break if Scaleway::Server.find(locate_config_value(:id)).state == status
           #end

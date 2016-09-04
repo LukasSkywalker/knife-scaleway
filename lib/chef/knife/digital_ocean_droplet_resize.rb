@@ -17,7 +17,7 @@ class Chef
     class ScalewayServerResize < Knife
       include Knife::ScalewayBase
 
-      banner 'knife scaleway droplet resize (options)'
+      banner 'knife scaleway server resize (options)'
 
       option :size,
         short: '-s SIZE',
@@ -26,7 +26,7 @@ class Chef
 
       option :id,
         short: '-I ID',
-        long: '--droplet-id ID',
+        long: '--server-id ID',
         description: 'Droplet ID'
 
       def run
@@ -44,7 +44,7 @@ class Chef
           exit 1
         end
 
-        result = client.droplet_actions.resize(droplet_id: locate_config_value(:id), size: locate_config_value(:size))
+        result = client.server_actions.resize(server_id: locate_config_value(:id), size: locate_config_value(:size))
 
         unless result.class == DropletKit::Action
           ui.error JSON.parse(result)['message']

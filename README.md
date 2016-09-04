@@ -10,7 +10,7 @@
 This is a plugin for [Chef's](http://www.opscode.com/chef/) [knife](http://wiki.opscode.com/display/chef/Knife) tool. It allows you to bootstrap virtual machines with [Scaleway.com](https://www.digitalocean.com/) including the initial bootstrapping of chef on that system.
 You can also use [knife-solo](http://matschaffer.github.com/knife-solo/) or [knife-zero](https://github.com/higanworks/knife-zero) for chef bootstrapping or skip it altogether for another solution.
 
-This knife plugin uses the [droplet_kit](https://github.com/digitalocean/droplet_kit) rubygem.
+This knife plugin uses the [server_kit](https://github.com/digitalocean/server_kit) rubygem.
 
 Knife::Scaleway supports Chef 12, legacy support for older Chefs
 will be removed with 3.x.x by the end of 2015.
@@ -34,34 +34,34 @@ will be removed with 3.x.x by the end of 2015.
 
 This plugin provides the following sub-commands:
 
-* knife scaleway droplet create (options)  
+* knife scaleway server create (options)  
 **Creates a virtual machine with or without bootstrapping chef**
 
-* knife scaleway droplet destroy (options)  
+* knife scaleway server destroy (options)  
   **Destroys the virtual machine and its data**
 
-* knife scaleway droplet list (options)  
+* knife scaleway server list (options)  
   **Lists currently running virtual machines**
 
-* knife scaleway droplet power (options)  
-  **Turn a droplet On/Off**
+* knife scaleway server power (options)  
+  **Turn a server On/Off**
 
-* knife scaleway droplet powercycle (options)  
+* knife scaleway server powercycle (options)  
   **Powercycle a Droplet**
 
-* knife scaleway droplet reboot (options)  
+* knife scaleway server reboot (options)  
   **Reboot a Droplet**
 
-* knife scaleway droplet snapshot (options)  
+* knife scaleway server snapshot (options)  
   **Take a snapshot of a Droplet**
 
-* knife scaleway droplet rename (options)  
+* knife scaleway server rename (options)  
   **Rename a Droplet**
 
-* knife scaleway droplet rebuild (options)  
+* knife scaleway server rebuild (options)  
   **Rebuild a Droplet**
 
-* knife scaleway droplet resize (options)  
+* knife scaleway server resize (options)  
   **Resize a Droplet**
 
 * knife scaleway image destroy (options)  
@@ -123,7 +123,7 @@ knife[:scaleway_access_token]   = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY'
 
 ### Create a Droplet
 
-There are three different ways of creating a server/droplet instance:
+There are three different ways of creating a server/server instance:
 
 If you just want to launch an instance
 form the command line without any bootstrapping, go for option **D**.
@@ -135,7 +135,7 @@ use method **A**:
 __Examples__
 
 ```shell
-➜ knife scaleway droplet create --server-name awesome-vm1.vm.io \
+➜ knife scaleway server create --server-name awesome-vm1.vm.io \
                                       --image debian-7-0-x64 \
                                       --location nyc3 \
                                       --size 1gb \
@@ -144,7 +144,7 @@ __Examples__
 ```
 
 ```shell
-➜ knife scaleway droplet create --server-name awesome-vm2.vm.io \
+➜ knife scaleway server create --server-name awesome-vm2.vm.io \
                                       --image debian-7.0-x64 \
                                       --location sfo1 \
                                       --size 512mb \
@@ -161,7 +161,7 @@ __Examples__
 __Syntax__
 
 ```shell
-➜ knife scaleway droplet create --server-name <FQDN> \
+➜ knife scaleway server create --server-name <FQDN> \
                                       --image <IMAGE SLUG> \
                                       --location <REGION SLUG> \
                                       --size <SIZE SLUG> \
@@ -178,7 +178,7 @@ __Syntax__
 __Short Syntax__
 
 ```shell
-➜ knife scaleway droplet create -N <FQDN> \
+➜ knife scaleway server create -N <FQDN> \
                                       -I <IMAGE SLUG> \
                                       -L <REGION SLUG> \
                                       -S <SIZE SLUG> \
@@ -193,13 +193,13 @@ __Short Syntax__
 
 You need to have [knife-solo](http://matschaffer.github.com/knife-solo/) gem installed.
 
-This will create a droplet and run `knife solo bootstrap <IP>` equivalent for it.
+This will create a server and run `knife solo bootstrap <IP>` equivalent for it.
 Please consult the [knife-solo documentation](http://matschaffer.github.io/knife-solo/#label-Bootstrap+command) for further details.
 
 __Example__
 
 ```bash
-➜ knife scaleway droplet create --server-name awesome-vm1.vm.io \
+➜ knife scaleway server create --server-name awesome-vm1.vm.io \
                                       --image debian-7-0-x64 \
                                       --location lon1 \
                                       --size 2gb \
@@ -212,13 +212,13 @@ __Example__
 
 You need to have [knife-zero](https://github.com/higanworks/knife-zero) gem installed.
 
-This will create a droplet and run `knife zero bootstrap <IP>` equivalent for it.
+This will create a server and run `knife zero bootstrap <IP>` equivalent for it.
 Please consult the [knife-zero documentation](https://github.com/higanworks/knife-zero#knife-zero-bootstrap) for further details.
 
 __Example__
 
 ```bash
-➜ knife scaleway droplet create --server-name awesome-vm1.vm.io \
+➜ knife scaleway server create --server-name awesome-vm1.vm.io \
                                       --image debian-7-0-x64 \
                                       --location lon1 \
                                       --size 2gb \
@@ -229,47 +229,47 @@ __Example__
 
 #### D. With your custom external bootstrapping script or without chef at all
 
-This will just create a droplet and return its IP-address. Nothing else. You can now run your custom solution to provision the droplet.
+This will just create a server and return its IP-address. Nothing else. You can now run your custom solution to provision the server.
 
 __Example__
 
 ```bash
-➜ knife scaleway droplet create --server-name awesome-vm1.vm.io \
+➜ knife scaleway server create --server-name awesome-vm1.vm.io \
                                       --image debian-7-0-x64 \
                                       --location lon1 \
                                       --size 2gb \
                                       --ssh-keys 1234,4567
 ```
 
-### List running droplets (servers)
+### List running servers (servers)
 
 ```shell
-➜ knife scaleway droplet list
+➜ knife scaleway server list
 ID     Name                  Size   Region       IPv4            Image                            Status
 12345  app20.ams.nl.vm.io  1gb    Amsterdam 1  185.14.123.123  25306 (Ubuntu 12.10 x32 Server)  active
 23456  awesome-vm1.vm.io   512mb  Amsterdam 1  185.14.124.125  25306 (Ubuntu 12.10 x32 Server)  active
 ```
 
-### !WARNING! Destroy a droplet (server) including all of its data!
+### !WARNING! Destroy a server (server) including all of its data!
 
-#### Destroy droplet by id
+#### Destroy server by id
 ```shell
-➜ knife scaleway droplet destroy -S 23456
+➜ knife scaleway server destroy -S 23456
 OK
 ```
 
-#### Destroy all droplets
+#### Destroy all servers
 
 ```shell
-➜ knife scaleway droplet destroy --all
-Delete droplet with id: 1824315
-Delete droplet with id: 1824316
-Delete droplet with id: 1824317
+➜ knife scaleway server destroy --all
+Delete server with id: 1824315
+Delete server with id: 1824316
+Delete server with id: 1824317
 ```
 
 #### Reboot A Droplet
 ```shell
-➜ knife scaleway droplet reboot -I 1824315
+➜ knife scaleway server reboot -I 1824315
 OK
 ```
 
@@ -292,13 +292,13 @@ OK
 
 #### Rebuild A Droplet
 ```shell
-➜ knife scaleway rebuild --droplet-id 1824315 --image-id 65420
+➜ knife scaleway rebuild --server-id 1824315 --image-id 65420
 OK
 ```
 
 #### Rename A Droplet
 ```shell
-➜ knife scaleway rename -I 1824315 -N 'mydropletrocks.com'
+➜ knife scaleway rename -I 1824315 -N 'myserverrocks.com'
 OK
 ```
 
@@ -309,7 +309,7 @@ OK
 OK
 ```
 
-#### Create a droplet from a Snapshot
+#### Create a server from a Snapshot
 ```shell
 ➜ knife scaleway snapshot -I 1824315 -N 'my-super-awesome-snapshot'
 OK

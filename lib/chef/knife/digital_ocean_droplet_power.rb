@@ -17,7 +17,7 @@ class Chef
     class ScalewayServerPower < Knife
       include Knife::ScalewayBase
 
-      banner 'knife scaleway droplet power (options)'
+      banner 'knife scaleway server power (options)'
 
       option :action,
         short: '-a ACTION',
@@ -26,7 +26,7 @@ class Chef
 
       option :id,
         short: '-I ID',
-        long: '--droplet-id ID',
+        long: '--server-id ID',
         description: 'Droplet ID'
 
       def run

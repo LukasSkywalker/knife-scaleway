@@ -31,7 +31,7 @@ class Chef
         end
       end
 
-      banner 'knife scaleway droplet create (options)'
+      banner 'knife scaleway server create (options)'
 
       option :server_name,
              short: '-N NAME',
@@ -72,16 +72,16 @@ class Chef
       option :bootstrap,
              short: '-B',
              long: '--bootstrap',
-             description: 'Do a chef-client bootstrap on the created droplet (for use with chef-server)'
+             description: 'Do a chef-client bootstrap on the created server (for use with chef-server)'
 
       option :solo,
              long: '--[no-]solo',
-             description: 'Do a chef-solo bootstrap on the droplet using knife-solo',
+             description: 'Do a chef-solo bootstrap on the server using knife-solo',
              proc: proc { |s| Chef::Config[:knife][:solo] = s }
 
       option :zero,
              long: '--[no-]zero',
-             description: 'Do a chef-zero bootstrap on the droplet using knife-zero',
+             description: 'Do a chef-zero bootstrap on the server using knife-zero',
              proc: proc { |z| Chef::Config[:knife][:zero] = z }
 
       option :ssh_user,
@@ -157,13 +157,13 @@ class Chef
       option :backups,
              short: '-b',
              long: '--backups-enabled',
-             description: 'Enables backups for the created droplet',
+             description: 'Enables backups for the created server',
              default: false
 
       option :ipv6,
              short: '-6',
              long: '--ipv6-enabled',
-             description: 'Enables ipv6 for the created droplet',
+             description: 'Enables ipv6 for the created server',
              default: false
 
       def run
@@ -214,7 +214,7 @@ class Chef
           exit 1
         end
 =begin
-        droplet = DropletKit::Droplet.new(name: locate_config_value(:server_name),
+        server = DropletKit::Droplet.new(name: locate_config_value(:server_name),
                                           size: locate_config_value(:size),
                                           image: locate_config_value(:image),
                                           region: locate_config_value(:location),
@@ -226,7 +226,7 @@ class Chef
 =end
         server = Scaleway::Server.create(locate_config_value(:server_name), locate_config_value(:image), 'VC1S')
 
-        #server = client.droplets.create(droplet)
+        #server = client.servers.create(server)
 
         if Scaleway::Server.find(server.id).state != 'stopped'
           ui.error("Droplet could not be started #{server.inspect}")
@@ -239,7 +239,7 @@ class Chef
           puts ui.color("JSON Attributes: #{config[:json_attributes]}", :magenta)
         end
 
-        puts "Starting droplet #{server.id}"
+        puts "Starting server #{server.id}"
 
         Scaleway::Server.action(server.id, 'poweron')
 
@@ -264,8 +264,8 @@ class Chef
         end
       end
 
-      def ip_address_available(droplet_id)
-        server = Scaleway::Server.find(droplet_id)
+      def ip_address_available(server_id)
+        server = Scaleway::Server.find(server_id)
         if server.public_ip
           yield
           server.public_ip
