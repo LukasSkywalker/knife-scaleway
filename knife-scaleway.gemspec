@@ -6,11 +6,11 @@ require 'knife-scaleway/version'
 Gem::Specification.new do |gem|
   gem.name          = 'knife-scaleway'
   gem.version       = Knife::Scaleway::VERSION
-  gem.authors       = ['Roland Moriz', 'Greg Fitzgerald']
-  gem.email         = ['roland@moriz.de', 'greg@gregf.org']
+  gem.authors       = ['Lukas Diener']
+  gem.email         = ['lukas.diener@hotmail.com']
   gem.description   = "A plugin for chef's knife to manage instances of Scaleway servers"
   gem.summary       = "A plugin for chef's knife to manage instances of Scaleway servers"
-  gem.homepage      = 'https://github.com/rmoriz/knife-scaleway'
+  gem.homepage      = 'https://github.com/LukasSkywalker/knife-scaleway'
   gem.license       = 'Apache 2.0'
 
   gem.add_dependency 'chef', '>= 10.18'
